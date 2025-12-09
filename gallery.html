@@ -21,6 +21,11 @@
         gap: 48px;
       }
 
+      @keyframes fade-in {
+        0%   { opacity: 0.8; filter: brightness(0.85) contrast(0.9); }
+        100% { opacity: 1;   filter: brightness(1) contrast(1); }
+      }
+
       .letters-container {
         display: flex;
         flex-direction: row;
@@ -39,6 +44,8 @@
 
         position: relative;
         image-rendering: pixelated;
+
+        animation: fade-in 280ms ease-out 1 forwards;
       }
 
       .letter-grid::before {
@@ -69,6 +76,8 @@
 
         position: relative;
         image-rendering: pixelated;
+
+        animation: fade-in 280ms ease-out 1 forwards;
       }
 
       .scales-container::before {
@@ -107,6 +116,8 @@
 
         position: relative;
         image-rendering: pixelated;
+
+        animation: fade-in 280ms ease-out 1 forwards;
       }
 
       .frames-grid::before {

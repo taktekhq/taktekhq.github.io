@@ -261,10 +261,21 @@ function pixelateMatrix(matrix, options) {
   const pixels = []
   for (let y = 0; y < matrix.length; y++) {
     for (let x = 0; x < matrix[y].length; x++) {
-      if (matrix[y][x]) {
-        pixels.push(
-          `linear-gradient(#000) ${coords.x}px ${coords.y}px / ${opts.pixelSize * opts.scale}px ${opts.pixelSize * opts.scale}px no-repeat`
-        )
+      // If the pixel is transparent, skip it.
+      if (matrix[y][x] === 0) {
+        // Update the coordinates to the next column.
+        coords.x += opts.pixelSize * opts.scale
+        continue
+      }
+
+      // We don't want to scale the pixel.
+      // So add pixels to match the expected scale.
+      for (let i = 0; i < opts.scale; i++) {
+        for (let j = 0; j < opts.scale; j++) {
+          pixels.push(
+            `linear-gradient(#000) ${coords.x + (i * opts.pixelSize)}px ${coords.y + (j * opts.pixelSize)}px / ${opts.pixelSize}px ${opts.pixelSize}px no-repeat`
+          )
+        }
       }
 
       // Update the coordinates to the next column.
@@ -277,7 +288,7 @@ function pixelateMatrix(matrix, options) {
     coords.y += opts.pixelSize * opts.scale
   }
 
-  return pixels.join(",")
+  return pixels
 }
 
 /**
@@ -346,14 +357,14 @@ function pixelateText(lines, options) {
     y: opts.y
   }
 
-  const pixels = []
+  let pixels = []
   for (const line of lines) {
     // Draw the letters in the line.
     for (let i = 0; i < line.text.length; i++) {
       const letter = line.text[i]
 
-      pixels.push(
-        pixelateLetter(
+      pixels = pixels.concat(
+        ...pixelateLetter(
           letter,
           {
             text: line.text,
@@ -378,7 +389,7 @@ function pixelateText(lines, options) {
     coords.y += LETTER_SIZE * line.scale
   }
 
-  return pixels.filter(Boolean).join(",")
+  return pixels.filter(Boolean)
 }
 
 /** Merges the options with the defaults. */

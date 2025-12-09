@@ -213,20 +213,37 @@ const letters = {
   ]
 }
 
+const modifiers = {
+  '.': [
+    {
+      desc: 'A period surrounded by two words, eg. hello@taktek.io',
+      pattern: new RegExp(`\\w\\.\\w`),
+      window: [-1, 2],
+      matrix: [
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 1, 1, 0, 0, 0],
+        [0, 0, 0, 1, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+      ]
+    }
+  ]
+}
+
 /**
- * Convert a letter to pixels.
+ * Convert a matrix to pixels.
  *
- * @param {string} letter
+ * @param {number[][]} matrix
  * @param {Object} options
  * @param {number} options.x
  * @param {number} options.y
  * @param {number} options.pixelSize
  * @param {number} options.scale
  */
-function pixelateLetter(letter, options) {
-  // Convert the letter to uppercase.
-  const l = letter.toUpperCase()
-
+function pixelateMatrix(matrix, options) {
   // Merge the options with the defaults.
   const opts = normalizeOptions(options, {
     x: 0,
@@ -234,14 +251,6 @@ function pixelateLetter(letter, options) {
     pixelSize: 1,
     scale: 1,
   })
-
-  // Check if the letter is supported.
-  if (!letters[l]) {
-    throw new Error(`Unsupported letter: ${l}`)
-  }
-
-  // Get the matrix of the letter.
-  const matrix = letters[l]
 
   // Initialize the coordinates.
   const coords = {
@@ -272,6 +281,48 @@ function pixelateLetter(letter, options) {
 }
 
 /**
+ * Convert a letter into pixels.
+ *
+ * @param {string} letter
+ * @param {Object} context
+ * @param {string} context.text
+ * @param {number} context.index
+ * @param {Object} options
+ * @param {number} options.x
+ * @param {number} options.y
+ * @param {number} options.pixelSize
+ * @param {number} options.scale
+ */
+function pixelateLetter(letter, context, options) {
+  const l = letter.toUpperCase()
+
+  // Check if the letter is not supported.
+  if (!letters[l]) {
+    throw new Error(`Unsupported letter: ${l}`)
+  }
+
+  // If there are no modifiers, return the original letter.
+  if (!modifiers[l]) {
+    return pixelateMatrix(letters[l], options)
+  }
+
+  // Check if the context matches any modifier.
+  for (const modifier of modifiers[l]) {
+    // Get the context window.
+    const ctx = context.text.slice(context.index + modifier.window[0], context.index + modifier.window[1])
+    console.log(ctx)
+
+    // Check if the window matches the modifier pattern.
+    if (modifier.pattern.test(ctx)) {
+      return pixelateMatrix(modifier.matrix, options)
+    }
+  }
+
+  // If no modifier matches, return the original letter.
+  return pixelateMatrix(letters[l], options)
+}
+
+/**
  * Convert a text into pixels.
  *
  * @param {Object[]} lines
@@ -299,14 +350,23 @@ function pixelateText(lines, options) {
   const pixels = []
   for (const line of lines) {
     // Draw the letters in the line.
-    for (const letter of line.text) {
+    for (let i = 0; i < line.text.length; i++) {
+      const letter = line.text[i]
+
       pixels.push(
-        pixelateLetter(letter, {
-          x: coords.x,
-          y: coords.y,
-          pixelSize: opts.pixelSize,
-          scale: line.scale,
-        })
+        pixelateLetter(
+          letter,
+          {
+            text: line.text,
+            index: i,
+          },
+          {
+            x: coords.x,
+            y: coords.y,
+            pixelSize: opts.pixelSize,
+            scale: line.scale,
+          }
+        )
       )
 
       // Update the coordinates to the next column.

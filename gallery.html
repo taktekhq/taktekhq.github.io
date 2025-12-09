@@ -141,11 +141,11 @@
       function setupLetters() {
         const lettersContainer = document.querySelector(".letters-container")
 
-        for (const letter of Object.keys(letters)) {
+        for (const letter of Object.values(letters)) {
           const grid = document.createElement("div")
           grid.classList.add("letter-grid")
 
-          grid.style.background = pixelateLetter(letter, {
+          grid.style.background = pixelateMatrix(letter, {
             x: 0,
             y: 0,
             pixelSize: 16,
@@ -160,19 +160,19 @@
         const scalesContainer = document.querySelector(".scales-container")
 
         scalesContainer.style.background = [
-          pixelateLetter("S", {
+          pixelateMatrix(letters.S, {
             x: 0,
             y: 0,
             pixelSize: 16,
             scale: 2
           }),
-          pixelateLetter("S", {
+          pixelateMatrix(letters.S, {
             x: 16,
             y: 0,
             pixelSize: 16,
             scale: 1
           }),
-          pixelateLetter("S", {
+          pixelateMatrix(letters.S, {
             x: 16,
             y: 8,
             pixelSize: 16,

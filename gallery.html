@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Taktek - Gallery</title>
+
+    <style>
+      body {
+        margin: 0;
+      }
+
+      .container {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 48px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 48px;
+      }
+
+      .letters-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 24px;
+      }
+
+      .letter-grid {
+        width: 128px;
+        height: 128px;
+
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(8, 1fr);
+
+        position: relative;
+        image-rendering: pixelated;
+      }
+
+      .letter-grid::before {
+        content: "";
+        pointer-events: none;
+
+        position: absolute;
+        inset: 0;
+
+        background-image:
+          linear-gradient(to right, rgba(0,0,0,0.08) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(0,0,0,0.08) 1px, transparent 1px),
+          linear-gradient(to left, rgba(0,0,0,0.08) 1px, transparent 1px),
+          linear-gradient(to top, rgba(0,0,0,0.08) 1px, transparent 1px);
+
+        background-size:
+          calc(100% / 8)
+          calc(100% / 8);
+      }
+
+      .scales-container {
+        width: 384px;
+        height: 256px;
+
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(8, 1fr);
+
+        position: relative;
+        image-rendering: pixelated;
+      }
+
+      .scales-container::before {
+        content: "";
+        pointer-events: none;
+
+        position: absolute;
+        inset: 0;
+
+        background-image:
+          linear-gradient(to right, rgba(0,0,0,0.08) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(0,0,0,0.08) 1px, transparent 1px),
+          linear-gradient(to left, rgba(0,0,0,0.08) 1px, transparent 1px),
+          linear-gradient(to top, rgba(0,0,0,0.08) 1px, transparent 1px);
+
+        background-size:
+          calc(100% / 24)
+          calc(100% / 16);
+      }
+
+      .text-container {
+        width: 512px;
+        aspect-ratio: 1 / 1;
+
+        display: grid;
+        grid-template-columns: repeat(128, 1fr);
+        grid-template-rows: repeat(128, 1fr);
+
+        position: relative;
+        image-rendering: pixelated;
+      }
+
+      .text-container::before {
+        content: "";
+        pointer-events: none;
+
+        position: absolute;
+        inset: 0;
+
+        background-image:
+          linear-gradient(to right, rgba(0,0,0,0.08) 0.5px, transparent 0.5px),
+          linear-gradient(to bottom, rgba(0,0,0,0.08) 0.5px, transparent 0.5px),
+          linear-gradient(to left, rgba(0,0,0,0.08) 0.5px, transparent 0.5px),
+          linear-gradient(to top, rgba(0,0,0,0.08) 0.5px, transparent 0.5px);
+
+        background-size:
+          calc(100% / 128)
+          calc(100% / 128);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="letters-container"></div>
+      <div class="scales-container"></div>
+      <div class="text-container"></div>
+    </div>
+
+    <script src="scripts/pixelate.js"></script>
+    <script>
+      function setupGallery() {
+        setupLetters()
+
+        setupScales()
+
+        setupText()
+      }
+
+      function setupLetters() {
+        const lettersContainer = document.querySelector(".letters-container")
+
+        for (const letter of Object.keys(letters)) {
+          const grid = document.createElement("div")
+          grid.classList.add("letter-grid")
+
+          grid.style.background = pixelateLetter(letter, {
+            x: 0,
+            y: 0,
+            pixelSize: 16,
+            scale: 1
+          })
+
+          lettersContainer.appendChild(grid)
+        }
+      }
+
+      function setupScales() {
+        const scalesContainer = document.querySelector(".scales-container")
+
+        scalesContainer.style.background = [
+          pixelateLetter("S", {
+            x: 0,
+            y: 0,
+            pixelSize: 16,
+            scale: 2
+          }),
+          pixelateLetter("S", {
+            x: 16,
+            y: 0,
+            pixelSize: 16,
+            scale: 1
+          }),
+          pixelateLetter("S", {
+            x: 16,
+            y: 8,
+            pixelSize: 16,
+            scale: 1
+          })
+        ].join(",")
+      }
+
+      function setupText() {
+        const textContainer = document.querySelector(".text-container")
+
+        textContainer.style.background = pixelateText([
+          { text: "WE BUILD", scale: 2 },
+          { text: "TOOLS.", scale: 2 },
+          { text: "", scale: 2 },
+          { text: "GOT ONE", scale: 2 },
+          { text: "IN MIND?", scale: 2 },
+          { text: "LMK.", scale: 2 },
+          { text: "", scale: 2 },
+          { text: "", scale: 1 },
+          { text: "hello@taktek.io", scale: 1 },
+        ], {
+          x: 0,
+          y: 0,
+          pixelSize: 4,
+        })
+      }
+
+      window.addEventListener("load", setupGallery)
+    </script>
+  </body>
+</html>

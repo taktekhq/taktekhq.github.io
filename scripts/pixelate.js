@@ -310,7 +310,6 @@ function pixelateLetter(letter, context, options) {
   for (const modifier of modifiers[l]) {
     // Get the context window.
     const ctx = context.text.slice(context.index + modifier.window[0], context.index + modifier.window[1])
-    console.log(ctx)
 
     // Check if the window matches the modifier pattern.
     if (modifier.pattern.test(ctx)) {

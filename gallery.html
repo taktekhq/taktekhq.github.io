@@ -89,9 +89,17 @@
           calc(100% / 16);
       }
 
-      .text-container {
-        width: 512px;
-        aspect-ratio: 1 / 1;
+      .frames-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 24px;
+      }
+
+      .frames-grid {
+        width: 256px;
+        height: 256px;
 
         display: grid;
         grid-template-columns: repeat(128, 1fr);
@@ -101,7 +109,7 @@
         image-rendering: pixelated;
       }
 
-      .text-container::before {
+      .frames-grid::before {
         content: "";
         pointer-events: none;
 
@@ -125,7 +133,66 @@
     <div class="container">
       <div class="letters-container"></div>
       <div class="scales-container"></div>
-      <div class="text-container"></div>
+      <div class="frames-container">
+        <div class="frames-grid logo-frame">
+          <style>
+            .logo-frame {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+
+            .logo-frame .logo {
+              width: 192px;
+              height: 128px;
+            }
+          </style>
+
+          <div class="logo"></div>
+        </div>
+        <div class="frames-grid index-frame">
+          <style>
+            .index-frame .about {
+              grid-row: span 32;
+              grid-column: span 128;
+            }
+
+            .index-frame .break {
+              grid-row: span 8;
+              grid-column: span 128;
+            }
+
+            .index-frame .hook {
+              grid-row: span 32;
+              grid-column: span 128;
+            }
+
+            .index-frame .cta {
+              grid-row: span 16;
+              grid-column: span 128;
+            }
+
+            .index-frame .email {
+              grid-row: span 8;
+              grid-column: span 128;
+            }
+          </style>
+
+          <div class="about"></div>
+
+          <div class="break"></div>
+          <div class="break"></div>
+
+          <div class="hook"></div>
+          <div class="cta"></div>
+
+          <div class="break"></div>
+          <div class="break"></div>
+          <div class="break"></div>
+
+          <a class="email" href="mailto:hello@taktek.io"></a>
+        </div>
+      </div>
     </div>
 
     <script src="scripts/pixelate.js"></script>
@@ -135,7 +202,7 @@
 
         setupScales()
 
-        setupText()
+        setupFrames()
       }
 
       function setupLetters() {
@@ -181,24 +248,45 @@
         ].join(",")
       }
 
-      function setupText() {
-        const textContainer = document.querySelector(".text-container")
+      function setupFrames() {
+        setupLogoFrame()
+        setupIndexFrame()
+      }
 
-        textContainer.style.background = pixelateText([
+      function setupLogoFrame() {
+        const pixelSize = 2
+
+        const logoText = document.querySelector(".logo-frame .logo")
+        logoText.style.background = pixelateText([
+          { text: "TAK", scale: 4 },
+          { text: "TEK", scale: 4 }
+        ], { x: 0, y: 0, pixelSize })
+      }
+
+      function setupIndexFrame() {
+        const pixelSize = 2
+
+        const aboutText = document.querySelector(".index-frame .about")
+        aboutText.style.background = pixelateText([
           { text: "WE BUILD", scale: 2 },
-          { text: "TOOLS.", scale: 2 },
-          { text: "", scale: 2 },
+          { text: "TOOLS.", scale: 2 }
+        ], { x: 0, y: 0, pixelSize })
+
+        const hookText = document.querySelector(".index-frame .hook")
+        hookText.style.background = pixelateText([
           { text: "GOT ONE", scale: 2 },
-          { text: "IN MIND?", scale: 2 },
-          { text: "LMK.", scale: 2 },
-          { text: "", scale: 2 },
-          { text: "", scale: 1 },
-          { text: "hello@taktek.io", scale: 1 },
-        ], {
-          x: 0,
-          y: 0,
-          pixelSize: 4,
-        })
+          { text: "IN MIND?", scale: 2 }
+        ], { x: 0, y: 0, pixelSize })
+
+        const ctaText = document.querySelector(".index-frame .cta")
+        ctaText.style.background = pixelateText([
+          { text: "LMK.", scale: 2 }
+        ], { x: 0, y: 0, pixelSize })
+
+        const emailText = document.querySelector(".index-frame .email")
+        emailText.style.background = pixelateText([
+          { text: "hello@taktek.io", scale: 1 }
+        ], { x: 0, y: 0, pixelSize })
       }
 
       window.addEventListener("load", setupGallery)

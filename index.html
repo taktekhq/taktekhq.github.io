@@ -51,6 +51,19 @@
           calc(100% / 128);
       }
 
+      @keyframes fade-in {
+        0%   { opacity: 0.8; filter: brightness(0.85) contrast(0.9); }
+        100% { opacity: 1;   filter: brightness(1) contrast(1); }
+      }
+
+      .grid-content {
+        display: grid;
+        grid-row: span 128;
+        grid-column: span 128;
+
+        animation: fade-in 280ms ease-out 1 forwards;
+      }
+
       .break {
         grid-row: span 8;
         grid-column: span 128;
@@ -93,19 +106,21 @@
   <body>
     <div class="container">
       <div class="grid">
-        <div class="about"></div>
+        <div class="grid-content">
+          <div class="about"></div>
 
-        <div class="break"></div>
-        <div class="break"></div>
+          <div class="break"></div>
+          <div class="break"></div>
 
-        <div class="hook"></div>
-        <div class="cta"></div>
+          <div class="hook"></div>
+          <div class="cta"></div>
 
-        <div class="break"></div>
-        <div class="break"></div>
-        <div class="break"></div>
+          <div class="break"></div>
+          <div class="break"></div>
+          <div class="break"></div>
 
-        <a class="email" href="mailto:hello@taktek.io"></a>
+          <a class="email" href="mailto:hello@taktek.io"></a>
+        </div>
       </div>
     </div>
   </body>

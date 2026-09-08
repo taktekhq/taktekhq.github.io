@@ -10,10 +10,14 @@
 <meta property="og:title" content="Taktek">
 <meta property="og:description" content="Building tools with family and friends in mind.">
 <meta property="og:url" content="https://taktek.io">
-<link rel="icon" href="assets/icons/bucksbuddy-icon-192.png">
+<link rel="icon" href="assets/icons/taktek.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/css/taktek.css">
 <style>
-.wrap{max-width:var(--max-page);margin:0 auto}
+html{min-height:100%}
+body{min-height:100vh;display:flex;flex-direction:column}
+.wrap{max-width:var(--max-page);margin:0 auto;width:100%;flex:1;display:flex;flex-direction:column}
+/* centres the hero in whatever height is left, leaving the footer on the floor */
+.hero{margin-block:auto}
 .head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-5);padding:var(--space-7) var(--space-8);border-bottom:1px solid var(--border-default)}
 .mark{font-family:var(--font-display);font-size:22px;font-weight:600;letter-spacing:-.03em;color:var(--text-strong)}
 /* CSS-only mode toggle: inverts whatever the OS gives, so the default still follows the OS. */
@@ -30,17 +34,13 @@
 @media (prefers-color-scheme:light){body:has(#mode:checked){--surface-page:var(--ink-950);--surface-card:var(--ink-900);--surface-sunken:#111008;--surface-raised:var(--ink-800);--surface-inverse:var(--paper);--surface-accent-soft:rgba(198,96,42,.18);--text-body:var(--ink-100);--text-strong:var(--paper);--text-muted:var(--ink-300);--text-faint:var(--ink-400);--text-inverse:var(--ink-900);--text-on-accent:var(--ink-950);--text-link:var(--solder-400);--text-link-hover:var(--solder-200);--border-subtle:var(--ink-800);--border-default:var(--ink-700);--border-strong:var(--ink-600);--grid-line:var(--blueprint-line-dark);--accent:var(--solder-500);--accent-hover:var(--solder-400);--accent-press:var(--solder-600);--accent-soft:rgba(198,96,42,.18);--accent-2:var(--circuit-500);--accent-2-soft:rgba(21,150,148,.18);--positive:var(--money-in-500);--negative:var(--money-out-500)}}
 @media (prefers-color-scheme:dark){body:has(#mode:checked){--surface-page:var(--paper);--surface-card:#fff;--surface-sunken:var(--ink-50);--surface-raised:#fff;--surface-inverse:var(--ink-900);--surface-accent-soft:var(--solder-100);--text-body:var(--ink-800);--text-strong:var(--ink-950);--text-muted:var(--ink-600);--text-faint:var(--ink-500);--text-inverse:var(--paper);--text-on-accent:#fff;--text-link:var(--solder-700);--text-link-hover:var(--solder-800);--border-subtle:var(--ink-100);--border-default:var(--ink-200);--border-strong:var(--ink-300);--grid-line:var(--blueprint-line);--accent:var(--solder-600);--accent-hover:var(--solder-700);--accent-press:var(--solder-800);--accent-soft:var(--solder-100);--accent-2:var(--circuit-700);--accent-2-soft:var(--circuit-100);--positive:var(--money-in-600);--negative:var(--money-out-600)}}
 .gloss{font-family:var(--font-mono);font-size:11px;color:var(--text-faint)}
-main{padding:var(--space-12) var(--space-8) var(--space-11)}
+main{flex:1;display:flex;flex-direction:column;padding:var(--space-12) var(--space-8) var(--space-11)}
 h1{font-weight:600;font-size:clamp(32px,5.4vw,64px);line-height:1.04;letter-spacing:-.03em;max-width:22ch}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--space-7);margin-top:var(--space-11)}
-.card{border:1px solid var(--border-default);border-radius:var(--radius-card);padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-6);min-height:236px}
-.card p{margin:0;flex:1;max-width:46ch;color:var(--text-body)}
-.tags{display:flex;flex-wrap:wrap;gap:var(--space-3)}
-.tag{font-family:var(--font-mono);font-size:11px;padding:3px 9px;border:1px solid var(--border-default);border-radius:var(--radius-pill);color:var(--text-muted)}
+.card{border:1px solid var(--border-default);border-radius:var(--radius-card);padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-6);min-height:208px}
+.card p{margin:0;flex:1;max-width:34ch;font-size:18px;line-height:1.45;color:var(--text-body)}
 .go{font-family:var(--font-mono);font-size:12px}
-.card .tag{color:var(--text-muted)}
 .bb .go{color:#A34000}
-.bb .tag{color:var(--bb-label)}
 .bb{background:var(--bb-canvas)}
 .bb .name{font-family:var(--font-grobold);font-size:19px;font-weight:700;text-transform:uppercase;line-height:1;color:var(--bb-label-muted)}
 .gz{background:var(--cream-100)}
@@ -62,20 +62,20 @@ footer{display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-6);border-
 </header>
 <main class="blueprint">
 <div class="wrap">
+<div class="hero">
 <h1>Building tools with family and friends in mind.</h1>
 <div class="grid">
 <section class="card bb" data-theme="bucksbuddy">
 <div class="top"><img src="assets/icons/bucksbuddy-icon-192.png" alt="" width="52" height="52" style="border-radius:14px"><span class="name">Bucks<br>Buddy</span></div>
-<p>What's up, Doc? A dead-simple money tracker for every buck in and out, across cash and every account. Free, no ads, install anywhere.</p>
-<div class="tags"><span class="tag">iPhone-first PWA</span><span class="tag">Cash + accounts</span><span class="tag">CSV &amp; PDF export</span></div>
+<p>Track your expenses.</p>
 <a class="go" href="https://bucksbuddy.com">bucksbuddy.com →</a>
 </section>
 <section class="card gz" data-theme="ghazl">
 <div class="top"><img class="gzmark" src="assets/logos/ghazl-wordmark.png" alt="ghazl" width="159" height="76"></div>
-<p>Turn one photo of your craft into ready-to-post Instagram scenes. Built for a crochet business that went from posting once a month to twice a day.</p>
-<div class="tags"><span class="tag">One photo in</span><span class="tag">Scenes out</span><span class="tag">Built for my mum</span></div>
+<p>Turn an ordinary photo into stunning posts.</p>
 <a class="go" href="https://ghazl.ai">ghazl.ai →</a>
 </section>
+</div>
 </div>
 <footer>
 <span class="badge">Taktek</span>

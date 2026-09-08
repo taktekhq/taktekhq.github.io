@@ -98,6 +98,32 @@
           calc(100% / 16);
       }
 
+      .paths-container {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        width: 100%;
+      }
+
+      .path-sample {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        animation: fade-in 220ms linear 1;
+      }
+
+      .path-sample svg {
+        display: block;
+        fill: #000;
+      }
+
+      .path-sample figcaption {
+        font: 12px ui-monospace, SFMono-Regular, Menlo, monospace;
+        color: #8E8E93;
+      }
+
       .frames-container {
         display: flex;
         flex-direction: row;
@@ -144,6 +170,7 @@
     <div class="container">
       <div class="letters-container"></div>
       <div class="scales-container"></div>
+      <div class="paths-container"></div>
       <div class="frames-container">
         <div class="frames-grid logo-frame">
           <style>
@@ -213,6 +240,8 @@
 
         setupScales()
 
+        setupPaths()
+
         setupFrames()
       }
 
@@ -257,6 +286,54 @@
             scale: 1
           })
         ]
+      }
+
+      /**
+       * The strings the index ships, drawn the way the index draws them.
+       *
+       * pixelatePath gives back one SVG path per string instead of one CSS
+       * layer per pixel, which is what keeps the index small enough to carry
+       * this much pixel type. Copy the `d` out of here and into index.html.
+       */
+      function setupPaths() {
+        const samples = [
+          { name: "wordmark", lines: [{ text: "TAKTEK", scale: 1 }], unit: 3 },
+          { name: "hero", lines: [{ text: "WE BUILD", scale: 1 }, { text: "TOOLS.", scale: 1 }], unit: 6 },
+          { name: "bucksbuddy", lines: [{ text: "BUCKSBUDDY", scale: 1 }], unit: 3 },
+          { name: "ghazl", lines: [{ text: "GHAZL", scale: 1 }], unit: 3 },
+          { name: "mark B", lines: [{ text: "B", scale: 1 }], unit: 3 },
+          { name: "mark G", lines: [{ text: "G", scale: 1 }], unit: 3 },
+          { name: "closer", lines: [{ text: "GOT ONE", scale: 1 }, { text: "IN MIND?", scale: 1 }], unit: 3 },
+          { name: "lmk", lines: [{ text: "LMK.", scale: 1 }], unit: 3 },
+          { name: "alphabet", lines: [
+            { text: "ABCDEFGHIJKLM", scale: 1 },
+            { text: "NOPQRSTUVWXYZ", scale: 1 },
+            { text: "0123456789", scale: 1 },
+            { text: ".,'-/:?!> @", scale: 1 }
+          ], unit: 3 },
+        ]
+
+        const pathsContainer = document.querySelector(".paths-container")
+
+        for (const sample of samples) {
+          const { d, width, height } = pixelatePath(sample.lines, { x: 0, y: 0 })
+
+          const figure = document.createElement("figure")
+          figure.classList.add("path-sample")
+          figure.style.margin = "0"
+
+          figure.innerHTML = `
+            <svg
+              viewBox="0 0 ${width} ${height}"
+              width="${width * sample.unit}"
+              height="${height * sample.unit}"
+              shape-rendering="crispEdges"
+            ><path d="${d}"/></svg>
+            <figcaption>${sample.name} — viewBox 0 0 ${width} ${height} — ${d.length} bytes</figcaption>
+          `
+
+          pathsContainer.appendChild(figure)
+        }
       }
 
       function setupFrames() {

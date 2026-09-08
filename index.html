@@ -10,7 +10,7 @@
 <meta property="og:title" content="Taktek">
 <meta property="og:description" content="Building tools with family and friends in mind.">
 <meta property="og:url" content="https://taktek.io">
-<link rel="icon" href="assets/icons/taktek.svg" type="image/svg+xml">
+<link rel="icon" href="assets/logos/taktek-wordmark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/css/taktek.css">
 <style>
 html{min-height:100%}
@@ -19,7 +19,7 @@ body{min-height:100vh;display:flex;flex-direction:column}
 /* centres the hero in whatever height is left, leaving the footer on the floor */
 .hero{margin-block:auto}
 .head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-5);padding:var(--space-7) var(--space-8);border-bottom:1px solid var(--border-default)}
-.mark{font-family:var(--font-display);font-size:22px;font-weight:600;letter-spacing:-.03em;color:var(--text-strong)}
+.mark{display:block;height:17px;width:63.5px;background:var(--text-strong);-webkit-mask:url(assets/logos/taktek-wordmark.svg) no-repeat center/contain;mask:url(assets/logos/taktek-wordmark.svg) no-repeat center/contain}
 /* CSS-only mode toggle: inverts whatever the OS gives, so the default still follows the OS. */
 #mode{position:absolute;opacity:0;width:0;height:0}
 .modebtn{display:grid;place-items:center;width:36px;height:36px;border:1px solid var(--border-default);border-radius:var(--radius-xs);color:var(--text-muted);cursor:pointer;transition:color var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard)}
@@ -53,7 +53,7 @@ footer{display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-6);border-
 </head>
 <body>
 <header class="head">
-<span class="mark">taktek</span>
+<span class="mark" role="img" aria-label="taktek"></span>
 <input type="checkbox" id="mode">
 <label class="modebtn" for="mode" title="Switch appearance" aria-label="Switch appearance">
 <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>

@@ -1,25 +1,26 @@
 # taktekhq.github.io
-Landing page
 
-## Pages
+The Taktek landing page, served at [taktek.io](https://taktek.io).
 
-### [Index][1]
+## Structure
 
-This is the landing page.
+    index.html              the landing page
+    assets/css/taktek.css   design system tokens and base styles
+    assets/fonts/           Grobold, SF Pro Text, SF Pro Rounded
+    assets/icons/           product icons
+    assets/logos/           product wordmarks
 
-It is static and strictly HTML/CSS only.
-
-### [Gallery][2]
-
-This is the place to develop and test.
-
-This requires JavaScript to be enabled.
+The page is static and strictly HTML/CSS — no JavaScript, no build step.
+Dark mode follows the OS through `prefers-color-scheme`, with a CSS-only
+toggle in the header to override it.
 
 ## Development
 
-Any change should be made in the Gallery first.
+`assets/css/taktek.css` is generated from the Taktek design system project
+by concatenating its token closure, with font URLs rewritten to `../fonts/`.
+Do not hand-edit it — change the tokens upstream and re-export.
 
-After it's merged and deployed, they can be copied to the Index.
-
-[1]: https://taktek.io
-[2]: https://taktek.io/gallery
+Page-specific styles live in the `<style>` block in `index.html`. A few
+colours are pinned there rather than tokenised, because the product cards
+set their own tints and the theme scopes were never measured against those
+grounds; the comments in the design system export explain each one.

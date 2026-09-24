@@ -1,0 +1,91 @@
+/* Cursor and magnetism, lifted from hobeichlegal.com.
+   Fine pointers only, and inert under prefers-reduced-motion. */
+
+/* --- Cursor -------------------------------------------------------------
+   After robbietilton.com. A glass disc tracks the pointer with no easing, and
+   over anything clickable it dissolves: blurred out, shrunk to nothing, shadow
+   and border dropped. The element itself picks up the slack by pulling toward
+   the pointer, so the target becomes the cursor. Fine pointers only.
+   ------------------------------------------------------------------------ */
+
+.cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10001;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  pointer-events: none;
+  display: none;
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+  border: 1.5px solid rgba(17, 17, 19, 0.45);
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 3px 6px 3px rgba(9, 9, 2, 0.1);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  filter: blur(0px);
+  /* No transition on left/top: tracking has to be lag-free. */
+  transition: width 0.15s ease, height 0.15s ease, opacity 0.15s ease,
+    filter 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  will-change: left, top;
+}
+
+/* Press tint, always present and faded in rather than swapped. */
+.cursor::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(17, 17, 19, 0.12);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.cursor.is-pressing {
+  width: 21px;
+  height: 21px;
+  box-shadow: 0 2px 6px 2px rgba(9, 9, 2, 0.1);
+}
+
+.cursor.is-pressing::before { opacity: 1; }
+
+.cursor.is-dissolved {
+  opacity: 0;
+  filter: blur(6px);
+  width: 1px;
+  height: 1px;
+  box-shadow: none;
+  border: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .cursor {
+    border-color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.2);
+  }
+  .cursor::before { background: rgba(255, 255, 255, 0.25); }
+}
+
+@media (pointer: fine) {
+  html.has-cursor,
+  html.has-cursor * { cursor: none !important; }
+}
+
+/* Elements the field moves. The transform is applied here rather than by the
+   script, so reduced motion can switch it off in one place. */
+[data-magnetic] {
+  transform: translate3d(var(--mx, 0), var(--my, 0), 0) scale(var(--ms, 1));
+  transition: transform 0.18s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+[data-magnetic]:hover { --ms: 1.012; }
+[data-magnetic]:active { --ms: 0.995; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor { display: none !important; }
+  [data-magnetic] { transform: none; transition: none; }
+}
+@media (pointer: coarse) {
+  .cursor { display: none !important; }
+  [data-magnetic] { transform: none; }
+}

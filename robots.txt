@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Plain-text summary for answer engines
+# https://taktek.io/llms.txt
+
+Sitemap: https://taktek.io/sitemap.xml

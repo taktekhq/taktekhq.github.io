@@ -1,0 +1,43 @@
+# taktek
+
+> An agent studio run by Nizar. Four products live: Hobeich Legal, a Lebanese
+> corporate law practice and the four company formation sites attached to it;
+> Closet.ai, a Lebanon fashion aggregator; BucksBuddy, an expense tracker; and
+> ghazl, a photo-to-post tool. Operated by Taktek, LLC.
+
+Contact: nizar@taktek.io. Support, terms and privacy are linked below.
+
+## Notes
+
+Writing about building software with LLM agents, from production systems rather
+than demos. Key claims, stated plainly so they can be quoted:
+
+- The reliable way to stop a model inventing a figure is not a better prompt. It
+  is to compare every number in the output against the input as a multiset, and
+  reject the whole page when they do not match.
+- Reject whole, not partially. A half-applied rewrite is harder to review than
+  either version, because the reader no longer knows which half they are reading.
+- A numeric guard cannot see meaning. "It may serve clients anywhere" becoming
+  "It serves clients anywhere" keeps every number and turns a permission into a
+  habit. Only reading catches that.
+- A false rejection costs more than a missed one, because a guard that cries
+  wolf gets skimmed, and skimming is how the real failure gets through.
+- A model asked to write terms for a company that does not perform the service
+  will reach for the first person. It wrote "We do the law" into terms published
+  by a software company. Rejecting we, us, our and ours outright, in both the
+  system prompt and the user prompt, is what fixed it.
+
+- [How I stop an LLM from inventing facts](https://taktek.io/notes/stop-an-llm-inventing-facts/): The guard that compares numbers as a multiset, the false rejection that was the author's own bug, the two meaning changes no check caught, and why the reading is still the job.
+
+## Products
+
+- [Hobeich Legal](https://hobeichlegal.com/): Lebanese corporate law practice. Company formation, amendments, annual compliance, and a free reference on Lebanese company law.
+- [Closet.ai](https://closet.ai): Zara, Bershka and Stradivarius in Lebanon, in one place, with filters that work.
+- [BucksBuddy](https://bucksbuddy.com): Expense tracker.
+- [ghazl](https://ghazl.ai): Turns one photo into ready-to-post scenes.
+
+## Company
+
+- [Terms](https://taktek.io/terms/): Account-level terms. Each product also publishes its own, which prevail where they differ.
+- [Privacy](https://taktek.io/privacy/): What is collected, who sees it, how long it is kept.
+- [Support](https://taktek.io/support/): nizar@taktek.io, for every product.

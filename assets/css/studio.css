@@ -260,3 +260,34 @@ footer a:hover { color: var(--signal); }
   .mark i { animation: none; }
   * { transition-duration: 0.01ms !important; }
 }
+
+
+/* --- Notes ---------------------------------------------------------------
+   Long-form, one column, narrow. The style these are written in is short
+   sentences in short paragraphs, so the measure is tight and the leading is
+   open: the white space between paragraphs is doing the pacing.
+   ------------------------------------------------------------------------ */
+
+.note { max-width: 34rem; padding-block: clamp(26px, 4vw, 44px) clamp(50px, 8vw, 90px); }
+.note h1 { font-size: clamp(32px, 5.6vw, 54px); line-height: 1.03; margin: 0 0 12px; }
+.note .when { margin: 0 0 clamp(30px, 5vw, 44px); font-family: var(--mono); font-size: 12px; color: var(--faint); }
+.note .stand {
+  margin: 0 0 clamp(30px, 5vw, 42px);
+  padding-inline-start: 16px;
+  border-inline-start: 2px solid var(--signal);
+  font-size: clamp(17px, 2vw, 19px);
+  line-height: 1.55;
+  color: var(--ink);
+}
+.note h2 { margin: clamp(38px, 6vw, 54px) 0 14px; font-size: clamp(19px, 2.4vw, 23px); font-weight: 500; letter-spacing: -0.02em; color: var(--ink); }
+.note p { margin: 0 0 18px; line-height: 1.62; }
+.note p.tight { margin-bottom: 8px; }
+.note a { color: var(--signal); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.note code { font-family: var(--mono); font-size: 0.88em; background: var(--paper-2); padding: 1px 5px; border-radius: 3px; }
+.note blockquote { margin: 0 0 18px; padding-inline-start: 16px; border-inline-start: 1px solid var(--rule); color: var(--ink); font-size: 1.05em; }
+.note hr { border: 0; border-top: 1px solid var(--rule); margin-block: clamp(34px, 5vw, 48px); }
+
+/* The notes index reuses the row, with a title instead of a URL. */
+.row__title { font-size: clamp(19px, 2.6vw, 27px); font-weight: 500; letter-spacing: -0.03em; line-height: 1.15; color: var(--ink); transition: color 0.25s var(--ease); }
+.row:hover .row__title { color: var(--signal); }
+.row__when { font-family: var(--mono); font-size: 11.5px; color: var(--faint); flex: none; margin-inline-start: auto; }

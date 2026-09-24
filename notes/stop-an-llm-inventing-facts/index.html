@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How I stop an LLM from inventing facts — taktek</title>
+<meta name="description" content="A model rewrote a law firm's website twice. Every number is compared as a multiset and a page whose facts do not match is rejected whole. What the guard caught, what it missed, and the sentence it wrote that no check would have seen.">
+<meta name="theme-color" content="#F7F5F1" media="(prefers-color-scheme:light)">
+<meta name="theme-color" content="#0D0D0E" media="(prefers-color-scheme:dark)">
+<link rel="canonical" href="https://taktek.io/notes/stop-an-llm-inventing-facts/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Nizar, Taktek">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://taktek.io/notes/stop-an-llm-inventing-facts/">
+<meta property="og:site_name" content="taktek">
+<meta property="og:title" content="How I stop an LLM from inventing facts">
+<meta property="og:description" content="A model rewrote a law firm's website twice. What the guard caught, what it missed, and the sentence no check would have seen.">
+<meta property="og:image" content="https://taktek.io/assets/og/stop-an-llm-inventing-facts.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://taktek.io/assets/og/stop-an-llm-inventing-facts.png">
+<meta property="article:published_time" content="2026-09-25">
+
+<link rel="icon" href="../../assets/logos/taktek-wordmark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/studio.css">
+<link rel="stylesheet" href="../../assets/css/gravity.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How I stop an LLM from inventing facts",
+  "description": "A model rewrote a law firm's website twice. Every number is compared as a multiset and a page whose facts do not match is rejected whole. What the guard caught, what it missed, and the sentence it wrote that no check would have seen.",
+  "datePublished": "2026-09-25",
+  "dateModified": "2026-09-25",
+  "inLanguage": "en",
+  "url": "https://taktek.io/notes/stop-an-llm-inventing-facts/",
+  "mainEntityOfPage": "https://taktek.io/notes/stop-an-llm-inventing-facts/",
+  "image": "https://taktek.io/assets/og/stop-an-llm-inventing-facts.png",
+  "author": { "@type": "Person", "name": "Nizar", "url": "https://taktek.io/" },
+  "publisher": { "@type": "Organization", "name": "Taktek, LLC", "url": "https://taktek.io/" },
+  "keywords": "LLM guardrails, AI fact checking, hallucination, production AI, prompt constraints, content verification"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "How do you stop an LLM from inventing facts?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Do not let the model write to the page. Let it write a proposal, then compare every number, percentage, date and citation in the output against the input as a multiset. If they do not match, reject the whole page rather than applying part of it. This catches invented figures reliably, because an invented figure is a token that was not in the source."}},
+    {"@type": "Question", "name": "What can a numeric guard not catch?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Meaning. A model can keep every number and still change what a sentence permits. 'It may serve clients anywhere' became 'It serves clients anywhere', which turns a permission into a habit. Same numbers, same markup, different law. Only reading catches that."}},
+    {"@type": "Question", "name": "Why reject the whole page instead of one paragraph?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Because a partially applied rewrite is harder to review than either version. If one unit fails, you no longer know which half of the page you are reading. Whole-page rejection keeps the diff meaningful."}},
+    {"@type": "Question", "name": "Does a false rejection matter?",
+     "acceptedAnswer": {"@type": "Answer", "text": "More than a missed one. A guard that cries wolf gets skimmed, and skimming is how the real failure gets through. A guard rejecting 'prices are shown in US dollars' for containing the pronoun 'us' has to be fixed the same day."}}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "taktek", "item": "https://taktek.io/"},
+    {"@type": "ListItem", "position": 2, "name": "Notes", "item": "https://taktek.io/notes/"},
+    {"@type": "ListItem", "position": 3, "name": "How I stop an LLM from inventing facts", "item": "https://taktek.io/notes/stop-an-llm-inventing-facts/"}
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="head">
+    <a class="mark" href="../../">taktek<i aria-hidden="true"></i></a>
+    <input type="checkbox" id="mode">
+    <label class="modebtn" for="mode" title="Switch appearance" aria-label="Switch appearance">
+      <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+      <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+    </label>
+  </header>
+
+<main>
+  <article class="note">
+    <h1>How I stop an LLM from inventing facts</h1>
+    <p class="when">Friday, September 25, 2026</p>
+
+    <p class="stand">
+      Do not let the model write to the page. Let it propose, then compare every
+      number in the output against the input as a multiset. If they do not
+      match, reject the whole page. That catches invented figures. It does not
+      catch changed meaning, and changed meaning is the one that gets you.
+    </p>
+
+    <p>I let a model rewrite a law firm's website. Twice.</p>
+
+    <p>The firm is my partner's. The pages state Lebanese company law. Capital minimums, tax rates, article numbers.</p>
+
+    <p>Getting one wrong is not a typo. It is a lawyer publishing something false.</p>
+
+    <p>So the model never writes to the page. It writes a proposal. A guard decides.</p>
+
+    <h2>The guard</h2>
+
+    <p>Every number in the output is compared against the input. As a multiset, not a set. Two mentions of 17% are not one.</p>
+
+    <p>If they do not match, the whole page is rejected. Not the paragraph. The page.</p>
+
+    <p>That sounds heavy-handed. It is the point. A half-applied rewrite is harder to review than either version, because you no longer know which half you are reading.</p>
+
+    <h2>The first rejection was mine</h2>
+
+    <p>It threw out the offshore guide. Six invented numbers and a changed citation.</p>
+
+    <p>Both were my fault.</p>
+
+    <p>My HTML-to-markdown emitter wrote <code>1.</code> for every ordered list item. The model counted properly. Six list items, six numbers that were not in the source.</p>
+
+    <p>And I had normalised <code>art. 7</code> to <code>Article 7</code> before comparing.</p>
+
+    <p>Neither was a fact changing. The guard was wrong, not the model.</p>
+
+    <h2>What the guard cannot see</h2>
+
+    <p class="tight">One paragraph came back like this.</p>
+
+    <blockquote>It may serve clients anywhere.</blockquote>
+    <blockquote>It serves clients anywhere.</blockquote>
+
+    <p>Same numbers. Same tags. Same length.</p>
+
+    <p>A permission turned into a habit, on a page about what a company is allowed to do.</p>
+
+    <p>Another one. An auditor is mandatory above a capital threshold, or if partners holding a fifth ask for one. Two triggers, both mandatory.</p>
+
+    <p>It came back as "partners may ask for one." A trigger turned into a right.</p>
+
+    <p>I caught both by reading. There is no check for it.</p>
+
+    <h2>The worst one</h2>
+
+    <p>The formation sites are operated by a software company. The legal work is done by the firm. Two companies, on purpose.</p>
+
+    <p>I asked the model to write the terms. It came back in the first person.</p>
+
+    <blockquote>We do the law.</blockquote>
+
+    <p>Published by a software company. In the one document a regulator would quote back.</p>
+
+    <p>Now the guard rejects <code>we</code>, <code>us</code>, <code>our</code> and <code>ours</code> outright.</p>
+
+    <p>The first rerun failed seven of ten sections on it. That is not a near miss. That is a model refusing to hold a constraint.</p>
+
+    <p>Repeating the rule in the user prompt, not just the system prompt, fixed it.</p>
+
+    <h2>A guard that cries wolf gets ignored</h2>
+
+    <p>Mine rejected "prices are shown in US dollars." It was matching <code>us</code> case-insensitively.</p>
+
+    <p>I made it case-sensitive the same hour.</p>
+
+    <p>If I had left it, I would have started skimming the rejections. Skimming is how the real one gets through.</p>
+
+    <h2>What I actually do now</h2>
+
+    <p>Guards catch the shape of error you thought of. Numbers, markup, pronouns. Not meaning.</p>
+
+    <p>So I still read every diff. Across four sites, 49 rewrites landed. I reverted three by hand.</p>
+
+    <p>The model is a fast writer with no stake in being right. The guard is cheap. The reading is the job.</p>
+
+    <hr>
+
+    <p class="when">
+      <a href="../">All notes</a> &middot; <a href="../../">taktek.io</a>
+    </p>
+  </article>
+
+  <footer>
+    <a href="../">Notes</a>
+    <a href="../../terms/">Terms</a>
+    <a href="../../privacy/">Privacy</a>
+    <a href="../../support/">Support</a>
+    <a class="spacer" href="https://github.com/taktekhq">github.com/taktekhq</a>
+  </footer>
+</main>
+</div>
+
+<script src="../../assets/js/gravity.js"></script>
+</body>
+</html>

@@ -168,22 +168,21 @@ h1 em { font-style: normal; color: var(--signal); }
 }
 
 /* --- The index -----------------------------------------------------------
-   Rows, not cards. A card asks you to compare four boxes; a list lets the
-   names be the size they deserve and the whole row be the target. */
+   Just the addresses. A name plus a description plus a URL is three things
+   saying one thing, and the URL is the one you can act on, so it is the only
+   one left. Set in mono at display size: it is a string, not a headline, and
+   typing it is how you would otherwise get there.
+   ------------------------------------------------------------------------ */
 
 .index { border-top: 1px solid var(--rule); }
 
 .row {
-  display: grid;
-  grid-template-columns: 2.6rem 1fr;
-  gap: 0 clamp(14px, 2.4vw, 26px);
+  display: flex;
   align-items: baseline;
-  padding-block: clamp(22px, 3.4vw, 34px);
+  gap: clamp(14px, 2.6vw, 30px);
+  padding-block: clamp(16px, 2.6vw, 26px);
   border-bottom: 1px solid var(--rule-2);
   position: relative;
-}
-@media (min-width: 760px) {
-  .row { grid-template-columns: 2.6rem minmax(0, 15ch) 1fr auto; align-items: center; }
 }
 
 .row::after {
@@ -198,44 +197,35 @@ h1 em { font-style: normal; color: var(--signal); }
 }
 .row:hover::after { transform: scaleX(1); }
 
-.row__n { font-family: var(--mono); font-size: 12px; color: var(--faint); }
-
-.row__name {
-  font-size: clamp(25px, 3.6vw, 38px);
-  font-weight: 500;
-  letter-spacing: -0.035em;
-  line-height: 1.05;
-  color: var(--ink);
-}
-
-.row__what {
-  grid-column: 2 / -1;
-  margin-top: 8px;
-  max-width: 44ch;
-  font-size: 16px;
-  color: var(--muted);
-}
-@media (min-width: 760px) {
-  .row__what { grid-column: auto; margin-top: 0; padding-inline-end: 20px; }
-}
-
-.row__go {
-  grid-column: 2 / -1;
-  margin-top: 12px;
+.row__n {
   font-family: var(--mono);
-  font-size: 12px;
-  color: var(--muted);
-  white-space: nowrap;
-  transition: color 0.2s var(--ease);
+  font-size: 11.5px;
+  color: var(--faint);
+  letter-spacing: 0.06em;
+  flex: none;
 }
-@media (min-width: 760px) { .row__go { grid-column: auto; margin-top: 0; } }
-.row:hover .row__go { color: var(--signal); }
-.row__go span { display: inline-block; transition: transform 0.3s var(--ease); }
-.row:hover .row__go span { transform: translateX(4px); }
 
-/* The one that is not a headline act yet. */
-.row--quiet .row__name { font-size: clamp(19px, 2.2vw, 23px); color: var(--muted); }
-.row--quiet:hover .row__name { color: var(--ink); }
+.row__url {
+  font-family: var(--mono);
+  font-size: clamp(21px, 4.6vw, 44px);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  color: var(--ink);
+  word-break: break-word;
+  transition: color 0.25s var(--ease);
+}
+.row:hover .row__url { color: var(--signal); }
+
+.row__arrow {
+  margin-inline-start: auto;
+  font-family: var(--mono);
+  font-size: clamp(15px, 2.2vw, 22px);
+  color: var(--faint);
+  flex: none;
+  transition: transform 0.3s var(--ease), color 0.25s var(--ease);
+}
+.row:hover .row__arrow { color: var(--signal); transform: translateX(6px); }
 
 /* --- Footer -------------------------------------------------------------- */
 

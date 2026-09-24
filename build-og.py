@@ -14,10 +14,12 @@ PAPER, INK, MUTED, SIGNAL = "#F7F5F1", "#0D0D0E", "#6B6B70", "#00A862"
 DISPLAY = "Space Grotesk, Inter, -apple-system, Helvetica, sans-serif"
 MONO = "JetBrains Mono, ui-monospace, Menlo, monospace"
 
-CARDS = [
-    ("og", ["An agent", "studio."], "taktek.io", 78),
-    ("stop-an-llm-inventing-facts",
-     ["How I stop an LLM", "from inventing facts."], "taktek.io/notes", 58),
+import importlib.util as _il
+_s = _il.spec_from_file_location("bn", "build-notes.py")
+_bn = _il.module_from_spec(_s); _s.loader.exec_module(_bn)
+
+CARDS = [("og", ["An agent", "studio."], "taktek.io", 78)] + [
+    (n["slug"], n["og"], "taktek.io/notes", 54) for n in _bn.NOTES
 ]
 
 

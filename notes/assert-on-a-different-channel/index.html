@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Assert on a channel you did not write to &mdash; taktek</title>
+<meta name="description" content="An agent typed a repository name and the field silently ignored it. Reading the DOM back said the write worked. Checking a different channel is the only assertion worth making.">
+<meta name="theme-color" content="#F7F5F1" media="(prefers-color-scheme:light)">
+<meta name="theme-color" content="#0D0D0E" media="(prefers-color-scheme:dark)">
+<link rel="canonical" href="https://taktek.io/notes/assert-on-a-different-channel/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Nizar, Taktek">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://taktek.io/notes/assert-on-a-different-channel/">
+<meta property="og:site_name" content="taktek">
+<meta property="og:title" content="Assert on a channel you did not write to">
+<meta property="og:description" content="An agent typed a repository name and the field silently ignored it. Reading the DOM back said the write worked. Checking a different channel is the only assertion worth making.">
+<meta property="og:image" content="https://taktek.io/assets/og/assert-on-a-different-channel.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://taktek.io/assets/og/assert-on-a-different-channel.png">
+<meta property="article:published_time" content="2026-09-12">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/og/apple-touch.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/studio.css">
+<link rel="stylesheet" href="../../assets/css/gravity.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MY112CQXP6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MY112CQXP6', { anonymize_ip: true });
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Assert on a channel you did not write to",
+  "description": "An agent typed a repository name and the field silently ignored it. Reading the DOM back said the write worked. Checking a different channel is the only assertion worth making.",
+  "datePublished": "2026-09-12",
+  "dateModified": "2026-09-12",
+  "inLanguage": "en",
+  "url": "https://taktek.io/notes/assert-on-a-different-channel/",
+  "mainEntityOfPage": "https://taktek.io/notes/assert-on-a-different-channel/",
+  "image": "https://taktek.io/assets/og/assert-on-a-different-channel.png",
+  "author": {
+    "@type": "Person",
+    "name": "Nizar",
+    "url": "https://taktek.io/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Taktek, LLC",
+    "url": "https://taktek.io/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do you verify that an agent's action actually worked?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Check through a channel other than the one you wrote through. If the agent typed into a form via the browser, confirm the result with something outside the browser. Reading back the same field only confirms the agent remembers what it typed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why can reading the DOM back give a false positive?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because frameworks intercept input. A React controlled input can accept a programmatic value, display it, and still ignore it when the form submits, since the component state never changed. The DOM says the write landed. The server disagrees."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does a good assertion look like?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It uses a different tool than the action did. An SSH key read out of a password manager in a browser can be verified by writing it to disk and running ssh-keygen against it: if the derived public key and fingerprint match what the browser showed, the read was correct."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "taktek",
+      "item": "https://taktek.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Notes",
+      "item": "https://taktek.io/notes/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Assert on a channel you did not write to",
+      "item": "https://taktek.io/notes/assert-on-a-different-channel/"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="head">
+    <a class="mark" href="../../">taktek<i aria-hidden="true"></i></a>
+    <input type="checkbox" id="mode">
+    <label class="modebtn" for="mode" title="Switch appearance" aria-label="Switch appearance">
+      <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+      <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+    </label>
+  </header>
+
+<main>
+  <article class="note">
+    <h1>Assert on a channel you did not write to</h1>
+    <p class="when">Saturday, September 12, 2026</p>
+
+    <p class="stand">An assertion that reads the same channel you wrote to proves nothing. If an agent sets a value through the DOM and then reads the DOM, it has confirmed its own memory. Verify through a different path: a file on disk, a command-line tool, a second page.</p>
+
+    <p>Two tasks on the same day. One assertion was good. One was missing.</p>
+
+    <h2 id="the-good-one">The good one</h2>
+
+    <p>Get an SSH key out of Bitwarden and onto disk.</p>
+
+    <p>The agent drove the extension, opened the item, revealed the key, and read the private and public halves out of the page.</p>
+
+    <p>Then it wrote both to disk and ran <code>ssh-keygen</code> against the private one.</p>
+
+    <p>The derived public key matched what the browser had shown. The fingerprint matched too.</p>
+
+    <p>That is an assertion worth having. The write went through a browser. The check went through a command-line tool that does not know the browser exists.</p>
+
+    <h2 id="the-missing-one">The missing one</h2>
+
+    <p>Same day. Create a private repository and name it <code>agent-tasks</code>.</p>
+
+    <p>The agent set the name field. The field displayed the name. The form submitted.</p>
+
+    <p>The repository is called <code>ubiquitous-happiness</code>.</p>
+
+    <p>React controlled input. A programmatic value is accepted and displayed, and then ignored on submit, because the component's own state never changed.</p>
+
+    <p>Reading the field back would have said the write worked. The field was the channel it wrote to.</p>
+
+    <h2 id="the-rule">The rule</h2>
+
+    <p>An assertion must read a different channel than the write.</p>
+
+    <p>Not a different element. A different path. A file, a tool, a fresh page load, an API response.</p>
+
+    <p>Anything that could not have been fooled by the same mistake.</p>
+
+    <p>I still have a repository named after a thing the agent did not choose. It is a decent reminder.</p>
+
+    <hr>
+    <p class="when"><a href="../">All notes</a> &middot; <a href="../../">taktek.io</a></p>
+  </article>
+
+  <footer>
+    <a href="../">Notes</a>
+    <a href="../../terms/">Terms</a>
+    <a href="../../privacy/">Privacy</a>
+    <a href="../../support/">Support</a>
+    <a class="spacer" href="https://github.com/taktekhq">github.com/taktekhq</a>
+  </footer>
+</main>
+</div>
+
+<script src="../../assets/js/gravity.js"></script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Two verbs, and evidence for both &mdash; taktek</title>
+<meta name="description" content="I gave an agent two verbs to drive a Mac: snapshot and act. No coordinates, elements addressed by identity, and every action returns proof it happened. Without the proof, the recipes built on top are folklore.">
+<meta name="theme-color" content="#F7F5F1" media="(prefers-color-scheme:light)">
+<meta name="theme-color" content="#0D0D0E" media="(prefers-color-scheme:dark)">
+<link rel="canonical" href="https://taktek.io/notes/two-verbs-for-a-mac/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Nizar, Taktek">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://taktek.io/notes/two-verbs-for-a-mac/">
+<meta property="og:site_name" content="taktek">
+<meta property="og:title" content="Two verbs, and evidence for both">
+<meta property="og:description" content="I gave an agent two verbs to drive a Mac: snapshot and act. No coordinates, elements addressed by identity, and every action returns proof it happened. Without the proof, the recipes built on top are folklore.">
+<meta property="og:image" content="https://taktek.io/assets/og/two-verbs-for-a-mac.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://taktek.io/assets/og/two-verbs-for-a-mac.png">
+<meta property="article:published_time" content="2026-09-10">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/og/apple-touch.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/studio.css">
+<link rel="stylesheet" href="../../assets/css/gravity.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MY112CQXP6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MY112CQXP6', { anonymize_ip: true });
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Two verbs, and evidence for both",
+  "description": "I gave an agent two verbs to drive a Mac: snapshot and act. No coordinates, elements addressed by identity, and every action returns proof it happened. Without the proof, the recipes built on top are folklore.",
+  "datePublished": "2026-09-10",
+  "dateModified": "2026-09-10",
+  "inLanguage": "en",
+  "url": "https://taktek.io/notes/two-verbs-for-a-mac/",
+  "mainEntityOfPage": "https://taktek.io/notes/two-verbs-for-a-mac/",
+  "image": "https://taktek.io/assets/og/two-verbs-for-a-mac.png",
+  "author": {
+    "@type": "Person",
+    "name": "Nizar",
+    "url": "https://taktek.io/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Taktek, LLC",
+    "url": "https://taktek.io/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How should an agent control a desktop?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Address elements by identity, not by coordinates. A coordinate is correct only until something moves, and a click at the right pixel on the wrong window is indistinguishable from a click that worked. Identity survives layout changes and fails loudly when the element is gone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why should every action return evidence?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because a click that landed nowhere has to be distinguishable from one that worked. Without evidence, any procedure built on top of those actions is folklore: it worked once, nobody knows why, and nobody can tell when it stops working."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many tools should an agent have?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "As few as will do the job. Two verbs, snapshot and act, cover desktop automation. Every extra tool is another way to be subtly wrong and another decision the model makes badly under load."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "taktek",
+      "item": "https://taktek.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Notes",
+      "item": "https://taktek.io/notes/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Two verbs, and evidence for both",
+      "item": "https://taktek.io/notes/two-verbs-for-a-mac/"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="head">
+    <a class="mark" href="../../">taktek<i aria-hidden="true"></i></a>
+    <input type="checkbox" id="mode">
+    <label class="modebtn" for="mode" title="Switch appearance" aria-label="Switch appearance">
+      <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+      <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+    </label>
+  </header>
+
+<main>
+  <article class="note">
+    <h1>Two verbs, and evidence for both</h1>
+    <p class="when">Thursday, September 10, 2026</p>
+
+    <p class="stand">Give an agent the smallest possible surface and make every action return evidence it worked. Two verbs beat twenty. Coordinates are the enemy, because a click at the right pixel on the wrong window looks exactly like success.</p>
+
+    <p>I wanted Claude Code to use my Mac. Not to write code about my Mac. To use it.</p>
+
+    <p>I gave it two verbs. <code>snapshot</code> and <code>act</code>.</p>
+
+    <p>That is the whole surface.</p>
+
+    <h2 id="no-coordinates">No coordinates</h2>
+
+    <p>The obvious way is to screenshot the screen and click at x and y.</p>
+
+    <p>It is also the worst way.</p>
+
+    <p>A coordinate is correct until something moves. A window shifts, a font renders differently, a notification slides in. The click still happens. It lands somewhere else.</p>
+
+    <p>And it looks exactly like success.</p>
+
+    <p>So elements are addressed by identity instead. A role and a name. If the element is gone, the call fails loudly rather than clicking whatever moved into its place.</p>
+
+    <h2 id="evidence-or-it-did-not-happen">Evidence, or it did not happen</h2>
+
+    <p>Every action returns proof it happened.</p>
+
+    <p>This is the part I would keep if I had to throw out everything else.</p>
+
+    <p>A click that landed nowhere has to be distinguishable from one that worked. Otherwise every recipe built on top is folklore. It worked once. Nobody knows why. Nobody can tell when it stopped.</p>
+
+    <h2 id="three-rungs">Three rungs</h2>
+
+    <p>There are three ways in, and they are not equal.</p>
+
+    <p>Accessibility, for native apps. Chrome's debug protocol, for pages. Screenshots, last.</p>
+
+    <p>Screenshots are last on purpose. A screenshot can only be acted on with coordinates, and coordinates are the thing I removed.</p>
+
+    <p>A <code>probe()</code> call reports which rungs are alive on your machine, because the answer differs per machine and guessing wastes an hour.</p>
+
+    <h2 id="the-permissions-catch">The permissions catch</h2>
+
+    <p>Accessibility and Screen Recording are granted to your terminal application. Not to Claude Code.</p>
+
+    <p>Neither takes effect until you quit and reopen that terminal.</p>
+
+    <p>I lost time to this. It is in the README now, in bold, because it is the first thing that goes wrong.</p>
+
+    <hr>
+    <p class="when"><a href="../">All notes</a> &middot; <a href="../../">taktek.io</a></p>
+  </article>
+
+  <footer>
+    <a href="../">Notes</a>
+    <a href="../../terms/">Terms</a>
+    <a href="../../privacy/">Privacy</a>
+    <a href="../../support/">Support</a>
+    <a class="spacer" href="https://github.com/taktekhq">github.com/taktekhq</a>
+  </footer>
+</main>
+</div>
+
+<script src="../../assets/js/gravity.js"></script>
+</body>
+</html>

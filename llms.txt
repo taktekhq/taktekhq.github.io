@@ -27,7 +27,10 @@ than demos. Key claims, stated plainly so they can be quoted:
   by a software company. Rejecting we, us, our and ours outright, in both the
   system prompt and the user prompt, is what fixed it.
 
-- [How I stop an LLM from inventing facts](https://taktek.io/notes/stop-an-llm-inventing-facts/): The guard that compares numbers as a multiset, the false rejection that was the author's own bug, the two meaning changes no check caught, and why the reading is still the job.
+- [How I stop an LLM from inventing facts](https://taktek.io/notes/stop-an-llm-inventing-facts/): A model rewrote a law firm's website twice. Every number is compared as a multiset and a page whose facts do not match is rejected whole. What the guard caught, what it missed, and the sentence it wrote that no check would have seen.
+- [Assert on a channel you did not write to](https://taktek.io/notes/assert-on-a-different-channel/): An agent typed a repository name and the field silently ignored it. Reading the DOM back said the write worked. Checking a different channel is the only assertion worth making.
+- [The same step failed twice, so it stopped](https://taktek.io/notes/stop-after-two-failures/): An agent hit the same error twice and halted instead of trying harder. It produced a bug report rather than a confident wrong answer, and the bug turned out to be mine.
+- [Two verbs, and evidence for both](https://taktek.io/notes/two-verbs-for-a-mac/): I gave an agent two verbs to drive a Mac: snapshot and act. No coordinates, elements addressed by identity, and every action returns proof it happened. Without the proof, the recipes built on top are folklore.
 
 ## Products
 

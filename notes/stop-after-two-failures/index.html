@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The same step failed twice, so it stopped &mdash; taktek</title>
+<meta name="description" content="An agent hit the same error twice and halted instead of trying harder. It produced a bug report rather than a confident wrong answer, and the bug turned out to be mine.">
+<meta name="theme-color" content="#F7F5F1" media="(prefers-color-scheme:light)">
+<meta name="theme-color" content="#0D0D0E" media="(prefers-color-scheme:dark)">
+<link rel="canonical" href="https://taktek.io/notes/stop-after-two-failures/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Nizar, Taktek">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://taktek.io/notes/stop-after-two-failures/">
+<meta property="og:site_name" content="taktek">
+<meta property="og:title" content="The same step failed twice, so it stopped">
+<meta property="og:description" content="An agent hit the same error twice and halted instead of trying harder. It produced a bug report rather than a confident wrong answer, and the bug turned out to be mine.">
+<meta property="og:image" content="https://taktek.io/assets/og/stop-after-two-failures.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://taktek.io/assets/og/stop-after-two-failures.png">
+<meta property="article:published_time" content="2026-09-11">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/og/apple-touch.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/studio.css">
+<link rel="stylesheet" href="../../assets/css/gravity.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MY112CQXP6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MY112CQXP6', { anonymize_ip: true });
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The same step failed twice, so it stopped",
+  "description": "An agent hit the same error twice and halted instead of trying harder. It produced a bug report rather than a confident wrong answer, and the bug turned out to be mine.",
+  "datePublished": "2026-09-11",
+  "dateModified": "2026-09-11",
+  "inLanguage": "en",
+  "url": "https://taktek.io/notes/stop-after-two-failures/",
+  "mainEntityOfPage": "https://taktek.io/notes/stop-after-two-failures/",
+  "image": "https://taktek.io/assets/og/stop-after-two-failures.png",
+  "author": {
+    "@type": "Person",
+    "name": "Nizar",
+    "url": "https://taktek.io/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Taktek, LLC",
+    "url": "https://taktek.io/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What stop rule should an autonomous agent have?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If the same step fails twice in a row, stop and report rather than trying an alternative route. Retrying past that point turns a clear failure into an unclear one, because the agent starts substituting methods and the final output no longer tells you what actually happened."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why not let the agent find a workaround?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because a workaround hides the fault. An agent that falls back to a weaker method may still finish the task, and you will never learn that the primary method is broken until it fails somewhere you were not watching."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should an agent mark a task complete if it could not verify it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. If the verification step never ran, nothing was verified. Recording a completion date for a check that did not happen is worse than recording nothing, because it looks like evidence."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "taktek",
+      "item": "https://taktek.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Notes",
+      "item": "https://taktek.io/notes/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "The same step failed twice, so it stopped",
+      "item": "https://taktek.io/notes/stop-after-two-failures/"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="head">
+    <a class="mark" href="../../">taktek<i aria-hidden="true"></i></a>
+    <input type="checkbox" id="mode">
+    <label class="modebtn" for="mode" title="Switch appearance" aria-label="Switch appearance">
+      <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+      <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+    </label>
+  </header>
+
+<main>
+  <article class="note">
+    <h1>The same step failed twice, so it stopped</h1>
+    <p class="when">Friday, September 11, 2026</p>
+
+    <p class="stand">Give an agent a stop rule: if the same step fails twice in a row, halt and report. An agent that keeps retrying produces a confident wrong answer. One that stops produces a bug report, and a bug report is worth more.</p>
+
+    <p>A task: verify a recipe still works, then stamp it with today's date.</p>
+
+    <p>It failed.</p>
+
+    <blockquote>asyncio.run() cannot be called from a running event loop</blockquote>
+
+    <p>It tried again. Same error.</p>
+
+    <p>Then it stopped.</p>
+
+    <h2 id="what-it-did-instead-of-trying-harder">What it did instead of trying harder</h2>
+
+    <p>It ran <code>probe()</code> in between the attempts. The browser rung reported healthy, on the right URL.</p>
+
+    <p>So not a permissions problem. Not the page. A bug in my own tool.</p>
+
+    <p>It tried the accessibility rung as a fallback. That returned two elements, both window chrome, one of them a tooltip. Not page content.</p>
+
+    <p>It could have taken a screenshot and clicked by coordinate. That is against the rules I gave it, so it did not.</p>
+
+    <p>Then it wrote down what happened and stopped.</p>
+
+    <h2 id="the-part-i-care-about">The part I care about</h2>
+
+    <p>It did not stamp the recipe.</p>
+
+    <p>The assertion never ran, so nothing was verified, so there was nothing to date. A completion date for a check that did not happen is worse than no date. It looks like evidence.</p>
+
+    <p>Every agent I have used would have found a way to feel finished.</p>
+
+    <h2 id="the-bug-was-mine">The bug was mine</h2>
+
+    <p>Nested event loop in my server. I restarted the MCP process and it was gone.</p>
+
+    <p>The recipe verified on the next run. 49 links matched the assertion, which needed at least 3.</p>
+
+    <p>An agent that retries forever would have eventually produced something. It would have been wrong, and it would have sounded certain.</p>
+
+    <p>This one produced a bug report.</p>
+
+    <hr>
+    <p class="when"><a href="../">All notes</a> &middot; <a href="../../">taktek.io</a></p>
+  </article>
+
+  <footer>
+    <a href="../">Notes</a>
+    <a href="../../terms/">Terms</a>
+    <a href="../../privacy/">Privacy</a>
+    <a href="../../support/">Support</a>
+    <a class="spacer" href="https://github.com/taktekhq">github.com/taktekhq</a>
+  </footer>
+</main>
+</div>
+
+<script src="../../assets/js/gravity.js"></script>
+</body>
+</html>

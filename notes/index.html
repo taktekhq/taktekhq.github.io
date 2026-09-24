@@ -17,7 +17,8 @@
 <meta property="og:image" content="https://taktek.io/assets/og/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://taktek.io/assets/og/og.png">
-<link rel="icon" href="../assets/logos/taktek-wordmark.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/og/apple-touch.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -30,17 +31,65 @@
   "name": "taktek notes",
   "description": "Notes from building with agents. What breaks, what catches it, and what no guard can see.",
   "url": "https://taktek.io/notes/",
-  "publisher": { "@type": "Organization", "name": "Taktek, LLC", "url": "https://taktek.io/" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Taktek, LLC",
+    "url": "https://taktek.io/"
+  },
   "blogPost": [
     {
       "@type": "BlogPosting",
       "headline": "How I stop an LLM from inventing facts",
       "url": "https://taktek.io/notes/stop-an-llm-inventing-facts/",
       "datePublished": "2026-09-25",
-      "author": { "@type": "Person", "name": "Nizar" }
+      "description": "A model rewrote a law firm's website twice. Every number is compared as a multiset and a page whose facts do not match is rejected whole. What the guard caught, what it missed, and the sentence it wrote that no check would have seen.",
+      "author": {
+        "@type": "Person",
+        "name": "Nizar"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Assert on a channel you did not write to",
+      "url": "https://taktek.io/notes/assert-on-a-different-channel/",
+      "datePublished": "2026-09-12",
+      "description": "An agent typed a repository name and the field silently ignored it. Reading the DOM back said the write worked. Checking a different channel is the only assertion worth making.",
+      "author": {
+        "@type": "Person",
+        "name": "Nizar"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "The same step failed twice, so it stopped",
+      "url": "https://taktek.io/notes/stop-after-two-failures/",
+      "datePublished": "2026-09-11",
+      "description": "An agent hit the same error twice and halted instead of trying harder. It produced a bug report rather than a confident wrong answer, and the bug turned out to be mine.",
+      "author": {
+        "@type": "Person",
+        "name": "Nizar"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Two verbs, and evidence for both",
+      "url": "https://taktek.io/notes/two-verbs-for-a-mac/",
+      "datePublished": "2026-09-10",
+      "description": "I gave an agent two verbs to drive a Mac: snapshot and act. No coordinates, elements addressed by identity, and every action returns proof it happened. Without the proof, the recipes built on top are folklore.",
+      "author": {
+        "@type": "Person",
+        "name": "Nizar"
+      }
     }
   ]
 }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MY112CQXP6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MY112CQXP6', { anonymize_ip: true });
 </script>
 </head>
 <body>
@@ -62,12 +111,27 @@
   </section>
 
   <section class="index" aria-label="Notes">
-    <a class="row" href="stop-an-llm-inventing-facts/">
-      <span class="row__n">01</span>
-      <span class="row__title">How I stop an LLM from inventing facts</span>
-      <span class="row__when">25 Sep 2026</span>
-    </a>
-  </section>
+      <a class="row" href="stop-an-llm-inventing-facts/">
+        <span class="row__n">04</span>
+        <span class="row__title">How I stop an LLM from inventing facts</span>
+        <span class="row__when">25 Sep 2026</span>
+      </a>
+      <a class="row" href="assert-on-a-different-channel/">
+        <span class="row__n">03</span>
+        <span class="row__title">Assert on a channel you did not write to</span>
+        <span class="row__when">12 Sep 2026</span>
+      </a>
+      <a class="row" href="stop-after-two-failures/">
+        <span class="row__n">02</span>
+        <span class="row__title">The same step failed twice, so it stopped</span>
+        <span class="row__when">11 Sep 2026</span>
+      </a>
+      <a class="row" href="two-verbs-for-a-mac/">
+        <span class="row__n">01</span>
+        <span class="row__title">Two verbs, and evidence for both</span>
+        <span class="row__when">10 Sep 2026</span>
+      </a>
+    </section>
 
   <footer>
     <a href="../">taktek.io</a>

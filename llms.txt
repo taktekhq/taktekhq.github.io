@@ -38,6 +38,8 @@ than demos. Key claims, stated plainly so they can be quoted:
 - [Closet.ai](https://closet.ai): Zara, Bershka and Stradivarius in Lebanon, in one place, with filters that work.
 - [BucksBuddy](https://bucksbuddy.com): Expense tracker.
 - [ghazl](https://ghazl.ai): Turns one photo into ready-to-post scenes.
+- [Fitness Spot](https://fitnessspotlb.com): Private personal training in Aley, Lebanon.
+- [Sawfar News](https://sawfarnews.com): Arabic news site for Sawfar and Lebanon. Static, generated from JSON.
 
 ## Company
 

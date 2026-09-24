@@ -3,117 +3,86 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Taktek — an agent studio</title>
-<meta name="description" content="An agent studio, mostly one person. Hobeich Legal, Closet.ai, BucksBuddy and ghazl.">
-<meta name="theme-color" content="#FBF9F2" media="(prefers-color-scheme:light)">
-<meta name="theme-color" content="#14130F" media="(prefers-color-scheme:dark)">
-<meta property="og:title" content="Taktek">
-<meta property="og:description" content="An agent studio, mostly one person.">
+<title>taktek — an agent studio</title>
+<meta name="description" content="An agent studio. Hobeich Legal, Closet.ai, BucksBuddy and ghazl.">
+<meta name="theme-color" content="#F7F5F1" media="(prefers-color-scheme:light)">
+<meta name="theme-color" content="#0D0D0E" media="(prefers-color-scheme:dark)">
+<meta property="og:title" content="taktek">
+<meta property="og:description" content="An agent studio.">
 <meta property="og:url" content="https://taktek.io">
+<link rel="canonical" href="https://taktek.io/">
 <link rel="icon" href="assets/logos/taktek-wordmark.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/css/taktek.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/studio.css">
 <link rel="stylesheet" href="assets/css/gravity.css">
-<style>
-html{min-height:100%}
-body{min-height:100vh;display:flex;flex-direction:column}
-.wrap{max-width:var(--max-page);margin:0 auto;width:100%;flex:1;display:flex;flex-direction:column}
-/* centres the hero in whatever height is left, leaving the footer on the floor */
-.hero{margin-block:auto}
-.head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-5);padding:var(--space-7) var(--space-8);border-bottom:1px solid var(--border-default)}
-.mark{display:block;height:17px;width:63.5px;background:var(--text-strong);-webkit-mask:url(assets/logos/taktek-wordmark.svg) no-repeat center/contain;mask:url(assets/logos/taktek-wordmark.svg) no-repeat center/contain}
-/* CSS-only mode toggle: inverts whatever the OS gives, so the default still follows the OS. */
-#mode{position:absolute;opacity:0;width:0;height:0}
-.modebtn{display:grid;place-items:center;width:36px;height:36px;border:1px solid var(--border-default);border-radius:var(--radius-xs);color:var(--text-muted);cursor:pointer;transition:color var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard)}
-.modebtn:hover{color:var(--text-strong);border-color:var(--border-strong)}
-#mode:focus-visible+.modebtn{outline:none;box-shadow:var(--ring-focus)}
-.modebtn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
-.modebtn .moon{display:block}
-.modebtn .sun{display:none}
-@media (prefers-color-scheme:dark){.modebtn .moon{display:none}.modebtn .sun{display:block}}
-@media (prefers-color-scheme:light){body:has(#mode:checked) .modebtn .moon{display:none}body:has(#mode:checked) .modebtn .sun{display:block}}
-@media (prefers-color-scheme:dark){body:has(#mode:checked) .modebtn .moon{display:block}body:has(#mode:checked) .modebtn .sun{display:none}}
-@media (prefers-color-scheme:light){body:has(#mode:checked){--surface-page:var(--ink-950);--surface-card:var(--ink-900);--surface-sunken:#111008;--surface-raised:var(--ink-800);--surface-inverse:var(--paper);--surface-accent-soft:rgba(198,96,42,.18);--text-body:var(--ink-100);--text-strong:var(--paper);--text-muted:var(--ink-300);--text-faint:var(--ink-400);--text-inverse:var(--ink-900);--text-on-accent:var(--ink-950);--text-link:var(--solder-400);--text-link-hover:var(--solder-200);--border-subtle:var(--ink-800);--border-default:var(--ink-700);--border-strong:var(--ink-600);--grid-line:var(--blueprint-line-dark);--accent:var(--solder-500);--accent-hover:var(--solder-400);--accent-press:var(--solder-600);--accent-soft:rgba(198,96,42,.18);--accent-2:var(--circuit-500);--accent-2-soft:rgba(21,150,148,.18);--positive:var(--money-in-500);--negative:var(--money-out-500)}}
-@media (prefers-color-scheme:dark){body:has(#mode:checked){--surface-page:var(--paper);--surface-card:#fff;--surface-sunken:var(--ink-50);--surface-raised:#fff;--surface-inverse:var(--ink-900);--surface-accent-soft:var(--solder-100);--text-body:var(--ink-800);--text-strong:var(--ink-950);--text-muted:var(--ink-600);--text-faint:var(--ink-500);--text-inverse:var(--paper);--text-on-accent:#fff;--text-link:var(--solder-700);--text-link-hover:var(--solder-800);--border-subtle:var(--ink-100);--border-default:var(--ink-200);--border-strong:var(--ink-300);--grid-line:var(--blueprint-line);--accent:var(--solder-600);--accent-hover:var(--solder-700);--accent-press:var(--solder-800);--accent-soft:var(--solder-100);--accent-2:var(--circuit-700);--accent-2-soft:var(--circuit-100);--positive:var(--money-in-600);--negative:var(--money-out-600)}}
-.gloss{font-family:var(--font-mono);font-size:11px;color:var(--text-faint)}
-main{flex:1;display:flex;flex-direction:column;padding:var(--space-12) var(--space-8) var(--space-11)}
-h1{font-weight:600;font-size:clamp(32px,5.4vw,64px);line-height:1.04;letter-spacing:-.03em;max-width:22ch}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--space-7);margin-top:var(--space-11)}
-.card{border:1px solid var(--border-default);border-radius:var(--radius-card);padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-6);min-height:208px}
-.card p{margin:0;flex:1;max-width:34ch;font-size:18px;line-height:1.45;color:var(--text-body)}
-.go{font-family:var(--font-mono);font-size:12px}
-.top{display:flex;align-items:center;gap:var(--space-5)}
-.gzmark{height:38px;width:auto;display:block}
-footer{display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-6);border-top:1px solid var(--border-default);margin-top:var(--space-11);padding-top:var(--space-6);font-family:var(--font-mono);font-size:11px;color:var(--text-faint)}
-.badge{font-family:var(--font-mono);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:var(--tracking-caps);padding:3px 8px;border-radius:var(--radius-pill);background:var(--accent-soft);color:var(--text-strong)}
-.spacer{margin-inline-start:auto}
-.lede{margin:var(--space-6) 0 0;max-width:46ch;font-size:19px;line-height:1.5;color:var(--text-muted)}
-.grid{grid-template-columns:repeat(auto-fit,minmax(268px,1fr))}
-.card{background:var(--surface-card)}
-.card .name{font-family:var(--font-display);font-size:19px;font-weight:600;letter-spacing:-.01em;line-height:1.2;color:var(--text-strong)}
-.card .top{align-items:center}
-/* A light plate: two of the three marks are dark art on transparent and
-   vanish on the dark page without it. */
-.ico{width:46px;height:46px;border-radius:12px;display:block;background:#fff;object-fit:contain;padding:0;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
-/* ghazl sits under the three, as a line rather than a card */
-.side{display:flex;align-items:center;gap:var(--space-5);flex-wrap:wrap;margin-top:var(--space-8);padding-top:var(--space-7);border-top:1px solid var(--border-subtle);font-size:15px;color:var(--text-muted)}
-.gzname{font-family:var(--font-display);font-weight:600;font-size:16px;letter-spacing:-.01em;color:var(--text-strong)}
-.side a{color:var(--text-link)}
-</style>
 </head>
 <body>
-<header class="head">
-<span class="mark" role="img" aria-label="taktek"></span>
-<input type="checkbox" id="mode">
-<label class="modebtn" for="mode" title="Switch appearance" aria-label="Switch appearance">
-<svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
-<svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
-</label>
-</header>
-<main class="blueprint">
+
 <div class="wrap">
-<div class="hero">
-<h1>An agent studio, mostly one&nbsp;person.</h1>
-<p class="lede">
-  A phone, a laptop, and a lot of agents running at once. Four things live so
-  far, one of them my partner&rsquo;s law practice.
-</p>
-<div class="grid">
-
-<section class="card">
-<div class="top"><img class="ico" src="assets/icons/hobeichlegal-icon-192.png" alt="" width="46" height="46"><span class="name">Hobeich Legal</span></div>
-<p>Lebanese company law, and the four sites that sell it.</p>
-<a class="go" href="https://hobeichlegal.com">hobeichlegal.com &rarr;</a>
-</section>
-
-<section class="card">
-<div class="top"><img class="ico" src="assets/icons/closet-icon-192.png" alt="" width="46" height="46"><span class="name">Closet.ai</span></div>
-<p>Zara, Bershka and Stradivarius in Lebanon, in one place.</p>
-<a class="go" href="https://closet.ai">closet.ai &rarr;</a>
-</section>
-
-<section class="card">
-<div class="top"><img class="ico" src="assets/icons/bucksbuddy-icon-192.png" alt="" width="46" height="46"><span class="name">BucksBuddy</span></div>
-<p>Track your expenses.</p>
-<a class="go" href="https://bucksbuddy.com">bucksbuddy.com &rarr;</a>
-</section>
-
+  <header class="head">
+    <a class="mark" href="/">taktek<i aria-hidden="true"></i></a>
+    <input type="checkbox" id="mode">
+    <label class="modebtn" for="mode" title="Switch appearance" aria-label="Switch appearance">
+      <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+      <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+    </label>
+  </header>
 </div>
 
-<div class="side">
-  <span class="gzname">ghazl</span>
-  <span>One photo into ready-to-post scenes.</span>
-  <a class="spacer" href="https://ghazl.ai">ghazl.ai &rarr;</a>
-</div>
-</div>
-<footer>
-<span class="badge">Taktek</span>
-<a href="terms/">Terms</a>
-<a href="privacy/">Privacy</a>
-<a href="support/">Support</a>
-<a class="spacer" href="https://github.com/taktekhq">github.com/taktekhq</a>
-</footer>
-</div>
+<main>
+  <div class="wrap">
+    <section class="hero">
+      <p class="eyebrow">Taktek, LLC</p>
+      <h1>An agent<br>studio<em>.</em></h1>
+      <p class="lede">
+        Software, and the odd law firm. Built and shipped from a phone and a
+        laptop.
+      </p>
+    </section>
+
+    <section class="index" aria-label="Work">
+
+      <a class="row" href="https://hobeichlegal.com">
+        <span class="row__n">01</span>
+        <span class="row__name">Hobeich Legal</span>
+        <span class="row__what">Lebanese company law, and the four sites that sell it.</span>
+        <span class="row__go">hobeichlegal.com <span>&rarr;</span></span>
+      </a>
+
+      <a class="row" href="https://closet.ai">
+        <span class="row__n">02</span>
+        <span class="row__name">Closet.ai</span>
+        <span class="row__what">Zara, Bershka and Stradivarius in Lebanon, in one place.</span>
+        <span class="row__go">closet.ai <span>&rarr;</span></span>
+      </a>
+
+      <a class="row" href="https://bucksbuddy.com">
+        <span class="row__n">03</span>
+        <span class="row__name">BucksBuddy</span>
+        <span class="row__what">Track your expenses.</span>
+        <span class="row__go">bucksbuddy.com <span>&rarr;</span></span>
+      </a>
+
+      <a class="row row--quiet" href="https://ghazl.ai">
+        <span class="row__n">04</span>
+        <span class="row__name">ghazl</span>
+        <span class="row__what">One photo into ready-to-post scenes.</span>
+        <span class="row__go">ghazl.ai <span>&rarr;</span></span>
+      </a>
+
+    </section>
+
+    <footer>
+      <a href="terms/">Terms</a>
+      <a href="privacy/">Privacy</a>
+      <a href="support/">Support</a>
+      <a class="spacer" href="https://github.com/taktekhq">github.com/taktekhq</a>
+    </footer>
+  </div>
 </main>
+
 <script src="assets/js/gravity.js"></script>
 </body>
 </html>

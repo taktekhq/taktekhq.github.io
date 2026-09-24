@@ -1,0 +1,272 @@
+/* ==========================================================================
+   taktek — studio identity
+   --------------------------------------------------------------------------
+   A rebuild, not a retheme. The old system was a card grid on a blueprint
+   grid in cream and solder orange, which read as a product landing page for
+   two apps. This is a studio index: paper, one signal colour, and the work
+   in a numbered list where the type does the work instead of boxes.
+
+   The signal green is the only colour on the page. It marks live things: the
+   cursor in the wordmark, a link you are about to follow, the rule under a
+   row you are hovering. Everything else is ink on paper.
+   ========================================================================== */
+
+:root {
+  --paper:   #F7F5F1;
+  --paper-2: #EFECE6;
+  --ink:     #0D0D0E;
+  --ink-2:   #2A2A2D;
+  --muted:   #6B6B70;
+  --faint:   #9A9A9F;
+  --rule:    rgba(13, 13, 14, 0.12);
+  --rule-2:  rgba(13, 13, 14, 0.06);
+  --signal:  #00A862;
+
+  --shell: 1080px;
+  --gutter: clamp(22px, 5vw, 56px);
+
+  --display: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:   #0D0D0E;
+    --paper-2: #151517;
+    --ink:     #F4F2EE;
+    --ink-2:   #D6D4CF;
+    --muted:   #8E8E94;
+    --faint:   #5E5E64;
+    --rule:    rgba(244, 242, 238, 0.14);
+    --rule-2:  rgba(244, 242, 238, 0.07);
+    --signal:  #2BE38C;
+  }
+}
+
+/* The toggle inverts whatever the OS gave, so the default still follows it. */
+#mode { position: absolute; opacity: 0; width: 0; height: 0; }
+@media (prefers-color-scheme: light) {
+  body:has(#mode:checked) {
+    --paper:#0D0D0E; --paper-2:#151517; --ink:#F4F2EE; --ink-2:#D6D4CF;
+    --muted:#8E8E94; --faint:#5E5E64;
+    --rule:rgba(244,242,238,.14); --rule-2:rgba(244,242,238,.07); --signal:#2BE38C;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  body:has(#mode:checked) {
+    --paper:#F7F5F1; --paper-2:#EFECE6; --ink:#0D0D0E; --ink-2:#2A2A2D;
+    --muted:#6B6B70; --faint:#9A9A9F;
+    --rule:rgba(13,13,14,.12); --rule-2:rgba(13,13,14,.06); --signal:#00A862;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  color: var(--ink-2);
+  font-family: var(--display);
+  font-size: 17px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.4s var(--ease), color 0.4s var(--ease);
+}
+
+a { color: inherit; text-decoration: none; }
+
+.wrap { width: 100%; max-width: var(--shell); margin-inline: auto; padding-inline: var(--gutter); }
+
+/* --- Wordmark ------------------------------------------------------------
+   Monospace, lower case, and a block cursor that blinks. The studio runs
+   agents; the one piece of the identity that moves should be the one that
+   says something is running. */
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-block: clamp(22px, 3vw, 34px);
+}
+
+.mark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  font-family: var(--mono);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  color: var(--ink);
+}
+.mark i {
+  display: inline-block;
+  width: 9px;
+  height: 17px;
+  background: var(--signal);
+  transform: translateY(2px);
+  animation: blink 1.15s steps(1) infinite;
+}
+@keyframes blink { 0%,60% { opacity: 1 } 61%,100% { opacity: 0 } }
+
+.modebtn {
+  display: grid;
+  place-items: center;
+  width: 34px; height: 34px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.modebtn:hover { color: var(--ink); border-color: var(--ink); }
+.modebtn svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.modebtn .sun { display: none; }
+@media (prefers-color-scheme: dark) { .modebtn .moon { display: none } .modebtn .sun { display: block } }
+@media (prefers-color-scheme: light) { body:has(#mode:checked) .modebtn .moon { display: none } body:has(#mode:checked) .modebtn .sun { display: block } }
+@media (prefers-color-scheme: dark) { body:has(#mode:checked) .modebtn .moon { display: block } body:has(#mode:checked) .modebtn .sun { display: none } }
+
+/* --- Hero ---------------------------------------------------------------- */
+
+main { flex: 1; }
+
+.hero { padding-block: clamp(56px, 12vw, 140px) clamp(40px, 7vw, 84px); }
+
+h1 {
+  margin: 0;
+  font-size: clamp(44px, 10.5vw, 132px);
+  font-weight: 500;
+  line-height: 0.93;
+  letter-spacing: -0.055em;
+  color: var(--ink);
+}
+h1 em { font-style: normal; color: var(--signal); }
+
+.lede {
+  margin: clamp(22px, 3vw, 34px) 0 0;
+  max-width: 34ch;
+  font-size: clamp(17px, 1.8vw, 20px);
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.eyebrow {
+  margin: 0 0 clamp(20px, 3vw, 30px);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* --- The index -----------------------------------------------------------
+   Rows, not cards. A card asks you to compare four boxes; a list lets the
+   names be the size they deserve and the whole row be the target. */
+
+.index { border-top: 1px solid var(--rule); }
+
+.row {
+  display: grid;
+  grid-template-columns: 2.6rem 1fr;
+  gap: 0 clamp(14px, 2.4vw, 26px);
+  align-items: baseline;
+  padding-block: clamp(22px, 3.4vw, 34px);
+  border-bottom: 1px solid var(--rule-2);
+  position: relative;
+}
+@media (min-width: 760px) {
+  .row { grid-template-columns: 2.6rem minmax(0, 15ch) 1fr auto; align-items: center; }
+}
+
+.row::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 1px;
+  background: var(--signal);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s var(--ease);
+}
+.row:hover::after { transform: scaleX(1); }
+
+.row__n { font-family: var(--mono); font-size: 12px; color: var(--faint); }
+
+.row__name {
+  font-size: clamp(25px, 3.6vw, 38px);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  color: var(--ink);
+}
+
+.row__what {
+  grid-column: 2 / -1;
+  margin-top: 8px;
+  max-width: 44ch;
+  font-size: 16px;
+  color: var(--muted);
+}
+@media (min-width: 760px) {
+  .row__what { grid-column: auto; margin-top: 0; padding-inline-end: 20px; }
+}
+
+.row__go {
+  grid-column: 2 / -1;
+  margin-top: 12px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+  white-space: nowrap;
+  transition: color 0.2s var(--ease);
+}
+@media (min-width: 760px) { .row__go { grid-column: auto; margin-top: 0; } }
+.row:hover .row__go { color: var(--signal); }
+.row__go span { display: inline-block; transition: transform 0.3s var(--ease); }
+.row:hover .row__go span { transform: translateX(4px); }
+
+/* The one that is not a headline act yet. */
+.row--quiet .row__name { font-size: clamp(19px, 2.2vw, 23px); color: var(--muted); }
+.row--quiet:hover .row__name { color: var(--ink); }
+
+/* --- Footer -------------------------------------------------------------- */
+
+footer {
+  margin-top: clamp(56px, 9vw, 110px);
+  padding-block: 26px clamp(30px, 5vw, 46px);
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--faint);
+}
+footer a { transition: color 0.2s var(--ease); }
+footer a:hover { color: var(--signal); }
+.spacer { margin-inline-start: auto; }
+
+/* --- Long-form, for terms, privacy and support --------------------------- */
+
+.doc { max-width: 68ch; padding-block: clamp(30px, 5vw, 56px) clamp(50px, 8vw, 90px); }
+.doc h1 { font-size: clamp(34px, 6vw, 60px); margin-bottom: 10px; }
+.doc .sub { margin: 0 0 clamp(30px, 5vw, 44px); font-family: var(--mono); font-size: 12px; color: var(--faint); }
+.doc h2 { margin: clamp(32px, 5vw, 46px) 0 10px; font-size: clamp(18px, 2.2vw, 22px); font-weight: 500; letter-spacing: -0.02em; color: var(--ink); }
+.doc p { margin: 0 0 14px; line-height: 1.62; }
+.doc a { color: var(--signal); text-underline-offset: 3px; text-decoration: underline; text-decoration-thickness: 1px; }
+.doc .lede-box { padding: 18px 20px; border: 1px solid var(--rule); border-radius: 4px; background: var(--paper-2); margin-bottom: 8px; }
+.doc .lede-box p:last-child { margin-bottom: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .mark i { animation: none; }
+  * { transition-duration: 0.01ms !important; }
+}

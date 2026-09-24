@@ -5,40 +5,36 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Terms — Taktek</title>
 <meta name="description" content="The terms that apply to anything bought from Taktek, LLC, and how each product's own terms fit with them.">
-<meta name="theme-color" content="#FBF9F2" media="(prefers-color-scheme:light)">
-<meta name="theme-color" content="#14130F" media="(prefers-color-scheme:dark)">
 <meta property="og:title" content="Terms — Taktek">
 <meta property="og:description" content="The terms that apply to anything bought from Taktek, LLC.">
 <meta property="og:url" content="https://taktek.io/terms/">
 <link rel="canonical" href="https://taktek.io/terms/">
 <link rel="icon" href="../assets/logos/taktek-wordmark.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/css/taktek.css">
-<style>
-html{min-height:100%}
-body{min-height:100vh;display:flex;flex-direction:column}
-.wrap{max-width:var(--max-page);margin:0 auto;width:100%;flex:1;display:flex;flex-direction:column}
-.doc{max-width:68ch;padding-block:8px 56px}
-.doc h1{font-family:var(--font-display);font-size:clamp(28px,5vw,40px);letter-spacing:-.02em;margin:0 0 6px;color:var(--text-strong)}
-.doc .sub{font-family:var(--font-mono);font-size:12px;color:var(--text-faint);margin:0 0 34px}
-.doc h2{font-family:var(--font-display);font-size:clamp(17px,2.4vw,20px);letter-spacing:-.01em;margin:38px 0 10px;color:var(--text-strong)}
-.doc p{margin:0 0 14px;line-height:1.65;color:var(--text-body)}
-.doc a{color:var(--text-link)}
-.doc ul{margin:0 0 14px;padding-left:20px;line-height:1.65}
-.doc li{margin-bottom:6px}
-.doc .lede{padding:16px 18px;border:1px solid var(--border-subtle);border-radius:12px;background:var(--surface-card)}
-</style>
-</head>
-<body>
-<header class="head">
-  <a href="../"><span class="mark" role="img" aria-label="taktek"></span></a>
-</header>
+<meta name="theme-color" content="#F7F5F1" media="(prefers-color-scheme:light)">
+<meta name="theme-color" content="#0D0D0E" media="(prefers-color-scheme:dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/studio.css">
+<link rel="stylesheet" href="../assets/css/gravity.css">
+</head><body>
 
 <div class="wrap">
-  <main class="doc">
+  <header class="head">
+    <a class="mark" href="../">taktek<i aria-hidden="true"></i></a>
+    <input type="checkbox" id="mode">
+    <label class="modebtn" for="mode" title="Switch appearance" aria-label="Switch appearance">
+      <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+      <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+    </label>
+  </header>
+
+<main>
+  <section class="doc">
     <h1>Terms</h1>
     <p class="sub">Taktek, LLC &middot; last reviewed September 2026</p>
 
-    <div class="lede">
+    <div class="lede-box">
       <p>
         Taktek, LLC builds and runs several products, each on its own site. These
         terms apply to all of them. Each product also publishes its own terms on
@@ -144,15 +140,17 @@ body{min-height:100vh;display:flex;flex-direction:column}
       anything about a company formation, the firm's address is on that product's
       site and is the faster route.
     </p>
-  </main>
+    </section>
 
   <footer>
-    <span class="badge">Taktek</span>
     <a href="../terms/">Terms</a>
     <a href="../privacy/">Privacy</a>
     <a href="../support/">Support</a>
     <a class="spacer" href="../">taktek.io</a>
   </footer>
+</main>
 </div>
+
+<script src="../assets/js/gravity.js"></script>
 </body>
 </html>

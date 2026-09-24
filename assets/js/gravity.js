@@ -41,11 +41,11 @@
        now the affordance. Raised-but-not-clickable surfaces keep it visible,
        otherwise the pointer would vanish over half the page. */
     var FIELDS = [
-      { sel: ".card",   pull: 18, grab: 0.34, radius: 52, dissolve: false },
-      { sel: ".go",     pull: 8,  grab: 0.55, radius: 22, dissolve: true },
-      { sel: ".side a", pull: 7,  grab: 0.5,  radius: 20, dissolve: true },
-      { sel: "footer a", pull: 6, grab: 0.5,  radius: 18, dissolve: true },
-      { sel: ".modebtn", pull: 6, grab: 0.55, radius: 18, dissolve: true }
+      { sel: ".row",     pull: 14, grab: 0.28, radius: 40, dissolve: false },
+      { sel: ".mark",    pull: 7,  grab: 0.5,  radius: 20, dissolve: true },
+      { sel: "footer a", pull: 7,  grab: 0.5,  radius: 20, dissolve: true },
+      { sel: ".modebtn", pull: 6,  grab: 0.55, radius: 18, dissolve: true },
+      { sel: ".doc a",   pull: 5,  grab: 0.5,  radius: 18, dissolve: true }
     ];
 
     var bodies = [];

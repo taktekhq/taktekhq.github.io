@@ -45,7 +45,7 @@
 
   var out = el.querySelector(".term__out");
   var input = el.querySelector(".term__in");
-  var hist = [], hp = 0, game = null;
+  var hist = [], hp = 0;
 
   function esc(s) {
     return String(s).replace(/[&<>"]/g, function (c) {
@@ -68,7 +68,6 @@
   }
   function close_() {
     el.classList.remove("on");
-    if (game) { game.stop(); game = null; }
   }
 
   mark.addEventListener("click", function (e) {
@@ -90,10 +89,10 @@
       say("<b>open</b> <u>n</u>      open something, by number or name");
       say("<b>whoami</b>      you, roughly");
       say("<b>theme</b>       flip it");
-      say("<b>asteroids</b>   " + "← → turn, ↑ thrust, space shoot, q quit");
       say("<b>js</b> <u>code</u>     run javascript on this page, like the dev console");
       say("<b>hijack</b>      every element becomes editable. refresh undoes it");
       say("<b>clear</b>       wipe the scroll");
+      say("<b>reload</b>      reload the page, and everything you did to it");
       say("<b>exit</b>        close, or press esc");
     },
     ls: function () {
@@ -132,6 +131,10 @@
       if (m) { m.checked = !m.checked; say("<u>flipped</u>"); }
     },
     clear: function () { out.innerHTML = ""; },
+    reload: function () {
+      say("<u>reloading\u2026</u>");
+      setTimeout(function () { location.reload(); }, 220);
+    },
     exit: close_,
     sudo: function () { say("<u>nice try. everything here is already yours.</u>"); },
     js: function (a) {
@@ -152,7 +155,6 @@
         ? "<i>the page is yours.</i> <u>click anything and type. refresh puts it back.</u>"
         : "<u>handed back.</u>");
     },
-    asteroids: function () { game = asteroids(); }
   };
   CMDS.cat = CMDS.open;
   CMDS.man = CMDS.help;
@@ -175,148 +177,4 @@
     })(arg);
   });
 
-  /* --- asteroids ---------------------------------------------------------
-     Vector, wrapping, and the rocks split twice. Rendered in the page's own
-     ink so it belongs to the site rather than sitting on top of it. */
-
-  function asteroids() {
-    var c = document.createElement("canvas");
-    var W = 640, H = 340;
-    c.width = W * 2; c.height = H * 2;
-    c.style.height = H + "px";
-    el.insertBefore(c, el.querySelector(".term__line"));
-    var g = c.getContext("2d");
-    g.scale(2, 2);
-
-    var ink = getComputedStyle(document.body).color;
-    var sig = getComputedStyle(document.documentElement).getPropertyValue("--signal").trim() || "#00A862";
-
-    var ship = { x: W / 2, y: H / 2, a: -Math.PI / 2, vx: 0, vy: 0, dead: 0 };
-    var rocks = [], shots = [], keys = {}, score = 0, lives = 3, wave = 0, raf = 0, over = false;
-
-    function mkRock(x, y, r) {
-      var a = Math.random() * 6.28, s = (3.2 - r / 22) * (0.5 + Math.random() * 0.6);
-      var v = [], n = 9 + ((Math.random() * 4) | 0);
-      for (var i = 0; i < n; i++) v.push(0.68 + Math.random() * 0.5);
-      return { x: x, y: y, r: r, vx: Math.cos(a) * s, vy: Math.sin(a) * s, v: v, rot: (Math.random() - 0.5) * 0.02, an: 0 };
-    }
-    function spawn() {
-      wave++;
-      for (var i = 0; i < 3 + wave; i++) {
-        var edge = Math.random() < 0.5;
-        rocks.push(mkRock(edge ? 0 : Math.random() * W, edge ? Math.random() * H : 0, 34));
-      }
-    }
-    spawn();
-
-    function key(e) {
-      var d = e.type === "keydown";
-      var k = e.key.toLowerCase();
-      if (["arrowleft", "arrowright", "arrowup", " ", "a", "d", "w"].indexOf(k) > -1) e.preventDefault();
-      if (k === "q" && d) { stop(); say("<u>score " + score + ". back to the prompt.</u>"); return; }
-      keys[k] = d;
-    }
-    function wrap(o) {
-      if (o.x < 0) o.x += W; if (o.x > W) o.x -= W;
-      if (o.y < 0) o.y += H; if (o.y > H) o.y -= H;
-    }
-
-    function step() {
-      if (keys.arrowleft || keys.a) ship.a -= 0.062;
-      if (keys.arrowright || keys.d) ship.a += 0.062;
-      if (keys.arrowup || keys.w) { ship.vx += Math.cos(ship.a) * 0.13; ship.vy += Math.sin(ship.a) * 0.13; }
-      if (keys[" "] && !ship.cool && !ship.dead) {
-        shots.push({ x: ship.x + Math.cos(ship.a) * 10, y: ship.y + Math.sin(ship.a) * 10,
-                     vx: Math.cos(ship.a) * 6 + ship.vx, vy: Math.sin(ship.a) * 6 + ship.vy, life: 58 });
-        ship.cool = 9;
-      }
-      if (ship.cool) ship.cool--;
-      ship.vx *= 0.991; ship.vy *= 0.991;
-      ship.x += ship.vx; ship.y += ship.vy; wrap(ship);
-      if (ship.dead) ship.dead--;
-
-      shots.forEach(function (s) { s.x += s.vx; s.y += s.vy; s.life--; wrap(s); });
-      shots = shots.filter(function (s) { return s.life > 0; });
-
-      rocks.forEach(function (r) { r.x += r.vx; r.y += r.vy; r.an += r.rot; wrap(r); });
-
-      for (var i = rocks.length - 1; i >= 0; i--) {
-        for (var j = shots.length - 1; j >= 0; j--) {
-          var dx = rocks[i].x - shots[j].x, dy = rocks[i].y - shots[j].y;
-          if (dx * dx + dy * dy < rocks[i].r * rocks[i].r) {
-            score += Math.round(120 / rocks[i].r) * 10;
-            if (rocks[i].r > 15) {
-              rocks.push(mkRock(rocks[i].x, rocks[i].y, rocks[i].r / 2));
-              rocks.push(mkRock(rocks[i].x, rocks[i].y, rocks[i].r / 2));
-            }
-            rocks.splice(i, 1); shots.splice(j, 1);
-            break;
-          }
-        }
-      }
-      if (!ship.dead) {
-        for (var k2 = 0; k2 < rocks.length; k2++) {
-          var ax = rocks[k2].x - ship.x, ay = rocks[k2].y - ship.y;
-          if (ax * ax + ay * ay < (rocks[k2].r + 6) * (rocks[k2].r + 6)) {
-            lives--; ship.dead = 110;
-            ship.x = W / 2; ship.y = H / 2; ship.vx = ship.vy = 0;
-            if (lives <= 0) over = true;
-            break;
-          }
-        }
-      }
-      if (!rocks.length) spawn();
-    }
-
-    function draw() {
-      g.clearRect(0, 0, W, H);
-      g.strokeStyle = ink; g.lineWidth = 1.2; g.lineJoin = "round";
-
-      rocks.forEach(function (r) {
-        g.beginPath();
-        for (var i = 0; i < r.v.length; i++) {
-          var a = r.an + (i / r.v.length) * 6.283, rr = r.r * r.v[i];
-          i ? g.lineTo(r.x + Math.cos(a) * rr, r.y + Math.sin(a) * rr)
-            : g.moveTo(r.x + Math.cos(a) * rr, r.y + Math.sin(a) * rr);
-        }
-        g.closePath(); g.stroke();
-      });
-
-      g.fillStyle = sig;
-      shots.forEach(function (s) { g.fillRect(s.x - 1.3, s.y - 1.3, 2.6, 2.6); });
-
-      if (!ship.dead || Math.floor(ship.dead / 8) % 2) {
-        g.save(); g.translate(ship.x, ship.y); g.rotate(ship.a);
-        g.beginPath(); g.moveTo(11, 0); g.lineTo(-7, 6); g.lineTo(-4, 0); g.lineTo(-7, -6);
-        g.closePath(); g.stroke();
-        if ((keys.arrowup || keys.w) && !ship.dead) {
-          g.beginPath(); g.moveTo(-5, 3); g.lineTo(-11 - Math.random() * 5, 0); g.lineTo(-5, -3);
-          g.strokeStyle = sig; g.stroke(); g.strokeStyle = ink;
-        }
-        g.restore();
-      }
-
-      g.fillStyle = ink;
-      g.font = '600 12px ui-monospace, monospace';
-      g.fillText("score " + score, 12, 20);
-      g.fillText("ships " + Math.max(0, lives), 12, 36);
-      if (over) {
-        g.font = '600 20px ui-monospace, monospace';
-        g.fillText("game over — q to quit", W / 2 - 108, H / 2);
-      }
-    }
-
-    function loop() { if (!over) step(); draw(); raf = requestAnimationFrame(loop); }
-    function stop() {
-      cancelAnimationFrame(raf);
-      removeEventListener("keydown", key); removeEventListener("keyup", key);
-      c.remove(); game = null; input.focus();
-    }
-
-    addEventListener("keydown", key); addEventListener("keyup", key);
-    loop();
-    say("<u>asteroids. arrows to fly, space to shoot, q to quit.</u>");
-    c.scrollIntoView({ block: "nearest" });
-    return { stop: stop };
-  }
 })();

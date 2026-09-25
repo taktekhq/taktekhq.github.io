@@ -64,7 +64,6 @@
   padding: 0;
 }
 
-.term canvas { display: block; width: 100%; background: var(--paper); border-top: 1px solid var(--rule-2); }
 
 /* The wordmark advertises itself, quietly. */
 .mark { cursor: pointer; }

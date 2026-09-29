@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>taktek — an agent studio</title>
-<meta name="description" content="An agent studio. Hobeich Legal, Closet.ai, BucksBuddy, ghazl, Fitness Spot and Sawfar News.">
+<title>taktek — migrations, done by agents</title>
+<meta name="description" content="A dev shop where the developers are AI agents. Rails to Go, GraphQL to REST, off a vendor, off a monolith. Try one slice at a fixed price: if you don't merge it, you don't pay.">
 <meta name="theme-color" content="#F7F5F1" media="(prefers-color-scheme:light)">
 <meta name="theme-color" content="#0D0D0E" media="(prefers-color-scheme:dark)">
 <meta property="og:title" content="taktek">
-<meta property="og:description" content="An agent studio.">
+<meta property="og:description" content="Migrations, done by agents.">
 <meta property="og:url" content="https://taktek.io">
 <meta property="og:image" content="https://taktek.io/assets/og/og.png">
 <meta property="og:image:width" content="1200">
@@ -21,7 +21,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="canonical" href="https://taktek.io/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <script type="application/ld+json">
 {
@@ -30,9 +29,10 @@
   "name": "Taktek, LLC",
   "alternateName": "taktek",
   "url": "https://taktek.io/",
-  "description": "An agent studio.",
+  "description": "A dev shop where the developers are AI agents. It migrates code and proves each piece behaves like the old code before it ships.",
   "email": "nizar@taktek.io",
-  "founder": { "@type": "Person", "name": "Nizar" },
+  "founder": { "@type": "Person", "name": "Nizar Mahmoud" },
+  "knowsAbout": ["code migration", "legacy modernization", "AI coding agents", "Ruby on Rails", "Go", "GraphQL", "REST"],
   "sameAs": [
     "https://github.com/taktekhq",
     "https://hobeichlegal.com/",
@@ -74,17 +74,44 @@
   <div class="wrap">
     <section class="hero">
       <p class="eyebrow">Taktek, LLC</p>
-      <h1>An agent<br>studio<em>.</em></h1>
+      <h1>Migrations,<br>done by agents<em>.</em></h1>
+      <p class="lede">A dev shop where the developers are AI agents. We move your code, and prove it still works.</p>
     </section>
 
-    <section class="index" aria-label="Work">
-      <a class="row" target="_blank" rel="noopener" href="https://hobeichlegal.com"><span class="row__n">01</span><span class="row__url">hobeichlegal.com</span><span class="row__arrow" aria-hidden="true">&rarr;</span></a>
-      <a class="row" target="_blank" rel="noopener" href="https://closet.ai"><span class="row__n">02</span><span class="row__url">closet.ai</span><span class="row__arrow" aria-hidden="true">&rarr;</span></a>
-      <a class="row" target="_blank" rel="noopener" href="https://professionallurker.com"><span class="row__n">03</span><span class="row__url">professionallurker.com</span><span class="row__arrow" aria-hidden="true">&rarr;</span></a>
-      <a class="row" target="_blank" rel="noopener" href="https://bucksbuddy.com"><span class="row__n">04</span><span class="row__url">bucksbuddy.com</span><span class="row__arrow" aria-hidden="true">&rarr;</span></a>
-      <a class="row" target="_blank" rel="noopener" href="https://ghazl.ai"><span class="row__n">05</span><span class="row__url">ghazl.ai</span><span class="row__arrow" aria-hidden="true">&rarr;</span></a>
-      <a class="row" target="_blank" rel="noopener" href="https://sawfarnews.com"><span class="row__n">06</span><span class="row__url">sawfarnews.com</span><span class="row__arrow" aria-hidden="true">&rarr;</span></a>
-      <a class="row" target="_blank" rel="noopener" href="https://fitnessspotlb.com"><span class="row__n">07</span><span class="row__url">fitnessspotlb.com</span><span class="row__arrow" aria-hidden="true">&rarr;</span></a>
+    <section class="index" aria-label="What we move">
+      <a class="row" href="mailto:nizar@taktek.io?subject=Rails%20to%20Go"><span class="row__n">01</span><span class="row__url">Rails <b>&rarr;</b> Go</span><span class="row__arrow" aria-hidden="true">&rarr;</span></a>
+      <a class="row" href="mailto:nizar@taktek.io?subject=GraphQL%20to%20REST"><span class="row__n">02</span><span class="row__url">GraphQL <b>&rarr;</b> REST</span><span class="row__arrow" aria-hidden="true">&rarr;</span></a>
+      <a class="row" href="mailto:nizar@taktek.io?subject=Off%20a%20vendor"><span class="row__n">03</span><span class="row__url">off a vendor</span><span class="row__arrow" aria-hidden="true">&rarr;</span></a>
+      <a class="row" href="mailto:nizar@taktek.io?subject=Off%20a%20monolith"><span class="row__n">04</span><span class="row__url">off a monolith</span><span class="row__arrow" aria-hidden="true">&rarr;</span></a>
+      <a class="row row--ask" href="mailto:nizar@taktek.io?subject=A%20migration"><span class="row__n">05</span><span class="row__url">yours?</span><span class="row__arrow" aria-hidden="true">&rarr;</span></a>
+    </section>
+
+    <section class="sec" aria-label="How">
+      <p class="eyebrow">How</p>
+      <ol class="steps">
+        <li>The old code is the spec.</li>
+        <li>Agents move one piece at a time and check it against the old code, on real data.</li>
+        <li>Each piece ships behind a flag that only goes up after enough requests succeed.</li>
+        <li>A person signs off on anything that can't be undone.</li>
+      </ol>
+    </section>
+
+    <section class="offer" aria-label="Try it">
+      <p>Try one slice. Fixed price, two weeks. If you don't merge it, you don't pay<em>.</em></p>
+      <a class="cta" href="mailto:nizar@taktek.io?subject=A%20migration">nizar@taktek.io <span aria-hidden="true">&rarr;</span></a>
+    </section>
+
+    <section class="sec" aria-label="Also built by the same agents">
+      <p class="eyebrow">Also built by the same agents</p>
+      <div class="index">
+        <a class="row" target="_blank" rel="noopener" href="https://closet.ai"><span class="row__n">01</span><span class="row__url">closet.ai</span><span class="row__arrow" aria-hidden="true">&rarr;</span></a>
+        <a class="row" target="_blank" rel="noopener" href="https://professionallurker.com"><span class="row__n">02</span><span class="row__url">professionallurker.com</span><span class="row__arrow" aria-hidden="true">&rarr;</span></a>
+        <a class="row" target="_blank" rel="noopener" href="https://hobeichlegal.com"><span class="row__n">03</span><span class="row__url">hobeichlegal.com</span><span class="row__arrow" aria-hidden="true">&rarr;</span></a>
+        <a class="row" target="_blank" rel="noopener" href="https://bucksbuddy.com"><span class="row__n">04</span><span class="row__url">bucksbuddy.com</span><span class="row__arrow" aria-hidden="true">&rarr;</span></a>
+        <a class="row" target="_blank" rel="noopener" href="https://ghazl.ai"><span class="row__n">05</span><span class="row__url">ghazl.ai</span><span class="row__arrow" aria-hidden="true">&rarr;</span></a>
+        <a class="row" target="_blank" rel="noopener" href="https://sawfarnews.com"><span class="row__n">06</span><span class="row__url">sawfarnews.com</span><span class="row__arrow" aria-hidden="true">&rarr;</span></a>
+        <a class="row" target="_blank" rel="noopener" href="https://fitnessspotlb.com"><span class="row__n">07</span><span class="row__url">fitnessspotlb.com</span><span class="row__arrow" aria-hidden="true">&rarr;</span></a>
+      </div>
     </section>
 
     <footer>

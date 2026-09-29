@@ -20,7 +20,7 @@ OUT = pathlib.Path("assets/og")
 FONTS = pathlib.Path("assets/fonts").resolve()
 PAPER, INK, MUTED, SIGNAL = "#F7F5F1", "#0D0D0E", "#6B6B70", "#00A862"
 
-CARDS = [("og", ["An agent", "studio."], "taktek.io", 78)] + [
+CARDS = [("og", ["Migrations,", "done by agents."], "taktek.io", 78)] + [
     (n["slug"], n["og"], "taktek.io/notes", 54) for n in _bn.NOTES
 ]
 

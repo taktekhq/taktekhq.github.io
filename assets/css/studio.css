@@ -291,3 +291,68 @@ footer a:hover { color: var(--signal); }
 .row__title { font-size: clamp(19px, 2.6vw, 27px); font-weight: 500; letter-spacing: -0.03em; line-height: 1.15; color: var(--ink); transition: color 0.25s var(--ease); }
 .row:hover .row__title { color: var(--signal); }
 .row__when { font-family: var(--mono); font-size: 11.5px; color: var(--faint); flex: none; margin-inline-start: auto; }
+
+
+/* --- The offer -------------------------------------------------------------
+   The home page sells one thing now, migrations, so the moves take the place
+   the work list had: mono at display size, each one a string with the arrow in
+   signal green. Each row opens an email with the move as the subject, so the
+   list is also the way in. The work moved below, as proof that the same agents
+   ship whole products.
+   ------------------------------------------------------------------------ */
+
+.row__url b { font-weight: 400; color: var(--signal); }
+.row--ask .row__url { color: var(--muted); }
+
+.sec { padding-block: clamp(56px, 9vw, 110px) 0; }
+
+.steps { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); counter-reset: step; }
+.steps li {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(14px, 2.6vw, 30px);
+  padding-block: clamp(14px, 2.2vw, 22px);
+  border-bottom: 1px solid var(--rule-2);
+  font-size: clamp(18px, 2.3vw, 25px);
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  color: var(--ink);
+}
+.steps li::before {
+  counter-increment: step;
+  content: counter(step, decimal-leading-zero);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  color: var(--faint);
+  flex: none;
+}
+
+.offer { padding-block: clamp(56px, 9vw, 110px) 0; }
+.offer p {
+  margin: 0;
+  max-width: 17ch;
+  font-size: clamp(32px, 6vw, 72px);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+  color: var(--ink);
+}
+.offer p em { font-style: normal; color: var(--signal); }
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: clamp(26px, 3.4vw, 38px);
+  padding: 15px 22px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--ink);
+  transition: background-color 0.25s var(--ease), border-color 0.25s var(--ease), color 0.25s var(--ease);
+}
+.cta:hover { background: var(--signal); border-color: var(--signal); color: var(--paper); }
+.cta span { transition: transform 0.3s var(--ease); }
+.cta:hover span { transform: translateX(4px); }

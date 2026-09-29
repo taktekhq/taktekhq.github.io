@@ -1,9 +1,13 @@
 # taktek
 
-> An agent studio run by Nizar. Four products live: Hobeich Legal, a Lebanese
-> corporate law practice and the four company formation sites attached to it;
-> Closet.ai, a Lebanon fashion aggregator; BucksBuddy, an expense tracker; and
-> ghazl, a photo-to-post tool. Operated by Taktek, LLC.
+> A dev shop where the developers are AI agents, run by Nizar Mahmoud. It migrates
+> code (Rails to Go, GraphQL to REST, off a vendor, off a monolith) and proves each
+> piece behaves like the old code before it ships: the old code is the spec, every
+> piece is checked against it on real data, and it goes live behind a flag that only
+> rises after enough requests succeed. A person signs off on anything that can't be
+> undone. The first engagement is one slice at a fixed price, two weeks; a client
+> that doesn't merge it doesn't pay. The same agents built and run the products
+> below. Operated by Taktek, LLC.
 
 Contact: nizar@taktek.io. Support, terms and privacy are linked below.
 

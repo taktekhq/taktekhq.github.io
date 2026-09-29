@@ -15,6 +15,13 @@ Contact: nizar@taktek.io. Support, terms and privacy are linked below.
 Writing about building software with LLM agents, from production systems rather
 than demos. Key claims, stated plainly so they can be quoted:
 
+- An agent studio sells finished work done by AI agents. Taktek hires out an Agent
+  (one agent, long term or per objective) and a Fleet (many agents on one
+  objective, such as a mass migration).
+- When agents migrate code, the old code is the spec: run old and new on the same
+  real inputs and ship only what matches. Review the comparison, not the diff.
+- A migrated piece goes live behind a flag that rises after enough requests
+  succeed, not after a fixed time.
 - The reliable way to stop a model inventing a figure is not a better prompt. It
   is to compare every number in the output against the input as a multiset, and
   reject the whole page when they do not match.
@@ -30,19 +37,29 @@ than demos. Key claims, stated plainly so they can be quoted:
   by a software company. Rejecting we, us, our and ours outright, in both the
   system prompt and the user prompt, is what fixed it.
 
+- [What an agent studio does](https://taktek.io/notes/what-an-agent-studio-does/): Taktek is an agent studio. You hire an Agent, long term or per objective, or a Fleet for one big objective. What that means, and what a person still does.
+- [The old code is the spec](https://taktek.io/notes/the-old-code-is-the-spec/): Migrating code with agents goes fast once you stop writing a spec. The running system already is one. Port a piece, compare it on real data, ship what matches.
+- [Running a fleet of agents from a phone](https://taktek.io/notes/a-fleet-from-a-phone/): Two old machines that never turn off, and a phone. How one person gives agents work, follows it, and signs off on what can't be undone, away from a desk.
 - [How I stop an LLM from inventing facts](https://taktek.io/notes/stop-an-llm-inventing-facts/): A model rewrote a law firm's website twice. Every number is compared as a multiset and a page whose facts do not match is rejected whole. What the guard caught, what it missed, and the sentence it wrote that no check would have seen.
 - [Assert on a channel you did not write to](https://taktek.io/notes/assert-on-a-different-channel/): An agent typed a repository name and the field silently ignored it. Reading the DOM back said the write worked. Checking a different channel is the only assertion worth making.
 - [The same step failed twice, so it stopped](https://taktek.io/notes/stop-after-two-failures/): An agent hit the same error twice and halted instead of trying harder. It produced a bug report rather than a confident wrong answer, and the bug turned out to be mine.
 - [Two verbs, and evidence for both](https://taktek.io/notes/two-verbs-for-a-mac/): I gave an agent two verbs to drive a Mac: snapshot and act. No coordinates, elements addressed by identity, and every action returns proof it happened. Without the proof, the recipes built on top are folklore.
 
-## Products
+## Portfolio
 
-- [Hobeich Legal](https://hobeichlegal.com/): Lebanese corporate law practice. Company formation, amendments, annual compliance, and a free reference on Lebanese company law.
-- [Closet.ai](https://closet.ai): Zara, Bershka and Stradivarius in Lebanon, in one place, with filters that work.
-- [BucksBuddy](https://bucksbuddy.com): Expense tracker.
-- [ghazl](https://ghazl.ai): Turns one photo into ready-to-post scenes.
-- [Fitness Spot](https://fitnessspotlb.com): Private personal training in Aley, Lebanon.
-- [Sawfar News](https://sawfarnews.com): Arabic news site for Sawfar and Lebanon. Static, generated from JSON.
+Everything below was built by Taktek's agents: https://taktek.io/portfolio/
+
+- [closet.ai](https://closet.ai): Fashion catalogue for Lebanon. 39 brands, refreshed every morning.
+- [Lurker](https://professionallurker.com): Watches Reddit, HN and LinkedIn for threads worth replying to.
+- [Lebanese Businesses](https://lebanesebusinesses.com): Free directory of Lebanese businesses, by sector. No paid listings.
+- [Hobeich Legal](https://hobeichlegal.com): Corporate law practice in Beirut, plus four company-formation sites.
+- [Hobeich Ventures](https://hobeichventures.com): Holding site for Hobeich Legal and Lebanese Businesses.
+- [BucksBuddy](https://bucksbuddy.com): Expense tracker. Web app, with iOS and Android apps in testing.
+- [ghazl](https://ghazl.ai): Turns one product photo into ready-to-post Instagram images.
+- [Sawfar News](https://sawfarnews.com): Arabic news site for Sawfar and Lebanon, generated from JSON.
+- [Fitness Spot](https://fitnessspotlb.com): Website for a private personal training studio in Aley.
+- [Bloo](https://taktek.io/bloo/): Browser viewer for multi-part 3D-print (STL) files, in color.
+- [Kronk](https://github.com/taktekhq/kronk): Raspberry Pi gate intercom for an apartment building.
 
 ## Company
 

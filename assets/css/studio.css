@@ -246,8 +246,8 @@ footer a:hover { color: var(--signal); }
 .spacer { margin-inline-start: auto; }
 
 /* Who stands behind the site: the Delaware LLC first, then the Lebanese SAL.
-   Its own line above the links, in the footer's mono, the names a shade darker. */
-.entities { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 14px clamp(28px, 6vw, 72px); margin-bottom: 16px; }
+   Its own line under the links, in the footer's mono, the names a shade darker. */
+.entities { order: 1; flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 14px clamp(28px, 6vw, 72px); margin-top: 18px; }
 .entities address { font-style: normal; line-height: 1.65; }
 .entities b { font-weight: 700; color: var(--muted); }
 

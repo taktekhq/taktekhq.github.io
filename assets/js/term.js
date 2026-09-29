@@ -18,18 +18,38 @@
   if (!mark || !host) return;
 
   var NOTES = [
+    ["what-an-agent-studio-does", "What an agent studio does"],
+    ["the-old-code-is-the-spec", "The old code is the spec"],
+    ["a-fleet-from-a-phone", "Running a fleet of agents from a phone"],
     ["two-verbs-for-a-mac", "Two verbs, and evidence for both"],
     ["stop-after-two-failures", "The same step failed twice, so it stopped"],
     ["assert-on-a-different-channel", "Assert on a channel you did not write to"],
     ["stop-an-llm-inventing-facts", "How I stop an LLM from inventing facts"]
   ];
   var WORK = [
-    ["hobeichlegal.com", "Lebanese company law, and the four sites that sell it"],
-    ["closet.ai", "Zara, Bershka and Stradivarius in Lebanon, in one place"],
-    ["bucksbuddy.com", "Track your expenses"],
-    ["ghazl.ai", "One photo into ready-to-post scenes"],
-    ["fitnessspotlb.com", "Private personal training in Aley"],
-    ["sawfarnews.com", "\u0635\u0648\u0641\u0631 \u0646\u064a\u0648\u0632, news for Sawfar and Lebanon"]
+    ["closet.ai", "Fashion catalogue for Lebanon. 39 brands, refreshed every morning."],
+    ["professionallurker.com", "Watches Reddit, HN and LinkedIn for threads worth replying to."],
+    ["lebanesebusinesses.com", "Free directory of Lebanese businesses, by sector. No paid listings."],
+    ["hobeichlegal.com", "Corporate law practice in Beirut, plus four company-formation sites."],
+    ["hobeichventures.com", "Holding site for Hobeich Legal and Lebanese Businesses."],
+    ["bucksbuddy.com", "Expense tracker. Web app, with iOS and Android apps in testing."],
+    ["ghazl.ai", "Turns one product photo into ready-to-post Instagram images."],
+    ["sawfarnews.com", "Arabic news site for Sawfar and Lebanon, generated from JSON."],
+    ["fitnessspotlb.com", "Website for a private personal training studio in Aley."],
+    ["taktek.io/bloo", "Browser viewer for multi-part 3D-print (STL) files, in color."],
+    ["github.com/taktekhq/kronk", "Raspberry Pi gate intercom for an apartment building."]
+  ];
+  var HIRE = {
+    agent: ["Long term or per objective. Works daily, for less than a hire.",
+            "Hey Nizar! I need an Agent",
+            "Hey Nizar!\n\nI need an Agent.\n\nThe work:\nWhere it lives (repo, tool, inbox):\nLong term, or one objective:\nHow we'll know it's done:\n\nThanks!"],
+    fleet: ["Many agents on one objective, like a mass migration. Done in weeks.",
+            "Hey Nizar! I need a Fleet",
+            "Hey Nizar!\n\nI need a Fleet.\n\nThe objective (e.g. move X to Y):\nHow big it is (services, files, endpoints):\nHow we'll know it's done (tests, same output, a date):\nWhen we need it by:\n\nThanks!"]
+  };
+  var WHOIS = [
+    ["Taktek, LLC", "131 Continental Dr, Suite 305, Newark, DE 19713, United States"],
+    ["Taktek Offshore SAL", "Al Watta Street, Riman Building, Aley 5516, Lebanon"]
   ];
 
   var el = document.createElement("div");
@@ -62,7 +82,7 @@
     el.classList.add("on");
     if (!out.childElementCount) {
       say("<b>taktek</b> &mdash; a shell that runs in your tab and nowhere else.");
-      say("<u>Nothing here leaves your browser. Type</u> <i>help</i><u>.</u>");
+      say("<u>Nothing here leaves your browser. Type</u> <i>help</i><u>, or</u> <i>hire</i><u>.</u>");
     }
     input.focus();
   }
@@ -84,9 +104,11 @@
   var CMDS = {
     help: function () {
       say("<b>help</b>        this");
-      say("<b>ls</b>          what is here");
+      say("<b>hire</b>        an agent, or a fleet");
+      say("<b>ls</b>          what the agents built");
       say("<b>notes</b>       the writing");
       say("<b>open</b> <u>n</u>      open something, by number or name");
+      say("<b>whois</b>       who you'd be working with");
       say("<b>whoami</b>      you, roughly");
       say("<b>theme</b>       flip it");
       say("<b>js</b> <u>code</u>     run javascript on this page, like the dev console");
@@ -99,7 +121,7 @@
       WORK.forEach(function (w, i) {
         say("<i>" + (i + 1) + "</i>  <b>" + w[0] + "</b>  <u>" + esc(w[1]) + "</u>");
       });
-      say("<u>notes/  terms/  privacy/  support/</u>");
+      say("<u>portfolio/  notes/  terms/  privacy/  support/</u>");
     },
     notes: function () {
       NOTES.forEach(function (n, i) {
@@ -118,6 +140,22 @@
       if (!url) return say("<u>no such thing: " + esc(a) + "</u>");
       say("<u>opening " + esc(url) + "</u>");
       window.open(url, "_blank", "noopener");
+    },
+    hire: function (a) {
+      var k = (a || "").trim().toLowerCase();
+      if (HIRE[k]) {
+        say("<u>opening your mail app\u2026</u>");
+        location.href = "mailto:nizar@taktek.io?subject=" + encodeURIComponent(HIRE[k][1]) +
+          "&body=" + encodeURIComponent(HIRE[k][2]);
+        return;
+      }
+      say("<b>agent</b>  <u>" + esc(HIRE.agent[0]) + "</u>");
+      say("<b>fleet</b>  <u>" + esc(HIRE.fleet[0]) + "</u>");
+      say("<i>hire agent</i>  <u>or</u>  <i>hire fleet</i>");
+    },
+    whois: function () {
+      WHOIS.forEach(function (w) { say("<b>" + esc(w[0]) + "</b>  <u>" + esc(w[1]) + "</u>"); });
+      say("<u>run by Nizar Mahmoud.</u> <i>hire</i> <u>to work with us.</u>");
     },
     whoami: function () {
       say("<b>" + esc(navigator.userAgent.split(") ")[0].split("(").pop()) + "</b>");
@@ -157,6 +195,7 @@
     },
   };
   CMDS.cat = CMDS.open;
+  CMDS.portfolio = CMDS.ls;
   CMDS.man = CMDS.help;
   CMDS["?"] = CMDS.help;
 

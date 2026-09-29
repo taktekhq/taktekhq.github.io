@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The old code is the spec &mdash; taktek</title>
+<meta name="description" content="Migrating code with agents goes fast once you stop writing a spec. The running system already is one. Port a piece, compare it on real data, ship what matches.">
+<meta name="theme-color" content="#F7F5F1" media="(prefers-color-scheme:light)">
+<meta name="theme-color" content="#0D0D0E" media="(prefers-color-scheme:dark)">
+<link rel="canonical" href="https://taktek.io/notes/the-old-code-is-the-spec/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Nizar, Taktek">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://taktek.io/notes/the-old-code-is-the-spec/">
+<meta property="og:site_name" content="taktek">
+<meta property="og:title" content="The old code is the spec">
+<meta property="og:description" content="Migrating code with agents goes fast once you stop writing a spec. The running system already is one. Port a piece, compare it on real data, ship what matches.">
+<meta property="og:image" content="https://taktek.io/assets/og/the-old-code-is-the-spec.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://taktek.io/assets/og/the-old-code-is-the-spec.png">
+<meta property="article:published_time" content="2026-09-29">
+<link rel="icon" href="../../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/og/apple-touch.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/studio.css">
+<link rel="stylesheet" href="../../assets/css/gravity.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MY112CQXP6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MY112CQXP6', { anonymize_ip: true });
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The old code is the spec",
+  "description": "Migrating code with agents goes fast once you stop writing a spec. The running system already is one. Port a piece, compare it on real data, ship what matches.",
+  "datePublished": "2026-09-29",
+  "dateModified": "2026-09-29",
+  "inLanguage": "en",
+  "url": "https://taktek.io/notes/the-old-code-is-the-spec/",
+  "mainEntityOfPage": "https://taktek.io/notes/the-old-code-is-the-spec/",
+  "image": "https://taktek.io/assets/og/the-old-code-is-the-spec.png",
+  "author": {
+    "@type": "Person",
+    "name": "Nizar",
+    "url": "https://taktek.io/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Taktek, LLC",
+    "url": "https://taktek.io/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do you verify code an AI agent migrated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Run the old and the new code on the same real inputs and compare the outputs. If they match on real data, the port is right. If they don't, the difference is the bug, already isolated. Reviewing that comparison is faster and safer than reading every line of the diff."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why not write tests for the new code first?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because the tests would be a second, weaker copy of what the old code already does. The old code handles every case it has ever met, including the ones nobody remembers. Comparing against it catches what a hand-written suite would miss."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How should a migrated piece go live?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Behind a flag that starts at a small share of traffic and only rises after enough requests succeed, not after a fixed time. Most errors show up in that first small share, where they are cheap."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "taktek",
+      "item": "https://taktek.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Notes",
+      "item": "https://taktek.io/notes/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "The old code is the spec",
+      "item": "https://taktek.io/notes/the-old-code-is-the-spec/"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="head">
+    <a class="mark" href="../../">taktek<i aria-hidden="true"></i></a>
+    <input type="checkbox" id="mode">
+    <label class="modebtn" for="mode" title="Switch appearance" aria-label="Switch appearance">
+      <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+      <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+    </label>
+  </header>
+
+<main>
+  <article class="note">
+    <h1>The old code is the spec</h1>
+    <p class="when">Tuesday, September 29, 2026</p>
+
+    <p class="stand">When agents migrate code, don't write a spec. The old system already is one. Port a piece, run old and new on the same real inputs, and ship only what matches. Then you review the check, not the diff.</p>
+
+    <p>Every migration I did by hand started the same way. Write down what the old code does. Then make the new code do that.</p>
+
+    <p>The writing-down part took longest. And it was always incomplete.</p>
+
+    <h2 id="the-spec-already-exists">The spec already exists</h2>
+
+    <p>The old code runs. It handles every case it has ever met, including the ones nobody remembers.</p>
+
+    <p>So it is the spec. The most complete one you will ever have.</p>
+
+    <p>An agent ports one piece. Then the old piece and the new piece get the same real inputs, anonymized. If the outputs match, the port is right. If they don't, the difference is the bug.</p>
+
+    <h2 id="review-the-check-not-the-diff">Review the check, not the diff</h2>
+
+    <p>A migration diff is too big to read. Nobody reads it. People skim it, and skimming is how the bug gets through.</p>
+
+    <p>A comparison is small. It says which cases ran and which matched. That is what a person reviews.</p>
+
+    <p>It has one trap. The harness fakes the services the code talks to, and a fake that accepts what the real service rejects will pass a port that fails on its first real call. So every fake has to reject what the real thing rejects.</p>
+
+    <p>And a case that never ran is not a pass. If a comparison skips cases, the piece isn't done.</p>
+
+    <h2 id="ship-on-evidence-not-on-time">Ship on evidence, not on time</h2>
+
+    <p>A ported piece goes live behind a flag. The flag starts at a sliver of traffic and only rises after enough requests succeed. Not after a day. After evidence.</p>
+
+    <p>Most errors show up in that first sliver, where they are cheap.</p>
+
+    <h2 id="where-the-person-goes">Where the person goes</h2>
+
+    <p>An agent can port, compare and propose. It doesn't merge, and it doesn't raise a flag on its own.</p>
+
+    <p>Those are the steps that can't be undone. They are the whole job left for a person.</p>
+
+    <p>If you have a migration you keep postponing, <a href="mailto:nizar@taktek.io?subject=Hey%20Nizar!%20I%20need%20a%20Fleet">that is what a Fleet is for</a>.</p>
+
+    <hr>
+    <p class="when"><a href="../">All notes</a> &middot; <a href="../../">taktek.io</a></p>
+  </article>
+
+  <footer>
+    <div class="entities"><address><b>Taktek, LLC</b><br>131 Continental Dr, Suite 305<br>Newark, DE 19713, United States</address><address><b>Taktek Offshore SAL</b><br>Al Watta Street, Riman Building<br>Aley 5516, Lebanon</address></div>
+    <a href="../../portfolio/">Portfolio</a>
+    <a href="../">Notes</a>
+    <a href="../../terms/">Terms</a>
+    <a href="../../privacy/">Privacy</a>
+    <a href="../../support/">Support</a>
+    <a class="spacer" href="https://github.com/taktekhq">github.com/taktekhq</a>
+  </footer>
+</main>
+</div>
+
+<script src="../../assets/js/gravity.js"></script>
+</body>
+</html>

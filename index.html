@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>taktek — an agent studio</title>
-<meta name="description" content="An agent studio. Hire one agent long term or for a single objective, or a fleet for one objective: a mass migration or any job too big to do by hand.">
+<meta name="description" content="An agent studio. Hire an Agent, long term or per objective, or a Fleet of agents for one big objective, like a mass migration. Done in weeks.">
 <meta name="theme-color" content="#F7F5F1" media="(prefers-color-scheme:light)">
 <meta name="theme-color" content="#0D0D0E" media="(prefers-color-scheme:dark)">
 <meta property="og:title" content="taktek">
-<meta property="og:description" content="An agent studio.">
+<meta property="og:description" content="An agent studio. Hire an Agent, or a Fleet.">
 <meta property="og:url" content="https://taktek.io">
 <meta property="og:image" content="https://taktek.io/assets/og/og.png">
 <meta property="og:image:width" content="1200">
@@ -32,22 +32,58 @@
       "name": "Taktek, LLC",
       "alternateName": "taktek",
       "url": "https://taktek.io/",
-      "description": "An agent studio. Its agents finish work that would otherwise take months: one agent, long term or for a single objective, or a fleet for one objective.",
+      "description": "An agent studio. Its agents finish work that would otherwise take months. Hire an Agent, long term or per objective, or a Fleet for one big objective.",
       "email": "nizar@taktek.io",
-      "founder": { "@type": "Person", "name": "Nizar Mahmoud" },
-      "address": { "@type": "PostalAddress", "streetAddress": "131 Continental Dr, Suite 305", "addressLocality": "Newark", "addressRegion": "DE", "postalCode": "19713", "addressCountry": "US" },
+      "founder": {
+        "@id": "https://taktek.io/#nizar"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "131 Continental Dr, Suite 305",
+        "addressLocality": "Newark",
+        "addressRegion": "DE",
+        "postalCode": "19713",
+        "addressCountry": "US"
+      },
       "sameAs": [
-    "https://github.com/taktekhq",
-    "https://closet.ai",
-    "https://professionallurker.com",
-    "https://lebanesebusinesses.com",
-    "https://hobeichlegal.com/",
-    "https://hobeichventures.com",
-    "https://bucksbuddy.com",
-    "https://ghazl.ai",
-    "https://sawfarnews.com",
-    "https://fitnessspotlb.com"
-  ]
+        "https://github.com/taktekhq",
+        "https://closet.ai",
+        "https://professionallurker.com",
+        "https://lebanesebusinesses.com",
+        "https://hobeichlegal.com/",
+        "https://hobeichventures.com",
+        "https://bucksbuddy.com",
+        "https://ghazl.ai",
+        "https://sawfarnews.com",
+        "https://fitnessspotlb.com"
+      ],
+      "areaServed": "Worldwide",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Hire Taktek",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://taktek.io/#agent",
+              "name": "Agent",
+              "serviceType": "AI agent for software and operations work",
+              "description": "One AI agent, hired long term to work a backlog every day for less than a hire, or for a single objective."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://taktek.io/#fleet",
+              "name": "Fleet",
+              "serviceType": "Fleet of AI agents for one large objective",
+              "description": "Many AI agents on one objective, such as a mass code migration, finished in weeks. The old code is the spec; a client that doesn't merge the first slice doesn't pay."
+            }
+          }
+        ]
+      }
     },
     {
       "@type": "Organization",
@@ -55,8 +91,44 @@
       "name": "Taktek Offshore SAL",
       "url": "https://taktek.io/",
       "email": "nizar@taktek.io",
-      "founder": { "@type": "Person", "name": "Nizar Mahmoud" },
-      "address": { "@type": "PostalAddress", "streetAddress": "Al Watta Street, Riman Building", "addressLocality": "Aley", "postalCode": "5516", "addressCountry": "LB" }
+      "founder": {
+        "@id": "https://taktek.io/#nizar"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Al Watta Street, Riman Building",
+        "addressLocality": "Aley",
+        "postalCode": "5516",
+        "addressCountry": "LB"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://taktek.io/#site",
+      "name": "taktek",
+      "url": "https://taktek.io/",
+      "publisher": {
+        "@id": "https://taktek.io/#llc"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://taktek.io/#nizar",
+      "name": "Nizar Mahmoud",
+      "url": "https://nizarmah.com",
+      "sameAs": [
+        "https://github.com/nizarmah",
+        "https://www.linkedin.com/in/nizarmah"
+      ],
+      "worksFor": [
+        {
+          "@id": "https://taktek.io/#llc"
+        },
+        {
+          "@id": "https://taktek.io/#sal"
+        }
+      ]
     }
   ]
 }
@@ -97,10 +169,10 @@
     <section aria-label="Hire us">
       <p class="eyebrow">Hire us</p>
       <div class="index">
-        <a class="row" href="mailto:nizar@taktek.io?subject=One%20agent"><span class="row__n">01</span><span class="row__main"><span class="row__title">One agent</span><span class="row__desc">Long term, working your backlog every day for less than a hire. Or for a single objective.</span></span><span class="row__arrow" aria-hidden="true">&rarr;</span></a>
-        <a class="row" href="mailto:nizar@taktek.io?subject=A%20fleet"><span class="row__n">02</span><span class="row__main"><span class="row__title">A fleet</span><span class="row__desc">For one objective: a mass migration or any job too big to do by hand, finished in weeks.</span></span><span class="row__arrow" aria-hidden="true">&rarr;</span></a>
+        <a class="row" href="mailto:nizar@taktek.io?subject=Hey%20Nizar%21%20I%20need%20an%20Agent&amp;body=Hey%20Nizar%21%0A%0AI%20need%20an%20Agent.%0A%0AThe%20work%3A%0AWhere%20it%20lives%20%28repo%2C%20tool%2C%20inbox%29%3A%0ALong%20term%2C%20or%20one%20objective%3A%0AHow%20we%27ll%20know%20it%27s%20done%3A%0A%0AThanks%21"><span class="row__n">01</span><span class="row__main"><span class="row__title">Agent</span><span class="row__desc">Long term or per objective. Works daily, for less than a hire.</span></span><span class="row__arrow" aria-hidden="true">&rarr;</span></a>
+        <a class="row" href="mailto:nizar@taktek.io?subject=Hey%20Nizar%21%20I%20need%20a%20Fleet&amp;body=Hey%20Nizar%21%0A%0AI%20need%20a%20Fleet.%0A%0AThe%20objective%20%28e.g.%20move%20X%20to%20Y%29%3A%0AHow%20big%20it%20is%20%28services%2C%20files%2C%20endpoints%29%3A%0AHow%20we%27ll%20know%20it%27s%20done%20%28tests%2C%20same%20output%2C%20a%20date%29%3A%0AWhen%20we%20need%20it%20by%3A%0A%0AThanks%21"><span class="row__n">02</span><span class="row__main"><span class="row__title">Fleet</span><span class="row__desc">Many agents on one objective, like a mass migration. Done in weeks.</span></span><span class="row__arrow" aria-hidden="true">&rarr;</span></a>
       </div>
-      <a class="cta" href="mailto:nizar@taktek.io">nizar@taktek.io <span aria-hidden="true">&rarr;</span></a>
+      <a class="cta" href="mailto:nizar@taktek.io?subject=Hey%20Nizar%21&amp;body=Hey%20Nizar%21%0A%0A">nizar@taktek.io <span aria-hidden="true">&rarr;</span></a>
     </section>
 
     <footer>

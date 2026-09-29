@@ -25,14 +25,18 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Taktek, LLC",
-  "alternateName": "taktek",
-  "url": "https://taktek.io/",
-  "description": "An agent studio. Its agents finish work that would otherwise take months: one agent, long term or for a single objective, or a fleet for one objective.",
-  "email": "nizar@taktek.io",
-  "founder": { "@type": "Person", "name": "Nizar Mahmoud" },
-  "sameAs": [
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://taktek.io/#llc",
+      "name": "Taktek, LLC",
+      "alternateName": "taktek",
+      "url": "https://taktek.io/",
+      "description": "An agent studio. Its agents finish work that would otherwise take months: one agent, long term or for a single objective, or a fleet for one objective.",
+      "email": "nizar@taktek.io",
+      "founder": { "@type": "Person", "name": "Nizar Mahmoud" },
+      "address": { "@type": "PostalAddress", "streetAddress": "131 Continental Dr, Suite 305", "addressLocality": "Newark", "addressRegion": "DE", "postalCode": "19713", "addressCountry": "US" },
+      "sameAs": [
     "https://github.com/taktekhq",
     "https://closet.ai",
     "https://professionallurker.com",
@@ -43,6 +47,17 @@
     "https://ghazl.ai",
     "https://sawfarnews.com",
     "https://fitnessspotlb.com"
+  ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://taktek.io/#sal",
+      "name": "Taktek Offshore SAL",
+      "url": "https://taktek.io/",
+      "email": "nizar@taktek.io",
+      "founder": { "@type": "Person", "name": "Nizar Mahmoud" },
+      "address": { "@type": "PostalAddress", "streetAddress": "Al Watta Street, Riman Building", "addressLocality": "Aley", "postalCode": "5516", "addressCountry": "LB" }
+    }
   ]
 }
 </script>
@@ -89,6 +104,7 @@
     </section>
 
     <footer>
+      <div class="entities"><address><b>Taktek, LLC</b><br>131 Continental Dr, Suite 305<br>Newark, DE 19713, United States</address><address><b>Taktek Offshore SAL</b><br>Al Watta Street, Riman Building<br>Aley 5516, Lebanon</address></div>
       <a href="portfolio/">Portfolio</a>
       <a href="notes/">Notes</a>
       <a href="terms/">Terms</a>

@@ -1,13 +1,10 @@
 # taktek
 
-> A dev shop where the developers are AI agents, run by Nizar Mahmoud. It migrates
-> code (Rails to Go, GraphQL to REST, off a vendor, off a monolith) and proves each
-> piece behaves like the old code before it ships: the old code is the spec, every
-> piece is checked against it on real data, and it goes live behind a flag that only
-> rises after enough requests succeed. A person signs off on anything that can't be
-> undone. The first engagement is one slice at a fixed price, two weeks; a client
-> that doesn't merge it doesn't pay. The same agents built and run the products
-> below. Operated by Taktek, LLC.
+> An agent studio run by Nizar Mahmoud. Its agents finish work that would
+> otherwise take months. Hire one agent long term, working a backlog every day
+> for less than a hire, or for a single objective. A fleet is hired for one
+> objective only: a mass migration or any other job too big to do by hand. Everything Taktek has built is listed at
+> https://taktek.io/portfolio/. Operated by Taktek, LLC.
 
 Contact: nizar@taktek.io. Support, terms and privacy are linked below.
 

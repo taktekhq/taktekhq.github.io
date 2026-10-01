@@ -52,7 +52,12 @@ Everything below was built by Taktek's agents: https://taktek.io/portfolio/
 - [closet.ai](https://closet.ai): Fashion catalogue for Lebanon. 39 brands, refreshed every morning.
 - [Lurker](https://professionallurker.com): Watches Reddit, HN and LinkedIn for threads worth replying to.
 - [Lebanese Businesses](https://lebanesebusinesses.com): Free directory of Lebanese businesses, by sector. No paid listings.
-- [Hobeich Legal](https://hobeichlegal.com): Corporate law practice in Beirut, plus four company-formation sites.
+- [Lebanese Legislation](https://lebaneselegislation.com): 101,561 Lebanese laws and decrees and 47,615 rulings, searchable in Arabic and French.
+- [Lebanese SARL](https://lebanesesarl.com): A Lebanese SARL formed end to end, from $2,450.
+- [Lebanese Offshore](https://lebaneseoffshore.com): A Lebanese offshore company formed end to end, from $2,950.
+- [Lebanese SAL](https://lebanesesal.com): A Lebanese SAL formed end to end, from $3,450.
+- [Lebanese Holding](https://lebaneseholding.com): A Lebanese holding company formed end to end, from $3,250.
+- [Hobeich Legal](https://hobeichlegal.com): Corporate and commercial law practice in Beirut.
 - [BucksBuddy](https://bucksbuddy.com): Expense tracker. Web app, with iOS and Android apps in testing.
 - [ghazl](https://ghazl.ai): Turns one product photo into ready-to-post Instagram images.
 - [Sawfar News](https://sawfarnews.com): Arabic news site for Sawfar and Lebanon, generated from JSON.

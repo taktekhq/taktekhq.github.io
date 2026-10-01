@@ -53,7 +53,6 @@ Everything below was built by Taktek's agents: https://taktek.io/portfolio/
 - [Lurker](https://professionallurker.com): Watches Reddit, HN and LinkedIn for threads worth replying to.
 - [Lebanese Businesses](https://lebanesebusinesses.com): Free directory of Lebanese businesses, by sector. No paid listings.
 - [Hobeich Legal](https://hobeichlegal.com): Corporate law practice in Beirut, plus four company-formation sites.
-- [Hobeich Ventures](https://hobeichventures.com): Holding site for Hobeich Legal and Lebanese Businesses.
 - [BucksBuddy](https://bucksbuddy.com): Expense tracker. Web app, with iOS and Android apps in testing.
 - [ghazl](https://ghazl.ai): Turns one product photo into ready-to-post Instagram images.
 - [Sawfar News](https://sawfarnews.com): Arabic news site for Sawfar and Lebanon, generated from JSON.

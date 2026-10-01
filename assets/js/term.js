@@ -31,7 +31,6 @@
     ["professionallurker.com", "Watches Reddit, HN and LinkedIn for threads worth replying to."],
     ["lebanesebusinesses.com", "Free directory of Lebanese businesses, by sector. No paid listings."],
     ["hobeichlegal.com", "Corporate law practice in Beirut, plus four company-formation sites."],
-    ["hobeichventures.com", "Holding site for Hobeich Legal and Lebanese Businesses."],
     ["bucksbuddy.com", "Expense tracker. Web app, with iOS and Android apps in testing."],
     ["ghazl.ai", "Turns one product photo into ready-to-post Instagram images."],
     ["sawfarnews.com", "Arabic news site for Sawfar and Lebanon, generated from JSON."],

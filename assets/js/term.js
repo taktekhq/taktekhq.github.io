@@ -110,6 +110,7 @@
       say("<b>help</b>        this");
       say("<b>hire</b>        an agent, or a fleet");
       say("<b>ls</b>          what the agents built");
+      say("<b>status</b>      which of it an agent is working on");
       say("<b>notes</b>       the writing");
       say("<b>open</b> <u>n</u>      open something, by number or name");
       say("<b>whois</b>       who you'd be working with");
@@ -126,6 +127,15 @@
         say("<i>" + (i + 1) + "</i>  <b>" + w[0] + "</b>  <u>" + esc(w[1]) + "</u>");
       });
       say("<u>portfolio/  notes/  terms/  privacy/  support/</u>");
+    },
+    status: function () {
+      // Hand-set, like the portfolio page. Green: an agent worked on it in the last two weeks.
+      var DONE = { "taktek.io/bloo": 1, "github.com/taktekhq/kronk": 1 };
+      WORK.forEach(function (w) {
+        var s = DONE[w[0]] ? "done" : "working";
+        say('<span class="st st--' + s + '" style="--d:9px"></span>  <b>' + w[0] + "</b>  <u>" + s + "</u>");
+      });
+      say('<span class="st st--queued" style="--d:9px"></span> queued  <span class="st st--working" style="--d:9px"></span> working  <span class="st st--done" style="--d:9px"></span> done  <span class="st st--blocked" style="--d:9px"></span> needs a person  <u>as of 2 Oct 2026</u>');
     },
     notes: function () {
       NOTES.forEach(function (n, i) {

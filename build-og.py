@@ -33,9 +33,10 @@ PAGE = """<!doctype html><meta charset="utf-8">
 * {{ margin: 0; padding: 0; box-sizing: border-box; }}
 html, body {{ width: 1200px; height: 630px; overflow: hidden; }}
 body {{ background: {paper}; position: relative; }}
-.mark {{ position: absolute; left: 88px; top: 96px; display: flex; align-items: center; gap: 9px;
-        font-family: "JB"; font-size: 27px; font-weight: 700; letter-spacing: -1.2px; color: {ink}; }}
-.mark i {{ display: block; width: 11px; height: 22px; background: {signal}; }}
+.mark {{ position: absolute; left: 88px; top: 96px; display: flex; align-items: baseline;
+        font-family: "JB"; font-size: 30px; font-weight: 700; letter-spacing: -1.3px; color: {ink}; }}
+.mark i {{ display: inline-block; width: .25em; height: .25em; margin-left: .06em; border-radius: 50%; background: {signal}; }}
+h1 i {{ display: inline-block; width: .25em; height: .25em; margin-left: .07em; border-radius: 50%; background: {signal}; }}
 h1 {{ position: absolute; left: 88px; top: {top}px; font-family: "SG"; font-weight: 500;
      font-size: {size}px; line-height: 1.06; letter-spacing: -{track}px; color: {ink}; }}
 .foot {{ position: absolute; left: 88px; top: 530px; font-family: "JB"; font-size: 21px; color: {muted}; }}
@@ -50,6 +51,14 @@ h1 {{ position: absolute; left: 88px; top: {top}px; font-family: "SG"; font-weig
 </script>
 """
 
+def dotted(lines):
+    """Escape the headline; a final full stop becomes the brand dot."""
+    out = [html.escape(l) for l in lines]
+    if out[-1].endswith("."):
+        out[-1] = out[-1][:-1] + "<i></i>"
+    return "<br>".join(out)
+
+
 if not pathlib.Path(CHROME).exists():
     raise SystemExit("Chrome not found; cannot rasterise.")
 
@@ -60,7 +69,7 @@ for name, lines, foot, size in CARDS:
     page.write_text(PAGE.format(
         fonts=FONTS, paper=PAPER, ink=INK, muted=MUTED, signal=SIGNAL,
         size=size, track=round(size * 0.045, 1), top=top,
-        lines="<br>".join(html.escape(l) for l in lines), foot=html.escape(foot)))
+        lines=dotted(lines), foot=html.escape(foot)))
     subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--no-sandbox",
                     "--hide-scrollbars", "--virtual-time-budget=5000",
                     "--default-background-color=00000000",

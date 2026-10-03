@@ -421,7 +421,9 @@ def load_file_notes():
     if not NOTES_SRC.exists():
         return []
     today = datetime.date.today().isoformat()
+    stem_re = re.compile(r"^\d{4}-\d{2}-\d{2}-.+")
     found = sorted(NOTES_SRC.glob("*.md")) + sorted(NOTES_SRC.glob("*.html"))
+    found = [p for p in found if stem_re.match(p.stem)]  # skips README.md etc.
     notes = [_load_file_note(p) for p in found]
     return [n for n in notes if n["date"] <= today]
 

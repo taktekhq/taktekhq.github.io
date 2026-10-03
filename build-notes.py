@@ -505,6 +505,7 @@ HEAD = """<!doctype html>
     <a href="../../terms/">Terms</a>
     <a href="../../privacy/">Privacy</a>
     <a href="../../support/">Support</a>
+    <a href="../../stats/">Stats</a>
     <a class="spacer" href="https://github.com/taktekhq">github.com/taktekhq</a>
   </footer>
 </main>
@@ -640,6 +641,7 @@ NOTES_INDEX = """<!doctype html>
     <a href="../terms/">Terms</a>
     <a href="../privacy/">Privacy</a>
     <a href="../support/">Support</a>
+    <a href="../stats/">Stats</a>
     <a class="spacer" href="https://github.com/taktekhq">github.com/taktekhq</a>
   </footer>
 </main>

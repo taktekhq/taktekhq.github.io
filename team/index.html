@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Team — Taktek</title>
+<meta name="description" content="Taktek's team, live: taktekbot and taktekintern, and every agent they run, as one of five states.">
+<meta property="og:title" content="Team — Taktek">
+<meta property="og:description" content="Taktek's team, live: every agent they run, as one of five states.">
+<meta property="og:url" content="https://taktek.io/team/">
+<link rel="canonical" href="https://taktek.io/team/">
+<link rel="icon" href="../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/og/apple-touch.png">
+<meta name="theme-color" content="#F7F5F1" media="(prefers-color-scheme:light)">
+<meta name="theme-color" content="#0D0D0E" media="(prefers-color-scheme:dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/studio.css?v=dots">
+</head><body>
+
+<div class="wrap">
+  <header class="head">
+    <a class="mark" href="../">taktek<i aria-hidden="true"></i></a>
+  </header>
+
+<main>
+  <section class="doc">
+    <h1>Team</h1>
+    <p class="sub">Live &middot; <span id="updated">connecting&hellip;</span></p>
+
+    <ul class="legend" aria-label="What the dots mean">
+      <li><i class="st st--working"></i>working</li>
+      <li><i class="st st--scheduled"></i>scheduled</li>
+      <li><i class="st st--queued"></i>idle</li>
+      <li><i class="st st--done"></i>just finished</li>
+      <li><i class="st st--blocked"></i>needs a person</li>
+    </ul>
+
+    <div id="team">
+      <noscript><p class="sub">This page shows the team live, which needs JavaScript.</p></noscript>
+    </div>
+  </section>
+
+  <footer>
+    <div class="entities"><address><b>Taktek, LLC</b><br>131 Continental Dr, Suite 305<br>Newark, DE 19713, United States</address><address><b>Taktek Offshore SAL</b><br>Al Watta Street, Riman Building<br>Aley 5516, Lebanon</address></div>
+    <a href="../portfolio/">Portfolio</a>
+    <a href="../notes/">Notes</a>
+    <a href="../stats/">Stats</a>
+    <a href="../team/">Team</a>
+    <a href="../terms/">Terms</a>
+    <a href="../privacy/">Privacy</a>
+    <a href="../support/">Support</a>
+    <a class="spacer" href="https://github.com/taktekhq">github.com/taktekhq</a>
+  </footer>
+</main>
+</div>
+<style>
+  /* Scheduled: asleep on purpose until its next run. The idle ring, broken into dashes. */
+  .st--scheduled { box-shadow:none; border:calc(var(--d) * .12) dashed var(--ink); box-sizing:border-box; }
+  .doc .legend { margin:6px 0 clamp(28px,5vw,44px); }
+  .member { border-top:1px solid var(--rule); padding:clamp(22px,4vw,32px) 0; }
+  .member h2 { margin:0 0 2px; font-family:var(--mono, "JetBrains Mono", monospace); font-size:16px; letter-spacing:-.02em; }
+  .member .role { margin:0 0 18px; color:var(--muted); font-size:14px; }
+  .group { margin:0 0 18px; }
+  .group h3 { margin:0 0 10px; font-family:"JetBrains Mono",monospace; font-size:12px; font-weight:400; color:var(--muted); }
+  .dots { display:flex; flex-wrap:wrap; gap:12px; }
+  .dots .st { --d:18px; }
+  .dots .st--offline { opacity:.3; }
+  .soon { color:var(--faint); font-family:"JetBrains Mono",monospace; font-size:12px; }
+  @keyframes breathe { 0%,100% { transform:scale(1); } 50% { transform:scale(.84); } }
+  .dots .st--working { animation:breathe 2.4s ease-in-out infinite; }
+  @media (prefers-reduced-motion:reduce) { .dots .st--working { animation:none; } }
+</style>
+<script>
+(() => {
+  const DOT = { working: 'working', scheduled: 'scheduled', idle: 'queued', done: 'done', blocked: 'blocked', offline: 'offline' };
+  const WORD = { working: 'working', scheduled: 'scheduled', idle: 'idle', done: 'just finished', blocked: 'needs a person', offline: 'offline' };
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const RANK = { working: 0, done: 1, blocked: 2, idle: 3, scheduled: 4, offline: 5 };
+  const dots = (states) => [...states].sort((a, b) => (RANK[a] ?? 9) - (RANK[b] ?? 9)).map((s) => `<i class="st st--${DOT[s] || 'queued'}" title="${WORD[s] || s}" aria-label="${WORD[s] || s}"></i>`).join('');
+  const count = (states, s) => states.filter((x) => x === s).length;
+  const group = (title, states) => states.length
+    ? `<div class="group"><h3>${title} &middot; ${states.length}${count(states, 'working') ? ` &middot; ${count(states, 'working')} working` : ''}</h3><div class="dots" role="list">${dots(states)}</div></div>`
+    : '';
+  function render(data) {
+    document.getElementById('team').innerHTML = (data.members || []).map((m) => {
+      const head = `<h2>${esc(m.name)}</h2><p class="role">${esc(m.role || '')}</p>`;
+      if (!m.reporting) return `<section class="member">${head}<div class="dots"><i class="st st--queued" aria-label="not reporting yet"></i></div><p class="soon">Works on its own machine. Its agents will show here soon.</p></section>`;
+      return `<section class="member">${head}${group('Interactive agents', m.interactive || [])}${group('Job agents', m.jobs || [])}</section>`;
+    }).join('');
+    document.getElementById('updated').textContent = 'updated ' + new Date(data.generatedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  }
+  async function tick() {
+    try { render(await (await fetch('https://api.taktek.io/team.json', { cache: 'no-store' })).json()); }
+    catch { document.getElementById('updated').textContent = 'reconnecting…'; }
+  }
+  tick(); setInterval(tick, 15000);
+})();
+</script>
+</body>
+</html>

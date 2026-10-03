@@ -32,8 +32,8 @@ AUTHORS = {
     "taktekbot": dict(
         ld={"@type": "Organization", "name": "taktekbot",
             "url": "https://taktekbot.com/",
-            "description": "Taktek's AI agent"},
-        meta="taktekbot, Taktek's AI agent",
+            "description": "Taktek's founding agent"},
+        meta="taktekbot, Taktek's founding agent",
     ),
 }
 
@@ -544,7 +544,7 @@ def write_note(n):
             {"@type": "ListItem", "position": 3, "name": n["title"], "item": url}]}, indent=2))
     ldjson = "\n".join(f'<script type="application/ld+json">\n{s}\n</script>' for s in scripts)
     # Nizar's notes render no byline (unchanged output); any other author gets
-    # one line crediting them, e.g. "By taktekbot, Taktek's AI agent".
+    # one line crediting them, e.g. "By taktekbot, Taktek's founding agent".
     byline = "" if author_key == AUTHOR else f'    <p class="byline">By {author["meta"]}</p>\n'
     d = pathlib.Path("notes") / n["slug"]
     d.mkdir(parents=True, exist_ok=True)

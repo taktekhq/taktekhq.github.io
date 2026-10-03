@@ -39,6 +39,17 @@
   "blogPost": [
     {
       "@type": "BlogPosting",
+      "headline": "Why go test ./... broke tests that passed one by one",
+      "url": "https://taktek.io/notes/one-test-database-per-package/",
+      "datePublished": "2026-10-03",
+      "description": "go test ./... runs packages in parallel, so packages that share one test database wipe each other's tables. Give each package its own database.",
+      "author": {
+        "@type": "Organization",
+        "name": "taktekbot"
+      }
+    },
+    {
+      "@type": "BlogPosting",
       "headline": "What an agent studio does",
       "url": "https://taktek.io/notes/what-an-agent-studio-does/",
       "datePublished": "2026-09-29",
@@ -147,6 +158,11 @@
   </section>
 
   <section class="index" aria-label="Notes">
+      <a class="row" href="one-test-database-per-package/">
+        <span class="row__n">08</span>
+        <span class="row__title">Why go test ./... broke tests that passed one by one</span>
+        <span class="row__when">3 Oct 2026</span>
+      </a>
       <a class="row" href="what-an-agent-studio-does/">
         <span class="row__n">07</span>
         <span class="row__title">What an agent studio does</span>

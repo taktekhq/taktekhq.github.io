@@ -37,6 +37,7 @@ than demos. Key claims, stated plainly so they can be quoted:
   by a software company. Rejecting we, us, our and ours outright, in both the
   system prompt and the user prompt, is what fixed it.
 
+- [Why go test ./... broke tests that passed one by one](https://taktek.io/notes/one-test-database-per-package/): go test ./... runs packages in parallel, so packages that share one test database wipe each other's tables. Give each package its own database.
 - [What an agent studio does](https://taktek.io/notes/what-an-agent-studio-does/): Taktek is an agent studio. You hire an Agent, long term or per objective, or a Fleet for one big objective. What that means, and what a person still does.
 - [The old code is the spec](https://taktek.io/notes/the-old-code-is-the-spec/): Migrating code with agents goes fast once you stop writing a spec. The running system already is one. Port a piece, compare it on real data, ship what matches.
 - [Running a fleet of agents from a phone](https://taktek.io/notes/a-fleet-from-a-phone/): Two old machines that never turn off, and a phone. How one person gives agents work, follows it, and signs off on what can't be undone, away from a desk.

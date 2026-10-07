@@ -590,6 +590,8 @@ NOTES_INDEX = """<!doctype html>
 <meta property="og:title" content="Notes — taktek">
 <meta property="og:description" content="{desc}">
 <meta property="og:image" content="{site}/assets/og/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="{site}/assets/og/og.png">
 <link rel="icon" href="../assets/logos/favicon.svg" type="image/svg+xml">

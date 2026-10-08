@@ -192,3 +192,7 @@ footer a, footer address { color: var(--muted); }
   .stick .btn { white-space: nowrap; flex: none; }
 }
 @media (max-width: 400px) { .verdict p { font-size: 16px; } }
+
+/* Design-critic pass 4: Arabic labels on the English page get a real Arabic face (subset loaded in <head>) */
+.langbtn, footer a[href="../sa/"], footer a[href="../ae/"], footer a[href="../jo/"] { font-family: "IBM Plex Sans Arabic", var(--display); }
+[dir=rtl] .langbtn { font-family: var(--display); }

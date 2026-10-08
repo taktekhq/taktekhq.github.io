@@ -22,6 +22,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/studio.css?v=dots">
 <link rel="stylesheet" href="../assets/css/gravity.css">
+<style>
+  /* Packages: the text takes the free space so every price sits on the right edge, whatever the description length */
+  #packages .row__main { flex: 1; }
+  #packages .row > .row__title { margin-left: auto; white-space: nowrap; text-align: right; }
+</style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MY112CQXP6"></script>
 <script>
   window.dataLayer = window.dataLayer || [];

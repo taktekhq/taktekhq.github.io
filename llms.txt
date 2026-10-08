@@ -8,6 +8,14 @@
 > Suite 305, Newark, DE 19713, United States) and Taktek Offshore SAL (Al Watta
 > Street, Riman Building, Aley 5516, Lebanon).
 
+Free tools: https://taktek.io/ai/ checks whether AI assistants recommend a
+business: it asks Google Gemini and Anthropic Claude (with web search) "best
+<category> in <city>", "who should I call for <category> in <city>" and "what do
+you know about <business>", then shows whether the business was named, the exact
+answers, the competitors named, and three fixes. Free; weekly monitoring is
+$19/month; a done-for-you visibility setup is $400. https://taktek.io/audit/
+scores a business website for Google, Maps and AI readability.
+
 Contact: nizar@taktek.io. Support, terms and privacy are linked below.
 
 ## Notes

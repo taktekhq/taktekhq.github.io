@@ -72,6 +72,13 @@ def main():
             f"package: {lead.get('package', '-')}  country: {lead.get('country', '-')}  at: {lead.get('at', '-')}\n"
             f"notes: {lead.get('notes', '-')}"
         )
+        if str(lead.get("kind", "")).startswith("ai"):  # taktek.io/ai/ report emails and feedback
+            text = (
+                f"\U0001f4e5 taktek.io/ai lead ({lead['kind']})\n"
+                f"business: {lead.get('business', '-')}  city: {lead.get('city', '-')}  category: {lead.get('category', '-')}\n"
+                f"email: {lead.get('email') or '-'}  recommended: {lead.get('recommended', '-')}  country: {lead.get('country', '-')}  at: {lead.get('at', '-')}"
+                + (f"\nfeedback: {lead['text']}" if lead.get("text") else "")
+            )
         print(text)
         if channel:
             out = subprocess.run(

@@ -5,6 +5,14 @@ Server-side fetcher behind https://taktek.io/audit/. One page + robots.txt + sit
 - `GET /api/audit?url=example.com` returns `{score, checks[], fixes[], host, ...}` (language-neutral; the page translates).
 - `POST /api/lead {email, consent:true, url, score, business, city, lang}`.
 
+## AI visibility check (taktek.io/ai/)
+- `POST /api/ai-check {name, city, category, website?}` asks each configured model three customer questions in parallel (20 s budget), returns `{summary:{recommended, asked, known}, answers[], competitors[], fixes[], models[], audit, key}`. Code in `src/ai.js`.
+- Models: Gemini when `GEMINI_API_KEY` is set (`GEMINI_MODEL`, default `gemini-2.5-flash`; Google Search grounding unless `GEMINI_GROUNDING=0`); Claude when `ANTHROPIC_API_KEY` is set (`CLAUDE_MODEL`, default `claude-haiku-5-5`; web search unless `CLAUDE_WEB=0`). No key = `503 not_configured`.
+- Cached 24 h in KV per business+city+category (`ai:v1:<hash>`); 6 fresh checks per IP per hour, 3 per business per hour. `MONITOR_TOKEN` bearer skips both (tools/ai-monitor).
+- `/api/lead` sources `ai` (report email / monitoring request, consent), `ai_feedback`, `ai_monitor` (writes `intent:<key>` before the Stripe redirect).
+- Logs: `{evt:"ai_check", category, city, recommended, asked, known, ms, country}`; never the business name or IP.
+- Tests: `node test/ai-test.mjs` (mocked APIs).
+
 ## Test locally
     npm i && node test/cli.mjs taktek.io bbc.com      # logic only
     npx wrangler dev --port 8788 --local              # Worker; then serve the repo root on :8123 and open /audit/

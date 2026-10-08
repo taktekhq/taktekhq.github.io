@@ -221,7 +221,7 @@
     </div>
 
     <p class="row__desc" style="margin-top:18px;max-width:52ch">See WhatsApp automation working: <a href="../whatsapp-agent/">try the live demo →</a></p>
-    <p class="row__desc" style="margin-top:12px;max-width:52ch">Want a number now? <a href="../audit/">Run the free 10-second visibility check →</a></p>
+    <p class="row__desc" style="margin-top:12px;max-width:52ch">Want a number now? <a href="../audit/">Run the free 10-second visibility check →</a><br>Or see <a href="../ai/">whether ChatGPT-style assistants recommend you →</a></p>
     <p class="row__desc" style="margin-top:12px;max-width:52ch">Pick a package to start. You pay after we agree the scope: we send a Stripe link or an invoice once we've talked. No card needed to ask.</p>
   </section>
 
@@ -306,6 +306,15 @@
     label.textContent = free ? 'Send for a free audit' : 'Send my request';
     track('package_click', { package: pkg });
   }));
+  // Arriving from taktek.io/ai/ ("Get it fixed"): ?package=visibility&business=…&where=… preselects the $400 setup.
+  const qp = new URLSearchParams(location.search);
+  if (qp.get('package') === 'visibility') {
+    const row = document.querySelector('a.row[data-package^="Visibility setup"]');
+    if (row) row.click();
+    if (qp.get('business')) form.business.value = qp.get('business').slice(0, 160);
+    if (qp.get('where')) form.where.value = qp.get('where').slice(0, 300);
+    if (qp.get('business') || qp.get('where')) form.notes.value = 'From the AI visibility check (taktek.io/ai/).';
+  }
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const fd = new FormData(form);

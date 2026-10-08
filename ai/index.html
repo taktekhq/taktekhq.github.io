@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Is ChatGPT recommending your business? Free AI visibility check · Taktek</title>
+<meta name="description" content="Free check: we ask AI assistants (Google Gemini and Anthropic Claude) the questions your customers ask, and show whether they name your business, the exact answers, the competitors they pick, and 3 fixes.">
+<meta property="og:title" content="Is ChatGPT recommending your business?">
+<meta property="og:description" content="Free check: we ask AI assistants what your customers ask and show if they name you, who they name instead, and 3 fixes.">
+<meta property="og:url" content="https://taktek.io/ai/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://taktek.io/assets/og/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://taktek.io/ai/">
+<link rel="alternate" hreflang="en" href="https://taktek.io/ai/">
+<link rel="alternate" hreflang="ar" href="https://taktek.io/ai/?lang=ar">
+<link rel="alternate" hreflang="x-default" href="https://taktek.io/ai/">
+<link rel="icon" href="../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/og/apple-touch.png">
+<meta name="theme-color" content="#F7F5F1" media="(prefers-color-scheme:light)">
+<meta name="theme-color" content="#0D0D0E" media="(prefers-color-scheme:dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://taktek-audit.taktek-5f0.workers.dev" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/studio.css?v=dots">
+<link rel="stylesheet" href="../assets/css/gravity.css">
+<link rel="stylesheet" href="ai.css?v=3">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MY112CQXP6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  if (!(navigator.webdriver || /bot|crawl|spider|headless|lighthouse/i.test(navigator.userAgent) || (screen.width === 800 && screen.height === 600))) {
+    gtag('js', new Date());
+    gtag('config', 'G-MY112CQXP6', { anonymize_ip: true });
+  }
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "WebApplication", "@id": "https://taktek.io/ai/#app", "name": "AI visibility check: is ChatGPT recommending your business?", "url": "https://taktek.io/ai/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "inLanguage": ["en", "ar"], "provider": { "@id": "https://taktek.io/#llc" },
+      "description": "Asks AI assistants (Google Gemini and Anthropic Claude) the questions customers ask about a category and city, and shows whether a business is named, the exact answers, the competitors named, and three fixes.",
+      "offers": [
+        { "@type": "Offer", "name": "AI visibility check", "price": "0", "priceCurrency": "USD" },
+        { "@type": "Offer", "name": "Weekly AI visibility monitor", "price": "19", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "19", "priceCurrency": "USD", "billingDuration": "P1M" } },
+        { "@type": "Offer", "name": "Visibility setup", "price": "400", "priceCurrency": "USD", "url": "https://taktek.io/work/" }
+      ] },
+    { "@type": "FAQPage", "@id": "https://taktek.io/ai/#faq", "mainEntity": [
+      { "@type": "Question", "name": "Does this check ask ChatGPT?", "acceptedAnswer": { "@type": "Answer", "text": "No. It asks Google Gemini and Anthropic Claude, with web search on, the same questions a customer would ask, and the results page names the exact models and the time. ChatGPT works the same way (a language model plus web search), so they are a fair proxy, but we only report what we actually asked." } },
+      { "@type": "Question", "name": "What questions does it ask?", "acceptedAnswer": { "@type": "Answer", "text": "Three: \"What are the best <category> in <city>?\", \"Who should I call for <category> in <city>?\" and \"What do you know about <business> in <city>?\"" } },
+      { "@type": "Question", "name": "How do I get AI assistants to recommend my business?", "acceptedAnswer": { "@type": "Answer", "text": "Assistants with web search repeat what the web says about you: a complete Google Business Profile with recent reviews, consistent listings in local directories, and a website that states your name, services, area and contact details as plain text with LocalBusiness structured data. The check gives you the three fixes that matter most for your business." } },
+      { "@type": "Question", "name": "Is it free? What does monitoring cost?", "acceptedAnswer": { "@type": "Answer", "text": "The check is free with no signup. Weekly monitoring is $19/month: we re-run the questions every week and email you when you appear or disappear. If you want us to make the fixes, the visibility setup is $400 once. No ranking promises." } },
+      { "@type": "Question", "name": "What do you store?", "acceptedAnswer": { "@type": "Answer", "text": "The business name, city and category you type and the answers, cached for 24 hours so repeat checks are instant. Your IP address is only used, hashed, for a rate limit for up to 2 hours. Your email is stored only if you ask for the report." } }
+    ] },
+    { "@type": "BreadcrumbList", "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "taktek", "item": "https://taktek.io/" }, { "@type": "ListItem", "position": 2, "name": "AI visibility check", "item": "https://taktek.io/ai/" } ] }
+  ]
+}
+</script>
+</head><body>
+<a class="skip" href="#check" data-t="skip">Skip to the check</a>
+<div class="wrap">
+  <header class="head">
+    <a class="mark" href="../">taktek<i aria-hidden="true"></i></a>
+    <button class="langbtn" id="lang" type="button" lang="ar">العربية</button>
+    <input type="checkbox" id="mode">
+    <label class="modebtn" for="mode" title="Switch appearance" aria-label="Switch appearance">
+      <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+      <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+    </label>
+  </header>
+
+<main>
+  <section class="hero ai-hero">
+    <p class="kicker" data-t="kicker">Free check · about 15 seconds · no signup</p>
+    <h1 data-t="h1">Is ChatGPT recommending your business?</h1>
+    <p class="lede" data-t="lede">We ask AI assistants what your customers ask, like “best dentist in Beirut”, and show you whether they name you, who they name instead, and what to fix.</p>
+  </section>
+
+  <section class="ai-sec" id="check" aria-labelledby="check_h">
+    <h2 class="vh" id="check_h" data-t="check_h">Run the check</h2>
+    <p class="ok subbed" id="subbed" role="status" hidden></p>
+    <form class="f" id="form" novalidate>
+      <label for="f_name"><span data-t="l_name">Business name</span></label>
+      <input type="text" id="f_name" name="name" autocomplete="organization" required maxlength="80" aria-describedby="err">
+      <div class="two">
+        <div class="field"><label for="f_cat"><span data-t="l_cat">What you do</span></label>
+          <input type="text" id="f_cat" name="category" required maxlength="60" data-ph="ph_cat" placeholder="dentist, bakery, car rental…"></div>
+        <div class="field"><label for="f_city"><span data-t="l_city">City and country</span></label>
+          <input type="text" id="f_city" name="city" autocomplete="address-level2" required maxlength="60" data-ph="ph_city" placeholder="Beirut, Lebanon"></div>
+      </div>
+      <label for="f_site"><span data-t="l_site">Website (optional, adds a website check to the fixes)</span></label>
+      <input type="text" id="f_site" name="website" inputmode="url" autocomplete="url" autocapitalize="off" spellcheck="false" placeholder="yourbusiness.com" dir="ltr" maxlength="200">
+      <div class="hp" aria-hidden="true"><label>Leave empty<input type="text" name="hp" tabindex="-1" autocomplete="off"></label></div>
+      <div class="actions"><button type="submit" class="btn btn--solid" id="go"><span data-t="go">Check my business</span> <span class="arr" aria-hidden="true">&rarr;</span></button></div>
+      <p class="err" id="err" role="alert" hidden></p>
+      <p class="note" data-t="fine">We ask Google Gemini and Anthropic Claude, with web search on. Results name the exact models and time. We keep what you typed and the answers for 24 hours; nothing else.</p>
+    </form>
+  </section>
+
+  <section class="ai-sec" id="busy" aria-live="polite" hidden>
+    <p class="busy"><span class="spin" aria-hidden="true"></span><span data-t="busy">Asking the assistants…</span></p>
+    <ol class="busylist" id="busylist"></ol>
+  </section>
+
+  <section class="ai-sec result" id="result" aria-labelledby="r_head" hidden>
+    <div class="verdict" id="verdict">
+      <div class="meter" id="meter" aria-hidden="true"></div>
+      <div>
+        <h2 id="r_head" tabindex="-1"></h2>
+        <p id="r_sub"></p>
+      </div>
+    </div>
+    <p class="asked" id="r_asked"></p>
+
+    <div class="block" id="comp_block">
+      <h3 class="label" data-t="comp_h">Who they recommend instead</h3>
+      <ol class="comps" id="r_comps"></ol>
+    </div>
+
+    <div class="block">
+      <h3 class="label" data-t="fix_h">Three fixes that matter most</h3>
+      <ol class="fixes" id="r_fixes"></ol>
+    </div>
+
+    <div class="offers" id="offers">
+      <div class="offer offer--main">
+        <h3 data-t="mon_h">Monitor it weekly</h3>
+        <p class="price"><b>$19</b><span data-t="per_month">/month</span></p>
+        <p data-t="mon_p">Every week we ask the assistants again and email you the answers. You get an alert the week you appear, or disappear. Cancel any time.</p>
+        <button type="button" class="btn btn--solid" id="mon_btn"><span data-t="mon_cta">Start monitoring</span> <span class="arr" aria-hidden="true">&rarr;</span></button>
+        <form class="f mini" id="mon_form" novalidate hidden>
+          <label for="mon_mail"><span data-t="mon_mail">Where should the weekly report go?</span></label>
+          <input type="email" id="mon_mail" autocomplete="email" dir="ltr" placeholder="you@yourbusiness.com" aria-describedby="mon_note">
+          <p class="note" id="mon_note" data-t="mon_note">Payment links aren't switched on yet: we'll email you a secure Stripe link for $19/month within a day, and the first weekly report starts when you pay.</p>
+          <button type="submit" class="btn"><span data-t="mon_send">Send me the link</span> <span class="arr" aria-hidden="true">&rarr;</span></button>
+          <p class="ok" id="mon_ok" role="status" hidden></p>
+        </form>
+      </div>
+      <div class="offer">
+        <h3 data-t="fixit_h">Get it fixed</h3>
+        <p class="price"><b>$400</b><span data-t="once">once</span></p>
+        <p data-t="fixit_p">We do the fixes for you: Google Business Profile, directory listings, structured data and AI-readable pages, then re-run this check. No ranking promises.</p>
+        <a class="btn" id="fix_btn" href="../work/?package=visibility#audit"><span data-t="fixit_cta">Ask for the setup</span> <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3 class="label" data-t="ans_h">The exact answers</h3>
+      <div id="r_answers"></div>
+    </div>
+
+    <div class="block split">
+      <form class="f" id="lead" novalidate>
+        <h3 class="label" data-t="mail_h">Email me this report</h3>
+        <label for="lead_mail" class="vh" data-t="l_mail">Email</label>
+        <input type="email" id="lead_mail" name="email" autocomplete="email" dir="ltr" placeholder="you@yourbusiness.com">
+        <label class="tick"><input type="checkbox" name="consent"><span data-t="consent">Email me this report and one follow-up about fixing it. Taktek keeps my email for up to 180 days; I can ask for deletion any time.</span></label>
+        <button type="submit" class="btn"><span data-t="send">Email me the report</span> <span class="arr" aria-hidden="true">&rarr;</span></button>
+        <p class="err" id="lead_err" role="alert" hidden></p>
+        <p class="ok" id="lead_ok" role="status" hidden></p>
+      </form>
+      <form class="f" id="fb" novalidate>
+        <h3 class="label" data-t="fb_h">Was this right?</h3>
+        <label for="fb_text" class="vh" data-t="fb_l">Feedback</label>
+        <textarea id="fb_text" rows="3" maxlength="2000" data-ph="fb_ph" placeholder="Tell us if an answer looks wrong, or what you'd want next."></textarea>
+        <button type="submit" class="btn"><span data-t="fb_send">Send feedback</span> <span class="arr" aria-hidden="true">&rarr;</span></button>
+        <p class="ok" id="fb_ok" role="status" hidden></p>
+      </form>
+    </div>
+    <p class="again"><button type="button" class="linkbtn" id="again" data-t="again">Check another business</button></p>
+  </section>
+
+  <section class="ai-sec faq" aria-labelledby="faq_h">
+    <h2 id="faq_h" data-t="faq_h">Questions</h2>
+    <details><summary data-t="q1">Does this ask ChatGPT?</summary><p data-t="a1">No. It asks Google Gemini and Anthropic Claude, with web search on, the same questions a customer would ask, and the results name the exact models and the time. ChatGPT works the same way (a language model plus web search), so they're a fair proxy, but we only report what we actually asked.</p></details>
+    <details><summary data-t="q2">What questions does it ask?</summary><p data-t="a2">“What are the best &lt;category&gt; in &lt;city&gt;?”, “Who should I call for &lt;category&gt; in &lt;city&gt;?” and “What do you know about &lt;your business&gt; in &lt;city&gt;?”</p></details>
+    <details><summary data-t="q3">How do I get AI assistants to recommend me?</summary><p data-t="a3">Assistants with web search repeat what the web says about you: a complete Google Business Profile with recent reviews, consistent listings in local directories, and a website that states your name, services, area and contact details as plain text with LocalBusiness structured data. The check picks the three fixes that matter most for you.</p></details>
+    <details><summary data-t="q4">Is it free? What does monitoring cost?</summary><p data-t="a4">The check is free, no signup. Weekly monitoring is $19/month. If you want us to make the fixes, the visibility setup is $400 once. No ranking promises: nobody can promise what an AI will say.</p></details>
+    <details><summary data-t="q5">What do you store?</summary><p data-t="a5">What you type and the answers, cached for 24 hours so a repeat check is instant. Your IP address is only used, hashed, for a rate limit, for up to 2 hours. Your email only if you ask for the report or monitoring. See <a href="../privacy/">privacy</a>.</p></details>
+    <p class="note"><span data-t="also">Want a full website scorecard?</span> <a href="../audit/" data-t="also_a">Run the free visibility check →</a></p>
+  </section>
+
+  <footer>
+    <div class="entities"><address><b>Taktek, LLC</b><br>131 Continental Dr, Suite 305<br>Newark, DE 19713, United States</address><address><b>Taktek Offshore SAL</b><br>Al Watta Street, Riman Building<br>Aley 5516, Lebanon</address></div>
+    <a href="../">Home</a>
+    <a href="../portfolio/">Portfolio</a>
+    <a href="../notes/">Notes</a>
+    <a href="../work/">Work with us</a>
+    <a href="../audit/">Free check</a>
+    <a href="./">AI visibility check</a>
+    <a href="../whatsapp-agent/">WhatsApp agent demo</a>
+    <a href="../sa/">السعودية</a>
+    <a href="../ae/">الإمارات</a>
+    <a href="../jo/">الأردن</a>
+    <a href="../terms/">Terms</a>
+    <a href="../privacy/">Privacy</a>
+    <a href="../support/">Support</a>
+    <a href="../team/">Team</a>
+    <a class="spacer" href="https://github.com/taktekhq">github.com/taktekhq</a>
+  </footer>
+</main>
+</div>
+
+<script src="../assets/js/gravity.js"></script>
+<script src="config.js?v=1"></script>
+<script src="ai.js?v=3"></script>
+</body>
+</html>

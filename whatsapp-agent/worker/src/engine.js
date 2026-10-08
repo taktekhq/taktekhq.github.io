@@ -8,11 +8,11 @@ export const BIZ = {
     name: { en: 'Clinic Demo', ar: 'عيادة ديمو', fr: 'Clinique Démo' },
     hours: { 1: [9, 18], 2: [9, 18], 3: [9, 18], 4: [9, 18], 5: [9, 18], 6: [9, 14] }, // 0 = Sunday (closed)
     services: [
-      { id: 'consult', en: 'General consultation', ar: 'معاينة عامة', fr: 'Consultation générale', price: '$40', k: ['consult', 'general', 'checkup', 'check-up', 'معاينة', 'كشف', 'فحص', 'generale', 'générale', 'bilan', 'visite'] },
-      { id: 'cleaning', en: 'Dental cleaning', ar: 'تنظيف الأسنان', fr: 'Détartrage', price: '$60', k: ['clean', 'teeth', 'dental', 'dentist', 'tartre', 'detartrage', 'détartrage', 'dents', 'سنان', 'اسنان', 'تنظيف', 'تنضيف'] },
-      { id: 'whitening', en: 'Teeth whitening', ar: 'تبييض الأسنان', fr: 'Blanchiment dentaire', price: '$120', k: ['whiten', 'blanchiment', 'تبييض', 'تبييض الاسنان'] },
-      { id: 'derma', en: 'Dermatology consultation', ar: 'معاينة جلدية', fr: 'Consultation dermatologie', price: '$50', k: ['derma', 'skin', 'peau', 'جلد', 'جلدية'] },
-      { id: 'lab', en: 'Lab test panel', ar: 'فحوصات مخبرية', fr: 'Bilan sanguin', price: 'from $25', k: ['lab', 'blood', 'analyse', 'sang', 'مخبر', 'دم', 'تحاليل'] },
+      { id: 'consult', en: 'General consultation', ar: 'معاينة عامة', fr: 'Consultation générale', price: '$40', k: ['consult', 'general', 'checkup', 'check-up', 'معاينة', 'كشف', 'فحص', 'ma3ayane', '7es', 'generale', 'générale', 'bilan', 'visite'] },
+      { id: 'cleaning', en: 'Dental cleaning', ar: 'تنظيف الأسنان', fr: 'Détartrage', price: '$60', k: ['clean', 'teeth', 'dental', 'dentist', 'tartre', 'detartrage', 'détartrage', 'dents', 'سنان', 'اسنان', 'تنظيف', 'تنضيف', 'tanzif', 'tandif', 'snen', 'asnan'] },
+      { id: 'whitening', en: 'Teeth whitening', ar: 'تبييض الأسنان', fr: 'Blanchiment dentaire', price: '$120', k: ['whiten', 'blanchiment', 'تبييض', 'تبييض الاسنان', 'tabyid', 'tabyeed'] },
+      { id: 'derma', en: 'Dermatology consultation', ar: 'معاينة جلدية', fr: 'Consultation dermatologie', price: '$50', k: ['derma', 'skin', 'peau', 'جلد', 'جلدية', 'jeld', 'jildiyye'] },
+      { id: 'lab', en: 'Lab test panel', ar: 'فحوصات مخبرية', fr: 'Bilan sanguin', price: 'from $25', k: ['lab', 'blood', 'analyse', 'sang', 'مخبر', 'دم', 'تحاليل', 'ta7alil', 'tahalil', 'mokhtabar'] },
     ],
     address: { en: 'Hamra Street, Beirut (demo address, not a real place)', ar: 'شارع الحمرا، بيروت (عنوان تجريبي، ليس مكانًا حقيقيًا)', fr: 'Rue Hamra, Beyrouth (adresse de démonstration, pas un vrai lieu)' },
     // slots already taken in the demo calendar, by weekday and hour, so the calendar is not empty
@@ -22,9 +22,9 @@ export const BIZ = {
     name: { en: 'Salon Demo', ar: 'صالون ديمو', fr: 'Salon Démo' },
     hours: { 2: [10, 19], 3: [10, 19], 4: [10, 19], 5: [10, 19], 6: [10, 17] }, // closed Sunday and Monday
     services: [
-      { id: 'cut', en: 'Haircut', ar: 'قص شعر', fr: 'Coupe', price: '$25', k: ['hair', 'cut', 'coupe', 'cheveux', 'شعر', 'قص', 'قصة'] },
-      { id: 'blow', en: 'Blow-dry', ar: 'سشوار', fr: 'Brushing', price: '$15', k: ['blow', 'brushing', 'سشوار', 'مشط'] },
-      { id: 'color', en: 'Colour', ar: 'صبغة', fr: 'Couleur', price: 'from $70', k: ['colo', 'dye', 'couleur', 'صبغ', 'لون'] },
+      { id: 'cut', en: 'Haircut', ar: 'قص شعر', fr: 'Coupe', price: '$25', k: ['hair', 'cut', 'coupe', 'cheveux', 'شعر', 'قص', 'قصة', '2ass', 'a2ass', 'sha3er'] },
+      { id: 'blow', en: 'Blow-dry', ar: 'سشوار', fr: 'Brushing', price: '$15', k: ['blow', 'brushing', 'سشوار', 'مشط', 'sichwar', 'seshwar'] },
+      { id: 'color', en: 'Colour', ar: 'صبغة', fr: 'Couleur', price: 'from $70', k: ['colo', 'dye', 'couleur', 'صبغ', 'لون', 'sabgha', 'sebgha'] },
       { id: 'mani', en: 'Manicure', ar: 'مانيكير', fr: 'Manucure', price: '$20', k: ['mani', 'nail', 'ongle', 'مانيكير', 'اظافر', 'أظافر'] },
       { id: 'keratin', en: 'Keratin treatment', ar: 'علاج الكيراتين', fr: 'Kératine', price: '$120', k: ['kerat', 'كيراتين'] },
     ],
@@ -67,9 +67,12 @@ export function detectLang(text, prev) {
 
 export function parseTime(raw) {
   const t = norm(raw);
-  let m = t.match(/\b(\d{1,2})\s*[:h.]\s*(\d{2})?\s*(am|pm|ص|م)?\b/);
+  let m = t.trim().match(/^(\d{1,2})$/);
+  if (!m) m = t.match(/(?:bokra|bukra|بكره|اليوم|lyom|demain|tomorrow|today)\s+(\d{1,2})\b(?!\s*[\/.-]\d)/);
+  if (!m) m = t.match(/\b(\d{1,2})\s*[:h.]\s*(\d{2})?\s*(am|pm|ص|م)?\b/);
   if (!m) m = t.match(/\b(\d{1,2})\s*(am|pm)\b/);
   if (!m) m = t.match(/(?:at|a|à|الساعه|الساعة|ساعه|sa3a|saa3a|عند)\s*(\d{1,2})\b/);
+  if (!m) m = t.match(/(?:^|\s)(\d{1,2})\s*$/);
   if (!m) return null;
   let h = parseInt(m[1], 10);
   const ap = m[3] && /am|pm|ص|م/.test(m[3]) ? m[3] : (m[2] && /am|pm/.test(m[2]) ? m[2] : (/(am|pm)\b/.test(t) ? t.match(/(am|pm)\b/)[1] : null));
@@ -237,12 +240,13 @@ export function reply({ text, state, bookings = [], today: todayISO }) {
 
   if (st.handedOver) return out(t.handedOver, { intent: 'handed_over' });
 
+  const day0 = parseDay(text, today); const hour0 = parseTime(text);
   const human = has(n, ['human', 'person', 'agent', 'someone', 'real person', 'receptionist', 'manager', 'personne', 'humain', 'quelqu', 'conseiller', 'شخص', 'موظف', 'انسان', 'بشري', 'حدا', 'حد من', 'مسؤول']);
-  const medical = has(n, ['pain', 'hurt', 'symptom', 'medicine', 'medication', 'dose', 'diagnos', 'prescri', 'fever', 'infection', 'bleeding', 'allerg', 'pregnan', 'douleur', 'symptome', 'symptôme', 'médicament', 'medicament', 'fièvre', 'fievre', 'ordonnance', 'وجع', 'الم', 'ألم', 'دواء', 'دوا', 'عوارض', 'اعراض', 'حرارة', 'حراره', 'تشخيص', 'وصفه']);
+  const medical = /(^|\s)(الم|دوا|ادويه|مرض)(\s|$|[؟?!.,،])/.test(n) || has(n, ['pain', 'hurt', 'symptom', 'medicine', 'medication', 'dose', 'diagnos', 'prescri', 'fever', 'infection', 'bleeding', 'allerg', 'pregnan', 'douleur', 'symptome', 'symptôme', 'médicament', 'medicament', 'fièvre', 'fievre', 'ordonnance', 'وجع', 'دواء', 'عوارض', 'اعراض', 'حرارة', 'حراره', 'تشخيص', 'وصفه']);
   if (human) { st.handedOver = true; st.pending = null; return out(t.human, { intent: 'human', event: { type: 'handover' } }); }
-  if (medical && !(st.pending === 'when' || st.pending === 'confirm')) return out(t.medical, { intent: 'medical', chips: [CHIPS[lang].menu[2], CHIPS[lang].menu[3]] });
+  if (medical && !((st.pending === 'when' || st.pending === 'confirm') && (day0 || hour0 !== null))) return out(t.medical, { intent: 'medical', chips: [CHIPS[lang].menu[2], CHIPS[lang].menu[3]] });
 
-  const yes = /^(y|yes|yeah|yep|ok|okay|sure|oui|ouais|d'accord|daccord|نعم|ايه|اه|ايوه|تمام|اكيد)(?![\p{L}])/u.test(n.trim()) || n.trim() === '1';
+  const yes = /^(y|yes|yeah|yep|ok|okay|sure|oui|ouais|d'accord|daccord|نعم|ايه|اه|ايوه|تمام|اكيد|nam|na3am|ne3am|aywa|aywa|eh|tamam)(?![\p{L}])/u.test(n.trim()) || n.trim() === '1';
   const no = /^(n|no|nope|non|لا|لا|la2|la)(?![\p{L}])/u.test(n.trim());
   const day = parseDay(text, today);
   const hour = parseTime(text);
@@ -261,17 +265,33 @@ export function reply({ text, state, bookings = [], today: todayISO }) {
 
   const wantCancel = has(n, ['cancel', 'annul', 'الغي', 'إلغاء', 'الغاء', 'الغ']);
   const wantResched = has(n, ['resched', 'move', 'change', 'postpone', 'another time', 'different time', 'reporter', 'décaler', 'decaler', 'déplacer', 'deplacer', 'changer', 'اجل', 'أجل', 'تأجيل', 'تاجيل', 'غير', 'بدل', 'نقل']);
-  const wantBook = has(n, ['book', 'appointment', 'appoint', 'reserv', 'slot', 'schedule', 'rendez', 'rdv', 'réserv', 'prendre', 'موعد', 'حجز', 'احجز', 'بدي احجز', 'مواعيد', 'mawid', 'maw3ed', 'bade', 'badde', 'baddi', 'ba7jez', 'seat', 'see a', 'visit', 'i need', 'i want', 'je veux', 'je voudrais', 'j’aimerais']);
-  const askHours = has(n, ['hour', 'open', 'close', 'closing', 'opening', 'horaire', 'ouvert', 'ferme', 'fermé', 'دوام', 'مواعيد الدوام', 'ساعات', 'مفتوح', 'بتفتح', 'بتسكر', 'مسكر', 'when are you', 'time do you', 'sa3at', 'daweem']) && !(wantBook && (day || hour !== null));
+  const wantBook = has(n, ['book', 'appointment', 'appoint', 'reserv', 'slot', 'schedule', 'rendez', 'rdv', 'réserv', 'prendre', 'موعد', 'حجز', 'احجز', 'بدي احجز', 'mawid', 'maw3ed', 'bade', 'badde', 'baddi', 'ba7jez', 'seat', 'see a', 'visit', 'i need', 'i want', 'je veux', 'je voudrais', 'j’aimerais']);
+  const askHours = has(n, ['hour', 'open', 'close', 'closing', 'opening', 'horaire', 'ouvert', 'ferme', 'fermé', 'دوام', 'مواعيد الدوام', 'ساعات', 'مفتوح', 'بتفتح', 'بتسكر', 'مسكر', 'when are you', 'time do you', 'sa3at', 'daweem', 'dawem', 'dawam', 'مواعيدكن', 'مواعيدكم', 'مواعيدكو', 'مواعيدك', 'mawa3id', 'mawaid']) && !(wantBook && (day || hour !== null));
   const askPrice = has(n, ['price', 'cost', 'how much', 'rate', 'fee', 'menu', 'tarif', 'prix', 'combien', 'coût', 'cout', 'سعر', 'اسعار', 'أسعار', 'بكم', 'قديش', 'شو سعر', 'كم', 'kadesh', '2adesh', 'adesh']);
   const askLoc = has(n, ['where', 'location', 'address', 'directions', 'map', 'adresse', 'situé', 'situe', 'où', 'ou etes', 'وين', 'عنوان', 'موقع', 'مكان', 'فين', 'wein', 'ween']);
-  const greeting = /^(hi|hello|hey|salut|bonjour|bonsoir|marhaba|مرحبا|اهلا|أهلا|سلام|السلام|هلا|good (morning|evening)|ahlan|hala)/.test(n.trim());
+  const greeting = /^(hi|hello|hey|salut|bonjour|bonsoir|marhaba|مرحبا|اهلا|أهلا|سلام|السلام|هلا|good (morning|evening)|ahlan|hala|kifak|kifik|shou|shu)/.test(n.trim());
   const thanks = has(n, ['thank', 'merci', 'شكرا', 'شكراً', 'يسلمو', 'مشكور', 'shukran', 'thx']);
 
   // slot capture while collecting / on any booking-ish message
   const inFlow = st.pending === 'service' || st.pending === 'when' || st.pending === 'resched';
-  if (wantCancel && !inFlow) {
-    if (!mine) return out(t.noBooking, { intent: 'cancel_none', chips: [CHIPS[lang].menu[2]] });
+  const strictBook = has(n, ['book', 'reserv', 'احجز', 'حجز', 'rendez', 'rdv', 'prendre', 'schedule', 'appointment', 'موعد', 'bade', 'badde', 'baddi', 'بدي']);
+  const slotData = day || hour !== null;
+  // questions and cancellations asked mid-booking are answered, not swallowed by the flow
+  if (st.pending && !slotData && !strictBook && !wantCancel) {
+    if (askPrice) {
+      if (svc) return out(t.price1([svc[lang], svc.price]), { intent: 'price' });
+      return out(t.prices(name, B.services.map((s) => svcLine(lang, s)).join('\n')), { intent: 'prices' });
+    }
+    if (askHours) return out(t.hours(name, hoursText(lang, biz)), { intent: 'hours' });
+    if (askLoc) return out(t.loc(name, B.address[lang]), { intent: 'location' });
+    if (thanks) return out(t.thanks, { intent: 'thanks' });
+  }
+  if (wantCancel && !slotData && !svc) {
+    if (!mine) {
+      if (st.pending) { Object.assign(st, { pending: null, service: null, date: null, time: null, resched: false }); return out(t.no, { intent: 'decline', chips: CHIPS[lang].menu }); }
+      return out(t.noBooking, { intent: 'cancel_none', chips: [CHIPS[lang].menu[2]] });
+    }
+    Object.assign(st, { pending: null, service: null, date: null, time: null, resched: false });
     return out(t.cancelled, { intent: 'cancel', event: { type: 'cancel', id: mine.id }, chips: CHIPS[lang].menu });
   }
   if (wantResched && !inFlow) {

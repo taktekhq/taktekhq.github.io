@@ -1,0 +1,16 @@
+name = "taktek-wa-agent"
+main = "src/index.js"
+compatibility_date = "2025-07-01"
+workers_dev = true
+
+# Workers AI: answers messages the scripted flow has no intent for. Free allowance, then metered.
+[ai]
+binding = "AI"
+
+# 20 messages per 60 s per visitor IP, enforced by Cloudflare (in-Worker limiter is the fallback).
+[[ratelimits]]
+name = "RL"
+namespace_id = "7311"
+  [ratelimits.simple]
+  limit = 20
+  period = 60

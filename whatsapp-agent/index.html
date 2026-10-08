@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Try a WhatsApp AI agent in 30 seconds — Taktek demo</title>
+<meta name="description" content="Chat with a demo WhatsApp assistant for a clinic or salon in Arabic, English or French: it answers FAQs, books into a calendar, sends reminders and hands over to a person. Setup from $750.">
+<meta property="og:title" content="Try a WhatsApp AI agent in 30 seconds">
+<meta property="og:description" content="A live demo for clinics, salons and gyms: FAQs, bookings, reminders and hand-over to a human, in Arabic, English and French.">
+<meta property="og:url" content="https://taktek.io/whatsapp-agent/">
+<meta property="og:image" content="https://taktek.io/assets/og/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://taktek.io/whatsapp-agent/">
+<link rel="icon" href="../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/og/apple-touch.png">
+<meta name="theme-color" content="#F7F5F1" media="(prefers-color-scheme:light)">
+<meta name="theme-color" content="#0D0D0E" media="(prefers-color-scheme:dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/studio.css?v=dots">
+<link rel="stylesheet" href="../assets/css/gravity.css">
+<link rel="stylesheet" href="demo.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MY112CQXP6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  if (!(navigator.webdriver || /bot|crawl|spider|headless|lighthouse/i.test(navigator.userAgent) || (screen.width === 800 && screen.height === 600))) {
+    gtag('js', new Date());
+    gtag('config', 'G-MY112CQXP6', { anonymize_ip: true });
+  }
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "Service", "@id": "https://taktek.io/whatsapp-agent/#service", "name": "WhatsApp AI agent for clinics, salons and gyms", "provider": { "@type": "Organization", "name": "Taktek", "url": "https://taktek.io/" }, "serviceType": "WhatsApp Business setup and AI booking assistant", "areaServed": ["LB", "SA", "AE", "JO"], "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "750", "description": "Setup from $750, plus optional monthly care. Meta's own messaging fees are separate." } },
+    { "@type": "BreadcrumbList", "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "taktek", "item": "https://taktek.io/" }, { "@type": "ListItem", "position": 2, "name": "WhatsApp agent demo", "item": "https://taktek.io/whatsapp-agent/" } ] }
+  ]
+}
+</script>
+</head><body>
+
+<div class="wrap">
+  <header class="head">
+    <a class="mark" href="../">taktek<i aria-hidden="true"></i></a>
+    <button class="langbtn" id="lang" type="button" aria-label="Switch language">العربية</button>
+    <input type="checkbox" id="mode">
+    <label class="modebtn" for="mode" title="Switch appearance" aria-label="Switch appearance">
+      <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+      <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M22 12h2"></path></svg>
+    </label>
+  </header>
+
+<main>
+  <section class="hero">
+    <p class="eyebrow"><span class="en">Live demo · 30 seconds</span><span class="ar">تجربة مباشرة · ٣٠ ثانية</span></p>
+    <h1><span class="en">Your WhatsApp,<br>answered and booked<em>.</em></span><span class="ar">واتساب نشاطك،<br>يرد ويحجز<em>.</em></span></h1>
+    <p class="lede"><span class="en">Write to the assistant below the way your customers do: Arabic, English, French or a Lebanese mix. It answers questions, books into the calendar, sends a reminder and passes you to a person when you ask. It's a demo for a made-up clinic and salon.</span><span class="ar">اكتب للمساعد كما يكتب زبائنك: عربي، إنجليزي، فرنسي أو خليط لبناني. يجيب عن الأسئلة، يحجز في التقويم، يرسل تذكيرًا ويحوّلك إلى شخص عندما تطلب. هذه نسخة تجريبية لعيادة وصالون وهميين.</span></p>
+  </section>
+
+  <section class="sec demo" aria-label="Demo">
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab" class="tab on" data-biz="clinic" aria-selected="true"><span class="en">Clinic</span><span class="ar">عيادة</span></button>
+      <button type="button" role="tab" class="tab" data-biz="salon" aria-selected="false"><span class="en">Salon</span><span class="ar">صالون</span></button>
+    </div>
+
+    <div class="stage">
+      <div class="phone" dir="ltr">
+        <div class="phone__bar">
+          <span class="avatar" id="avatar">C</span>
+          <span class="phone__who"><b id="bizname">Clinic Demo</b><small><span class="dot"></span><span id="mode_tag">demo assistant</span></small></span>
+          <button type="button" class="reset" id="reset" title="Reset chat"><span class="en">Reset</span><span class="ar">إعادة</span></button>
+        </div>
+        <div class="phone__msgs" id="msgs" aria-live="polite"></div>
+        <div class="phone__chips" id="chips"></div>
+        <form class="phone__in" id="form" autocomplete="off">
+          <input id="text" maxlength="300" placeholder="Type a message…" enterkeyhint="send" aria-label="Message">
+          <button type="submit" aria-label="Send">&#10148;</button>
+        </form>
+      </div>
+
+      <aside class="side">
+        <h2 class="eyebrow"><span class="en">Demo calendar · next 7 days</span><span class="ar">تقويم تجريبي · الأيام السبعة القادمة</span></h2>
+        <div class="cal" id="cal" dir="ltr" aria-label="Demo calendar"></div>
+        <p class="legend"><i class="k busy"></i><span class="en">taken</span><span class="ar">محجوز</span> <i class="k mine"></i><span class="en">your booking</span><span class="ar">حجزك</span> <i class="k hold"></i><span class="en">waiting for your "yes"</span><span class="ar">بانتظار "نعم"</span></p>
+        <h2 class="eyebrow" style="margin-top:22px"><span class="en">Reminder preview</span><span class="ar">معاينة التذكير</span></h2>
+        <div class="reminder" id="reminder" dir="auto"><span class="en">Book an appointment and the reminder your customer would get appears here.</span><span class="ar">احجز موعدًا وسيظهر هنا التذكير الذي يصل زبونك.</span></div>
+        <p class="try"><span class="en">Try: "how much is a cleaning?", "bade e7jez bokra 3 el 3asr", "je voudrais un rendez-vous jeudi", "I want to talk to someone".</span><span class="ar">جرّب: "كم سعر التنظيف؟"، "بدي احجز بكرا الساعة 3"، "je voudrais un rendez-vous jeudi"، "بدي إحكي مع شخص".</span></p>
+      </aside>
+    </div>
+    <p class="note fine"><span class="en">Scheduling and FAQs only: it does not give medical advice. Nothing you type is stored, and the demo is rate-limited. Clinic Demo and the salon are made up; this is not WhatsApp and is not affiliated with Meta.</span><span class="ar">للمواعيد والأسئلة الشائعة فقط: لا يقدّم نصائح طبية. لا يُخزَّن شيء مما تكتبه، والتجربة محدودة السرعة. العيادة والصالون وهميان؛ هذه ليست واتساب وغير مرتبطة بشركة Meta.</span></p>
+  </section>
+
+  <section class="sec" aria-label="What you get">
+    <p class="eyebrow"><span class="en">What you get</span><span class="ar">ماذا تحصل عليه</span></p>
+    <div class="index">
+      <div class="row" style="cursor:default"><span class="row__main"><span class="row__title"><span class="en">WhatsApp Business setup</span><span class="ar">إعداد واتساب للأعمال</span></span><span class="row__desc"><span class="en">Your business number on the WhatsApp Business Platform, profile, hours, catalogue and greeting. We walk you through Meta's verification.</span><span class="ar">رقم نشاطك على منصة واتساب للأعمال: الملف التعريفي، الدوام، الكتالوج ورسالة الترحيب. نرافقك في خطوات التحقق من Meta.</span></span></span></div>
+      <div class="row" style="cursor:default"><span class="row__main"><span class="row__title"><span class="en">An agent trained on your information</span><span class="ar">مساعد مدرَّب على معلوماتك</span></span><span class="row__desc"><span class="en">Your services, prices, hours, address and policies, in the languages your customers write. It stays inside scheduling and FAQs and passes anything else to you.</span><span class="ar">خدماتك وأسعارك وساعات دوامك وعنوانك وسياساتك، باللغات التي يكتب بها زبائنك. يلتزم بالمواعيد والأسئلة الشائعة ويحوّل أي شيء آخر إليك.</span></span></span></div>
+      <div class="row" style="cursor:default"><span class="row__main"><span class="row__title"><span class="en">Booking into your calendar</span><span class="ar">حجز في تقويمك</span></span><span class="row__desc"><span class="en">Appointments land in your Google Calendar (or your booking tool), with reminders and reschedules handled in chat.</span><span class="ar">تصل المواعيد إلى تقويم Google (أو أداة الحجز لديك)، والتذكيرات وتغيير المواعيد تتم داخل المحادثة.</span></span></span></div>
+      <div class="row" style="cursor:default"><span class="row__main"><span class="row__title"><span class="en">Hand-over to your team</span><span class="ar">تحويل إلى فريقك</span></span><span class="row__desc"><span class="en">Whenever the customer asks for a person, the chat goes to you, with the conversation so far.</span><span class="ar">عندما يطلب الزبون شخصًا، تصلك المحادثة مع كل ما قيل حتى الآن.</span></span></span></div>
+      <div class="row" style="cursor:default"><span class="row__main"><span class="row__title"><span class="en">Monthly care</span><span class="ar">رعاية شهرية</span></span><span class="row__desc"><span class="en">We keep prices and hours current, read the conversations that went wrong, fix them, and send you a short monthly report.</span><span class="ar">نُبقي الأسعار والدوام محدّثة، ونراجع المحادثات التي لم تسر جيدًا ونصلحها، ونرسل لك تقريرًا شهريًا قصيرًا.</span></span></span></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-label="Pricing">
+    <p class="eyebrow"><span class="en">Honest pricing</span><span class="ar">أسعار صريحة</span></p>
+    <div class="index">
+      <div class="row" style="cursor:default"><span class="row__main"><span class="row__title"><span class="en">Setup</span><span class="ar">الإعداد</span></span><span class="row__desc"><span class="en">One-off, fixed once we've seen your services and calendar. Pay after we agree the scope.</span><span class="ar">مرة واحدة، يُثبَّت بعد أن نطّلع على خدماتك وتقويمك. الدفع بعد الاتفاق على النطاق.</span></span></span><span class="row__title" style="font-size:20px"><span class="en">from $750</span><span class="ar">من ٧٥٠$</span></span></div>
+      <div class="row" style="cursor:default"><span class="row__main"><span class="row__title"><span class="en">Monthly care</span><span class="ar">الرعاية الشهرية</span></span><span class="row__desc"><span class="en">Optional. Updates, review of conversations, monthly report. Priced after the audit, from the same $75/month as our other care plans.</span><span class="ar">اختيارية. تحديثات ومراجعة محادثات وتقرير شهري. يُحدَّد السعر بعد التدقيق، ويبدأ من ٧٥$ شهريًا كباقي خطط الرعاية لدينا.</span></span></span><span class="row__title" style="font-size:20px"><span class="en">from $75/mo</span><span class="ar">من ٧٥$/شهر</span></span></div>
+    </div>
+    <div class="note" style="margin-top:22px;padding-block:0"><h3><span class="en">What Meta charges, separately</span><span class="ar">ما تحتسبه Meta بشكل منفصل</span></h3><p class="row__desc"><span class="en">Meta bills the WhatsApp Business Platform itself, and not through us: since 2025 it charges per message (for example for reminders and other business-started messages), and replies inside the 24-hour customer window have been free. Using an AI model adds its own usage costs. For a small clinic this is usually a small monthly bill, but the rates change and differ by country, so read <a href="https://developers.facebook.com/docs/whatsapp/pricing/" target="_blank" rel="noopener">Meta's pricing page</a> and we'll estimate your volume in the audit.</span><span class="ar">تحتسب Meta منصة واتساب للأعمال نفسها، وليس عبرنا: منذ ٢٠٢٥ تحتسب لكل رسالة (مثل التذكيرات والرسائل التي يبدأها النشاط)، والردود ضمن نافذة الـ٢٤ ساعة مع الزبون كانت مجانية. واستخدام نموذج ذكاء اصطناعي له تكلفة استهلاك أيضًا. لعيادة صغيرة تكون الفاتورة الشهرية عادةً صغيرة، لكن الأسعار تتغيّر وتختلف بحسب الدولة، فاطّلع على <a href="https://developers.facebook.com/docs/whatsapp/pricing/" target="_blank" rel="noopener">صفحة أسعار Meta</a> وسنقدّر حجمك في التدقيق.</span></p></div>
+    <div class="note" style="padding-block:0"><h3><span class="en">What we don't claim</span><span class="ar">ما لا ندّعيه</span></h3><p class="row__desc"><span class="en">We are a dev shop where the developers are AI agents, led by Nizar Mahmoud. We have no clinic clients on this yet, which is why the first setups are priced to be easy to say yes to and you see everything before paying. The agent does scheduling and FAQs, never medical advice.</span><span class="ar">نحن استوديو برمجة يعمل فيه وكلاء ذكاء اصطناعي بقيادة نزار محمود. ليس لدينا بعد عملاء عيادات على هذه الخدمة، ولهذا نُبقي أسعار الإعدادات الأولى مشجعة وترى كل شيء قبل أن تدفع. المساعد يتولى المواعيد والأسئلة الشائعة فقط، ولا يقدّم نصائح طبية.</span></p></div>
+  </section>
+
+  <section class="sec" aria-label="Next step">
+    <p class="eyebrow"><span class="en">Next</span><span class="ar">الخطوة التالية</span></p>
+    <h2 class="big"><span class="en">Tried it? Book a free audit.</span><span class="ar">جرّبت؟ احجز تدقيقًا مجانيًا.</span></h2>
+    <p class="lede" style="max-width:46ch"><span class="en">Tell us your business. We'll check how customers find you and how fast WhatsApp gets answered, and tell you honestly whether an agent is worth it for you. 24 hours, no strings.</span><span class="ar">أخبرنا عن نشاطك. نفحص كيف يجدك الزبائن وسرعة الرد على واتساب، ونقول لك بصراحة إن كان المساعد يستحق لك. خلال ٢٤ ساعة، بلا التزام.</span></p>
+    <div class="actions">
+      <a class="cta" id="wa" target="_blank" rel="noopener" href="https://wa.me/96181511232?text=Hi%20Taktek%2C%20I%20tried%20the%20WhatsApp%20agent%20demo%20and%20would%20like%20a%20free%20audit."><b style="font-weight:inherit"><span class="en">WhatsApp us</span><span class="ar">راسلنا على واتساب</span></b> <span aria-hidden="true">&rarr;</span></a>
+      <a class="cta" href="../work/#audit"><b style="font-weight:inherit"><span class="en">Or use the form</span><span class="ar">أو عبر النموذج</span></b> <span aria-hidden="true">&rarr;</span></a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="entities"><address><b>Taktek, LLC</b><br>131 Continental Dr, Suite 305<br>Newark, DE 19713, United States</address><address><b>Taktek Offshore SAL</b><br>Al Watta Street, Riman Building<br>Aley 5516, Lebanon</address></div>
+    <a href="../">Home</a>
+    <a href="../portfolio/">Portfolio</a>
+    <a href="../notes/">Notes</a>
+    <a href="../work/">Work with us</a>
+    <a href="../audit/">Free check</a>
+    <a href="../terms/">Terms</a>
+    <a href="../privacy/">Privacy</a>
+    <a href="../support/">Support</a>
+    <a href="../team/">Team</a>
+    <a class="spacer" href="https://github.com/taktekhq">github.com/taktekhq</a>
+  </footer>
+</main>
+</div>
+
+<script src="../assets/js/gravity.js"></script>
+<script src="config.js"></script>
+<script type="module" src="demo.js"></script>
+</body>
+</html>

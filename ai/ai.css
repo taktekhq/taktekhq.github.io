@@ -39,7 +39,7 @@
 .f input[aria-invalid=true] { border-color: var(--bad); }
 .hp { position: absolute; inset-inline-start: -9999px; height: 0; overflow: hidden; }
 .actions { margin-top: var(--s3); }
-.note { font-size: 14px; color: var(--muted); max-width: 60ch; line-height: 1.5; margin: var(--s2) 0 0; }
+.fine { font-size: 14px; color: var(--muted); max-width: 60ch; line-height: 1.5; margin: var(--s2) 0 0; }
 .err { color: var(--bad); font-size: 15px; margin: var(--s1) 0 0; }
 .err::before { content: "! "; font-weight: 700; }
 .ok { color: var(--ink); font-size: 15px; margin: var(--s1) 0 0; }
@@ -133,8 +133,8 @@
 .faq details:last-of-type { border-bottom: 1px solid var(--rule); }
 .faq summary { padding: var(--s3) 0; min-height: 44px; cursor: pointer; font-size: 18px; color: var(--ink); }
 .faq details p { margin: 0 0 var(--s3); color: var(--muted); max-width: 62ch; line-height: 1.6; }
-.faq details a, .faq .note a { color: var(--ink); }
-.faq .note { margin-top: var(--s4); }
+.faq details a, .faq .fine a { color: var(--ink); }
+.faq .fine { margin-top: var(--s4); }
 [hidden] { display: none !important; }
 
 /* Mobile: the meter becomes a row of dots above the verdict so the text keeps the full width */
@@ -151,9 +151,9 @@
 
 /* Design-critic pass 1 (8 Oct): contrast, Arabic setting, offer hook */
 .asked { color: var(--ink-2); }
-.mon_hook { color: var(--ink) !important; font-weight: 500; }
+.offer .mon_hook { color: var(--ink); font-weight: 500; }
 .offer .f.mini { gap: var(--s1); align-content: start; }
-.offer .f.mini .note { margin: 0; }
+.offer .f.mini .fine { margin: 0; }
 .ai-sec footer, footer { color: var(--muted); }
 footer a, footer address { color: var(--muted); }
 [dir=rtl] .verdict h2, [dir=rtl] .offer h3, [dir=rtl] .fixes h4, [dir=rtl] .faq h2, [dir=rtl] .ai-hero h1, [dir=rtl] .label, [dir=rtl] .offer .price b { letter-spacing: 0; }
@@ -166,4 +166,22 @@ footer a, footer address { color: var(--muted); }
   .comps li { padding: 7px 12px; font-size: 14px; }
   .asked { margin-top: var(--s3); padding: var(--s1) var(--s2); }
   .verdict p { font-size: 16px; }
+}
+
+/* Design-critic pass 2 */
+.offer .err { color: var(--bad); }
+.fine a { color: var(--ink); }
+.comps li { font-size: 14px; }
+.ans summary, .ans blockquote, .fixes p { font-size: 16px; }
+.verdict p, .q h4 { font-size: 18px; }
+.offer h3 { font-size: 20px; }
+.meter { border-radius: 14px; }
+.skip { border-radius: 6px; }
+.stick { display: none; }
+@media (max-width: 560px) {
+  .stick:not([hidden]) { display: flex; position: fixed; inset-inline: 0; bottom: 0; z-index: 20; align-items: center; justify-content: space-between; gap: var(--s2);
+    padding: var(--s2) var(--gutter) calc(var(--s2) + env(safe-area-inset-bottom)); background: var(--paper); border-top: 1px solid var(--rule); }
+  .stick p { margin: 0; font-size: 14px; color: var(--muted); }
+  .stick b { font-size: 18px; color: var(--ink); font-weight: 500; font-variant-numeric: tabular-nums; }
+  body:has(.stick:not([hidden])) footer { padding-bottom: 88px; }
 }

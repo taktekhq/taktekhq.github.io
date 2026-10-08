@@ -25,7 +25,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/studio.css?v=dots">
 <link rel="stylesheet" href="../assets/css/gravity.css">
-<link rel="stylesheet" href="ai.css?v=5">
+<link rel="stylesheet" href="ai.css?v=6">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MY112CQXP6"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -94,7 +94,7 @@
       <div class="hp" aria-hidden="true"><label>Leave empty<input type="text" name="hp" tabindex="-1" autocomplete="off"></label></div>
       <div class="actions"><button type="submit" class="btn btn--solid" id="go"><span data-t="go">Check my business</span> <span class="arr" aria-hidden="true">&rarr;</span></button></div>
       <p class="err" id="err" role="alert" hidden></p>
-      <p class="note" data-t="fine">We ask Google Gemini and Anthropic Claude, with web search on. Results name the exact models and time. We keep what you typed and the answers for 24 hours; your IP is only used, hashed, for a 2-hour rate limit.</p>
+      <p class="fine" data-t="fine">We ask Google Gemini and Anthropic Claude, with web search on. Results name the exact models and time. We keep what you typed and the answers for 24 hours; your IP is only used, hashed, for a 2-hour rate limit.</p>
     </form>
   </section>
 
@@ -128,8 +128,8 @@
         <form class="f mini" id="mon_form" novalidate hidden>
           <label for="mon_mail"><span data-t="mon_mail">Where should the weekly report go?</span></label>
           <input type="email" id="mon_mail" autocomplete="email" dir="ltr" placeholder="you@yourbusiness.com" aria-describedby="mon_note mon_err">
-          <p class="note" id="mon_note" data-t="mon_note">Payment links aren't switched on yet: we'll email you a secure Stripe link for $19/month within a day, and the first weekly report starts when you pay.</p>
           <p class="err" id="mon_err" role="alert" hidden></p>
+          <p class="fine" id="mon_note" data-t="mon_note">Payment links aren't switched on yet: we'll email you a secure Stripe link for $19/month within a day, and the first weekly report starts when you pay.</p>
           <button type="submit" class="btn btn--solid"><span data-t="mon_send">Send me the link</span> <span class="arr" aria-hidden="true">&rarr;</span></button>
           <p class="ok" id="mon_ok" role="status" hidden></p>
         </form>
@@ -150,7 +150,7 @@
     <div class="block">
       <h3 class="label" data-t="ans_h">The exact answers</h3>
       <div id="r_answers"></div>
-      <p class="note"><a href="#offers" data-t="back_offers">Get these answers every week, or have us fix it →</a></p>
+      <p class="fine"><a href="#offers" data-t="back_offers">Get these answers every week, or have us fix it →</a></p>
     </div>
 
     <div class="block split">
@@ -181,8 +181,13 @@
     <details><summary data-t="q3">How do I get AI assistants to recommend me?</summary><p data-t="a3">Assistants with web search repeat what the web says about you: a complete Google Business Profile with recent reviews, consistent listings in local directories, and a website that states your name, services, area and contact details as plain text with LocalBusiness structured data. The check picks the three fixes that matter most for you.</p></details>
     <details><summary data-t="q4">Is it free? What does monitoring cost?</summary><p data-t="a4">The check is free, no signup. Weekly monitoring is $19/month. If you want us to make the fixes, the visibility setup is $400 once. No ranking promises: nobody can promise what an AI will say.</p></details>
     <details><summary data-t="q5">What do you store?</summary><p data-t="a5">What you type and the answers, cached for 24 hours so a repeat check is instant. Your IP address is only used, hashed, for a rate limit, for up to 2 hours. Your email only if you ask for the report or monitoring. See <a href="../privacy/">privacy</a>.</p></details>
-    <p class="note"><span data-t="also">Want a full website scorecard?</span> <a href="../audit/" data-t="also_a">Get the free website scorecard →</a></p>
+    <p class="fine"><span data-t="also">Want a full website scorecard?</span> <a href="../audit/" data-t="also_a">Get the free website scorecard →</a></p>
   </section>
+
+  <div class="stick" id="stick" hidden>
+    <p><b>$19</b><span data-t="per_month">/month</span> · <span data-t="stick_p">weekly AI check</span></p>
+    <button type="button" class="btn btn--solid" id="stick_btn"><span data-t="mon_cta">Start monitoring</span></button>
+  </div>
 
   <footer>
     <div class="entities"><address><b>Taktek, LLC</b><br>131 Continental Dr, Suite 305<br>Newark, DE 19713, United States</address><address><b>Taktek Offshore SAL</b><br>Al Watta Street, Riman Building<br>Aley 5516, Lebanon</address></div>
@@ -207,6 +212,6 @@
 
 <script src="../assets/js/gravity.js"></script>
 <script src="config.js?v=1"></script>
-<script src="ai.js?v=4"></script>
+<script src="ai.js?v=7"></script>
 </body>
 </html>

@@ -64,7 +64,7 @@
       q4: "Is it free? What does monitoring cost?", a4: "The check is free, no signup. Weekly monitoring is $19/month. If you want us to make the fixes, the visibility setup is $400 once. No ranking promises: nobody can promise what an AI will say.",
       q5: "What do you store?", a5: "What you type and the answers, cached for 24 hours so a repeat check is instant. Your IP address is only used, hashed, for a rate limit, for up to 2 hours. Your email only if you ask for the report or monitoring. See <a href=\"../privacy/\">privacy</a>.",
       also: "Want a full website scorecard?", also_a: "Get the free website scorecard →",
-      back_offers: "Get these answers every week, or have us fix it →", count_note: (n) => ` These count the ${n} “best” and “who to call” answers; “what do you know about you” is shown separately below.`, hook: (c) => `Get an alert the week you overtake ${c}.`, mon_bad: "Enter an email like you@yourbusiness.com.",
+      stick_p: "weekly AI check", back_offers: "Get these answers every week, or have us fix it →", count_note: (n) => ` Counts the ${n} “best” and “who to call” answers.`, hook: (c) => `Each week, see whether they name you or ${c}.`, mon_bad: "Enter an email like you@yourbusiness.com.",
       subbed: "You're subscribed. Your first weekly report arrives within 7 days; reply to any report to cancel.",
       langbtn: "العربية", fix: FIX_EN, locale: "en-GB",
     },
@@ -102,7 +102,7 @@
       q4: "هل هو مجاني؟ وكم تكلّف المراقبة؟", a4: "الفحص مجاني بلا تسجيل. المراقبة الأسبوعية ‎$19 شهريًا. وإن أردت أن ننفّذ الإصلاحات، فإعداد الظهور ‎$400 مرة واحدة. لا وعود بالترتيب: لا أحد يستطيع أن يعد بما سيقوله الذكاء الاصطناعي.",
       q5: "ماذا تحفظون؟", a5: "ما تكتبه والإجابات، ٢٤ ساعة ليكون الفحص المتكرر فوريًا. عنوان IP يُستخدم مشفّرًا فقط لتحديد عدد الفحوصات، لمدة أقصاها ساعتان. وبريدك فقط إن طلبت التقرير أو المراقبة. راجع <a href=\"../privacy/\">الخصوصية</a>.",
       also: "تريد تقييمًا كاملًا لموقعك؟", also_a: "احصل على تقييم موقعك المجاني ←",
-      back_offers: "احصل على هذه الإجابات كل أسبوع، أو دعنا نصلحها ←", count_note: (n) => ` يُحتسب هنا ${n} إجابات عن «الأفضل» و«بمن أتصل»؛ أما «ماذا يعرفون عنك» فتظهر منفصلة أدناه.`, hook: (c) => `تنبيه في الأسبوع الذي تتقدّم فيه على ${c}.`, mon_bad: "أدخل بريدًا مثل you@yourbusiness.com.",
+      stick_p: "فحص أسبوعي", back_offers: "احصل على هذه الإجابات كل أسبوع، أو دعنا نصلحها ←", count_note: (n) => ` يُحتسب ${n} إجابات عن «الأفضل» و«بمن أتصل».`, hook: (c) => `كل أسبوع، اعرف إن كانوا يذكرونك أم ${c}.`, mon_bad: "أدخل بريدًا مثل you@yourbusiness.com.",
       subbed: "تم الاشتراك. يصلك أول تقرير أسبوعي خلال ٧ أيام؛ ردّ على أي تقرير للإلغاء.",
       langbtn: "English", fix: FIX_AR, locale: "ar-u-nu-arab",
     },
@@ -129,7 +129,6 @@
     const u = new URL(location.href); if (lang === "ar") u.searchParams.set("lang", "ar"); else u.searchParams.delete("lang");
     history.replaceState(null, "", u);
     applyLang();
-  if (API) fetch(API + "/api/ai-check").then((r) => r.json()).then((j) => { if (j.models && j.models.length) { liveModels = j.models; applyLang(); } }).catch(() => {});
   if (params.get("subscribed")) track("monitor_subscribed", {});
   });
 
@@ -175,6 +174,7 @@
     render(r);
     $("result").hidden = false;
     $("r_head").focus({ preventScroll: true });
+    upd();
     $("result").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
   }
   form.addEventListener("submit", (e) => { e.preventDefault(); check(); });
@@ -237,7 +237,7 @@
       const u = new URL(window.AI_MONITOR_LINK); if (last?.key) u.searchParams.set("client_reference_id", last.key);
       location.href = u.toString(); return;
     }
-    $("mon_btn").hidden = true; $("mon_form").hidden = false; $("mon_mail").focus();
+    $("mon_btn").hidden = true; $("mon_form").hidden = false; $("stick").hidden = true; $("mon_mail").focus();
   });
   $("mon_form").addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -276,9 +276,19 @@
     $("fb_ok").textContent = t("fb_ok"); $("fb_ok").hidden = false; $("fb_text").disabled = true;
     track("feedback_sent", { recommended: last?.summary.recommended ?? null });
   });
-  $("again").addEventListener("click", () => { $("result").hidden = true; last = null; fields.name.value = ""; fields.website.value = ""; fields.name.focus(); window.scrollTo({ top: $("check").offsetTop - 20 }); });
+  $("again").addEventListener("click", () => { $("result").hidden = true; $("stick").hidden = true; last = null; fields.name.value = ""; fields.website.value = ""; fields.name.focus(); window.scrollTo({ top: $("check").offsetTop - 20 }); });
 
+  // Mobile: a sticky "Start monitoring" bar while the result is open and the offer card is off screen.
+  const stick = $("stick");
+  const upd = () => {
+    if ($("result").hidden || !$("mon_form").hidden) { stick.hidden = true; return; }
+    const r = $("offers").getBoundingClientRect();
+    stick.hidden = r.top < innerHeight && r.bottom > 0; // hide while the offer card itself is on screen
+  };
+  addEventListener("scroll", upd, { passive: true }); addEventListener("resize", upd);
+  $("stick_btn").addEventListener("click", () => { track("monitor_click_sticky", {}); stick.hidden = true; $("offers").scrollIntoView({ block: "start" }); $("mon_btn").click(); });
   applyLang();
+  if (API) fetch(API + "/api/ai-check").then((r) => r.json()).then((j) => { if (j.models && j.models.length) { liveModels = j.models; applyLang(); } }).catch(() => {});
   // Coming from a Lebanese Businesses listing with everything prefilled: run it straight away (results are cached 24 h).
   if (!isBot && params.get("src") && fields.name.value && fields.city.value && fields.category.value) check();
 

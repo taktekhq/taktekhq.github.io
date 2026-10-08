@@ -185,3 +185,10 @@ footer a, footer address { color: var(--muted); }
   .stick b { font-size: 18px; color: var(--ink); font-weight: 500; font-variant-numeric: tabular-nums; }
   body:has(.stick:not([hidden])) footer { padding-bottom: 88px; }
 }
+
+/* Design-critic pass 3 */
+@media (max-width: 560px) {
+  html:has(.stick:not([hidden])) { scroll-padding-bottom: 96px; }
+  .stick .btn { white-space: nowrap; flex: none; }
+}
+@media (max-width: 400px) { .verdict p { font-size: 16px; } }

@@ -64,7 +64,7 @@
       q4: "Is it free? What does monitoring cost?", a4: "The check is free, no signup. Weekly monitoring is $19/month. If you want us to make the fixes, the visibility setup is $400 once. No ranking promises: nobody can promise what an AI will say.",
       q5: "What do you store?", a5: "What you type and the answers, cached for 24 hours so a repeat check is instant. Your IP address is only used, hashed, for a rate limit, for up to 2 hours. Your email only if you ask for the report or monitoring. See <a href=\"../privacy/\">privacy</a>.",
       also: "Want a full website scorecard?", also_a: "Get the free website scorecard →",
-      stick_p: "weekly AI check", back_offers: "Get these answers every week, or have us fix it →", count_note: (n) => ` Counts the ${n} “best” and “who to call” answers.`, hook: (c) => `Each week, see whether they name you or ${c}.`, mon_bad: "Enter an email like you@yourbusiness.com.",
+      stick_p: ", cancel any time", back_offers: "Get these answers every week, or have us fix it →", count_note: (n) => ` Counts the ${n} “best” and “who to call” answers.`, hook: (c) => `Each week, see whether they name you or ${c}.`, mon_bad: "Enter an email like you@yourbusiness.com.",
       subbed: "You're subscribed. Your first weekly report arrives within 7 days; reply to any report to cancel.",
       langbtn: "العربية", fix: FIX_EN, locale: "en-GB",
     },
@@ -86,7 +86,7 @@
       web: "مع البحث في الويب", noweb: "بدون بحث في الويب", cached: " نتيجة من وقت سابق اليوم (محفوظة ٢٤ ساعة).",
       comp_h: "من يرشّحون بدلًا منك", times: (n) => `ذُكر ${n} مرات`, comp_none: "لم يُذكر أي نشاط آخر.",
       fix_h: "أهم ثلاثة إصلاحات", fix_site: (h, s) => `من فحص موقع ${h} (النتيجة ${s}/100). <a href="../audit/">التقييم الكامل ←</a>`,
-      mon_h: "راقب كل أسبوع", per_month: "/شهريًا", mon_p: "كل أسبوع نسأل المساعدين من جديد ونرسل لك الإجابات بالبريد، مع تنبيه في الأسبوع الذي تظهر فيه أو تختفي. يمكنك الإلغاء في أي وقت.",
+      mon_h: "راقب كل أسبوع", per_month: " شهريًا", mon_p: "كل أسبوع نسأل المساعدين من جديد ونرسل لك الإجابات بالبريد، مع تنبيه في الأسبوع الذي تظهر فيه أو تختفي. يمكنك الإلغاء في أي وقت.",
       mon_cta: "ابدأ المراقبة", mon_mail: "إلى أين نرسل التقرير الأسبوعي؟", mon_note: "روابط الدفع غير مفعّلة بعد: سنرسل لك رابط Stripe آمنًا بـ ‎$19 شهريًا خلال يوم، ويبدأ أول تقرير أسبوعي عند الدفع.",
       mon_send: "أرسلوا لي الرابط", mon_ok: "تم. يصلك رابط Stripe بالبريد خلال يوم. لا يُخصم شيء قبل أن تدفع.",
       fixit_h: "نصلحها لك", once: "مرة واحدة", fixit_p: "ننفّذ الإصلاحات: ملف Google Business، الإدراج في الأدلة، البيانات المنظّمة وصفحات يقرؤها الذكاء الاصطناعي، ثم نعيد هذا الفحص. لا وعود بالترتيب.", fixit_cta: "اطلب الإعداد",
@@ -102,7 +102,7 @@
       q4: "هل هو مجاني؟ وكم تكلّف المراقبة؟", a4: "الفحص مجاني بلا تسجيل. المراقبة الأسبوعية ‎$19 شهريًا. وإن أردت أن ننفّذ الإصلاحات، فإعداد الظهور ‎$400 مرة واحدة. لا وعود بالترتيب: لا أحد يستطيع أن يعد بما سيقوله الذكاء الاصطناعي.",
       q5: "ماذا تحفظون؟", a5: "ما تكتبه والإجابات، ٢٤ ساعة ليكون الفحص المتكرر فوريًا. عنوان IP يُستخدم مشفّرًا فقط لتحديد عدد الفحوصات، لمدة أقصاها ساعتان. وبريدك فقط إن طلبت التقرير أو المراقبة. راجع <a href=\"../privacy/\">الخصوصية</a>.",
       also: "تريد تقييمًا كاملًا لموقعك؟", also_a: "احصل على تقييم موقعك المجاني ←",
-      stick_p: "فحص أسبوعي", back_offers: "احصل على هذه الإجابات كل أسبوع، أو دعنا نصلحها ←", count_note: (n) => ` يُحتسب ${n} إجابات عن «الأفضل» و«بمن أتصل».`, hook: (c) => `كل أسبوع، اعرف إن كانوا يذكرونك أم ${c}.`, mon_bad: "أدخل بريدًا مثل you@yourbusiness.com.",
+      stick_p: "، ألغِ متى شئت", back_offers: "احصل على هذه الإجابات كل أسبوع، أو دعنا نصلحها ←", count_note: (n) => ` يُحتسب ${n} إجابات عن «الأفضل» و«بمن أتصل».`, hook: (c) => `كل أسبوع، اعرف إن كانوا يذكرونك أم ${c}.`, mon_bad: "أدخل بريدًا مثل you@yourbusiness.com.",
       subbed: "تم الاشتراك. يصلك أول تقرير أسبوعي خلال ٧ أيام؛ ردّ على أي تقرير للإلغاء.",
       langbtn: "English", fix: FIX_AR, locale: "ar-u-nu-arab",
     },
@@ -116,6 +116,7 @@
   function applyLang() {
     const d = T[lang];
     document.documentElement.lang = lang;
+    if (lang === "ar" && !document.getElementById("arfont")) { const l = document.createElement("link"); l.id = "arfont"; l.rel = "stylesheet"; l.href = "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500&display=swap"; document.head.appendChild(l); }
     document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
     const M = liveModels && liveModels.length ? liveModels.map((m) => m.label).join(lang === "ar" ? " و" : " and ") : (lang === "ar" ? "Google Gemini وAnthropic Claude" : "Google Gemini and Anthropic Claude");
     document.querySelectorAll("[data-t]").forEach((el) => { const v = d[el.dataset.t]; if (typeof v === "string") el.innerHTML = v.replace("{M}", M); });
@@ -191,11 +192,11 @@
     for (let i = 0; i < s.asked; i++) { const dot = document.createElement("i"); if (i < s.recommended) dot.className = "on"; meter.appendChild(dot); }
     meter.style.gridTemplateColumns = `repeat(${Math.min(2, s.asked) || 1}, 1fr)`;
     $("r_head").textContent = s.recommended ? d.head_yes(num(s.recommended), num(s.asked)) : d.head_no;
-    $("r_sub").textContent = (s.recommended ? d.sub_yes(name, s.known) : d.sub_no(name, s.known)) + d.count_note(num(s.asked));
+    $("r_sub").textContent = s.recommended ? d.sub_yes(name, s.known) : d.sub_no(name, s.known);
     const top = r.competitors[0]; $("mon_hook").hidden = !top; if (top) $("mon_hook").textContent = d.hook(top.name);
     const when = new Intl.DateTimeFormat(d.locale, { dateStyle: "medium", timeStyle: "short", timeZone: "UTC" }).format(new Date(r.checkedAt)) + " UTC";
     const models = r.models.map((m) => `<bdi dir="ltr">${esc(m.label)}</bdi> (<bdi dir="ltr">${esc(m.model)}</bdi>، ${m.web ? d.web : d.noweb})`.replace("، ", lang === "ar" ? "، " : ", ")).join(lang === "ar" ? " و" : " and ");
-    $("r_asked").innerHTML = d.asked(models, esc(when)) + (r.cached ? d.cached : "");
+    $("r_asked").innerHTML = esc(d.count_note(num(s.asked)).trim()) + " " + d.asked(models, esc(when)) + (r.cached ? d.cached : "");
 
     const comps = $("r_comps"); comps.innerHTML = "";
     if (r.competitors.length) r.competitors.forEach((c) => { const li = document.createElement("li"); li.innerHTML = `<bdi>${esc(c.name)}</bdi> <small>${esc(d.times(num(c.n)))}</small>`; comps.appendChild(li); });
@@ -224,6 +225,7 @@
       });
       box.appendChild(div);
     });
+    upd();
     $("fix_btn").href = `../work/?package=visibility&business=${encodeURIComponent(name)}&where=${encodeURIComponent(r.query.website || r.query.city)}#audit`;
   }
 
@@ -283,7 +285,9 @@
   const upd = () => {
     if ($("result").hidden || !$("mon_form").hidden) { stick.hidden = true; return; }
     const r = $("offers").getBoundingClientRect();
-    stick.hidden = r.top < innerHeight && r.bottom > 0; // hide while the offer card itself is on screen
+    const res = $("result").getBoundingClientRect();
+    // Only inside the result (not over the hero, form or FAQ), and never while the offer card itself is on screen.
+    stick.hidden = !(res.top < 0 && res.bottom > innerHeight) || (r.top < innerHeight && r.bottom > 0);
   };
   addEventListener("scroll", upd, { passive: true }); addEventListener("resize", upd);
   $("stick_btn").addEventListener("click", () => { track("monitor_click_sticky", {}); stick.hidden = true; $("offers").scrollIntoView({ block: "start" }); $("mon_btn").click(); });

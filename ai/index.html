@@ -22,10 +22,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://taktek-audit.taktek-5f0.workers.dev" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="../assets/css/studio.css?v=dots">
 <link rel="stylesheet" href="../assets/css/gravity.css">
-<link rel="stylesheet" href="ai.css?v=6">
+<link rel="stylesheet" href="ai.css?v=7">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MY112CQXP6"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -185,7 +187,7 @@
   </section>
 
   <div class="stick" id="stick" hidden>
-    <p><b>$19</b><span data-t="per_month">/month</span> · <span data-t="stick_p">weekly AI check</span></p>
+    <p><b>$19</b><span data-t="per_month">/month</span><span data-t="stick_p">, cancel any time</span></p>
     <button type="button" class="btn btn--solid" id="stick_btn"><span data-t="mon_cta">Start monitoring</span></button>
   </div>
 
@@ -212,6 +214,6 @@
 
 <script src="../assets/js/gravity.js"></script>
 <script src="config.js?v=1"></script>
-<script src="ai.js?v=7"></script>
+<script src="ai.js?v=9"></script>
 </body>
 </html>

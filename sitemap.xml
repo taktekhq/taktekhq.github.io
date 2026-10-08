@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url><loc>https://taktek.io/</loc><lastmod>2026-09-29</lastmod></url>
   <url><loc>https://taktek.io/bloo/</loc><lastmod>2026-08-08</lastmod></url>
   <url><loc>https://taktek.io/portfolio/</loc><lastmod>2026-10-02</lastmod></url>
@@ -17,4 +17,5 @@
   <url><loc>https://taktek.io/privacy/</loc><lastmod>2026-09-25</lastmod></url>
   <url><loc>https://taktek.io/support/</loc><lastmod>2026-09-25</lastmod></url>
   <url><loc>https://taktek.io/terms/</loc><lastmod>2026-09-25</lastmod></url>
+  <url><loc>https://taktek.io/sa/</loc><lastmod>2026-10-08</lastmod><xhtml:link rel="alternate" hreflang="ar-SA" href="https://taktek.io/sa/"/><xhtml:link rel="alternate" hreflang="ar-AE" href="https://taktek.io/ae/"/><xhtml:link rel="alternate" hreflang="ar-JO" href="https://taktek.io/jo/"/></url>
 </urlset>

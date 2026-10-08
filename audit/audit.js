@@ -121,6 +121,7 @@
   function showErr(el, m) { el.textContent = m; el.hidden = false; }
 
   $("lang").addEventListener("click", () => { lang = lang === "ar" ? "en" : "ar"; localStorage.setItem("audit-lang", lang); applyLang(); });
+  $("wa").addEventListener("click", () => { if (window.gtag) gtag("event", "whatsapp_click", { page: location.pathname }); });
   applyLang();
   if (!API) $("fallback").hidden = false;
 
@@ -132,6 +133,7 @@
     if (fd.get("website")) return;
     const url = String(fd.get("url") || "").trim();
     if (!url) return showErr(err, t().e_bad);
+    if (window.gtag) gtag("event", "audit_run", { lang });
     const btn = $("go"); btn.disabled = true; btn.firstElementChild.innerHTML = '<span class="spin"></span>' + t().busy;
     $("result").hidden = true;
     try {
@@ -160,6 +162,7 @@
     try {
       const res = await fetch(API + "/api/lead", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ email, consent: true, url: last.input, score: last.score, business: last.business, city: last.city, lang }) });
       if (!res.ok) throw 0;
+      if (window.gtag) gtag("event", "audit_lead_submit", { score_band: last.score >= 75 ? "good" : last.score >= 50 ? "ok" : "low" });
       const ok = $("lead_ok"); ok.textContent = t().lead_ok; ok.hidden = false; e.target.querySelector("button").disabled = true;
     } catch { showErr(err, t().e_net); }
   });

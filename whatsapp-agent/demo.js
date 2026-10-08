@@ -83,11 +83,14 @@ async function ask(text) {
   const r = reply(payload); r.source = 'script'; return r;
 }
 
+const track = (name, params) => { try { if (window.gtag) gtag('event', name, params || {}); } catch (_) {} };
+
 async function send(text) {
   text = (text || '').trim();
   if (!text || busy) return;
   busy = true; $('text').value = ''; chips([]);
   bubble(text, 'me');
+  track('demo_message_sent', { biz, lang: ui });
   const typing = bubble('···', 'bot typing');
   const r = await ask(text);
   typing.remove();
@@ -97,7 +100,8 @@ async function send(text) {
     bubble(r.text, 'bot'); chips(r.chips);
     if (r.reminder) showReminder(r.reminder);
     setMode(r.source);
-    if (r.event?.type === 'handover') bubble({ en: 'Chat handed to a team member (demo).', ar: 'تم تحويل المحادثة إلى أحد الفريق (تجريبي).' }[ui], 'sys');
+    if (r.event?.type === 'handover') { bubble({ en: 'Chat handed to a team member (demo).', ar: 'تم تحويل المحادثة إلى أحد الفريق (تجريبي).' }[ui], 'sys'); track('demo_handover', { biz, lang: ui }); }
+    if (r.event?.type === 'book') track('demo_booking', { biz, lang: ui });
   }
   renderCal(); busy = false; $('text').focus({ preventScroll: true });
 }
@@ -121,6 +125,7 @@ function setUi(l) {
 }
 
 $('form').addEventListener('submit', (e) => { e.preventDefault(); send($('text').value); });
+$('wa').addEventListener('click', () => track('whatsapp_click', { page: location.pathname }));
 $('reset').onclick = start;
 $('lang').onclick = () => { setUi(ui === 'en' ? 'ar' : 'en'); start(); };
 document.querySelectorAll('.tab').forEach((t) => t.addEventListener('click', () => {

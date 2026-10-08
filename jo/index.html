@@ -228,6 +228,10 @@
   };
   if (new URLSearchParams(location.search).get('lang') === 'en') set('en');
   document.getElementById('lang').addEventListener('click', () => set(document.documentElement.lang === 'ar' ? 'en' : 'ar'));
+  const track = (name, params) => { try { if (window.gtag) gtag('event', name, params || {}); } catch (_) {} };
+  document.querySelectorAll('a.wa').forEach(a => a.addEventListener('click', () => track('whatsapp_click', { page: location.pathname })));
+  const formLink = document.querySelector('a[href="https://taktek.io/work/#audit"]');
+  if (formLink) formLink.addEventListener('click', () => track('package_click', { package: 'Free audit', page: location.pathname }));
 })();
 </script>
 </body>

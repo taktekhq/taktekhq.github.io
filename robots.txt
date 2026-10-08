@@ -5,3 +5,4 @@ Allow: /
 # https://taktek.io/llms.txt
 
 Sitemap: https://taktek.io/sitemap.xml
+Sitemap: https://taktek.io/tlete/sitemap.xml

@@ -1,0 +1,10 @@
+name = "taktek-audit"
+main = "src/index.js"
+compatibility_date = "2025-07-01"
+workers_dev = true
+
+# Rate-limit counters and opt-in leads. Create once:  npx wrangler kv namespace create KV
+# then paste the id below (and uncomment). Without it the Worker still runs, with per-isolate limits only.
+# [[kv_namespaces]]
+# binding = "KV"
+# id = "PASTE_ID"

@@ -1,0 +1,19 @@
+taktek.io 889ms score 80 http 200
+  https:p mobile:p speed:p title:p description:p schema:w indexable:p sitemap:p maps:f whatsapp:f booking:w ai:p  fixes: maps,schema,whatsapp
+barakebread.com 932ms score 81 http 200
+  https:p mobile:p speed:p title:p description:w schema:p indexable:p sitemap:p maps:f whatsapp:f booking:w ai:p  fixes: maps,whatsapp,description
+hobeichlegal.com 889ms score 87 http 200
+  https:p mobile:p speed:p title:p description:p schema:p indexable:p sitemap:p maps:f whatsapp:f booking:p ai:p  fixes: maps,whatsapp
+lebanesebusinesses.com 1011ms score 80 http 200
+  https:p mobile:p speed:p title:p description:p schema:w indexable:p sitemap:p maps:f whatsapp:f booking:w ai:p  fixes: maps,schema,whatsapp
+closet.ai 1052ms score 80 http 200
+  https:p mobile:p speed:p title:p description:p schema:w indexable:p sitemap:p maps:f whatsapp:f booking:w ai:p  fixes: maps,schema,whatsapp
+bbc.com 1208ms score 67 http 200
+  https:p mobile:p speed:p title:w description:p schema:w indexable:p sitemap:p maps:f whatsapp:f booking:p ai:f  fixes: ai,maps,schema
+wikipedia.org 1259ms score 65 http 200
+  https:p mobile:p speed:p title:w description:p schema:f indexable:p sitemap:f maps:f whatsapp:f booking:w ai:p  fixes: schema,maps,sitemap
+shopify.com 601ms score 80 http 200
+  https:p mobile:p speed:p title:p description:p schema:w indexable:p sitemap:p maps:f whatsapp:f booking:w ai:p  fixes: maps,schema,whatsapp
+nytimes.com 2039ms score 33 http 403 (bot wall?)
+  https:p mobile:f speed:p title:p description:f schema:f indexable:f sitemap:p maps:f whatsapp:f booking:w ai:f  fixes: indexable,schema,ai
+bakerbird-lb-nonexistent.com 122ms unreachable

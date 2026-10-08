@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How visible is your business on Google, Maps and ChatGPT? — Taktek free check</title>
+<meta name="description" content="Free, 10-second check: enter your website and get a plain-language scorecard for Google, Maps and ChatGPT visibility, with three concrete fixes. English and Arabic.">
+<meta property="og:title" content="How visible is your business on Google, Maps and ChatGPT?">
+<meta property="og:description" content="Free 10-second scorecard for your website, with three concrete fixes. English and Arabic.">
+<meta property="og:url" content="https://taktek.io/audit/">
+<meta property="og:image" content="https://taktek.io/assets/og/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://taktek.io/audit/">
+<link rel="icon" href="../assets/logos/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/og/apple-touch.png">
+<meta name="theme-color" content="#F7F5F1" media="(prefers-color-scheme:light)">
+<meta name="theme-color" content="#0D0D0E" media="(prefers-color-scheme:dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/studio.css?v=dots">
+<link rel="stylesheet" href="../assets/css/gravity.css">
+<style>
+  [dir=rtl] body { font-family: "Segoe UI", Tahoma, "Noto Sans Arabic", var(--display); }
+  [dir=rtl] .cta span, [dir=rtl] .row__arrow { display: inline-block; transform: scaleX(-1); }
+  .langbtn { font-family: var(--mono); font-size: 12px; color: var(--muted); background: none; border: 1px solid var(--rule); border-radius: 999px; padding: 6px 12px; cursor: pointer; margin-inline-start: auto; margin-inline-end: 10px; }
+  .langbtn:hover { color: var(--ink); border-color: var(--ink); }
+  .head { align-items: center; }
+  .f { display: grid; gap: 14px; max-width: 56ch; }
+  .f label { display: grid; gap: 6px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .f input[type=text], .f input[type=email], .f input[type=url] { font: inherit; font-size: 16px; font-family: var(--display); color: var(--ink); background: var(--paper-2); border: 1px solid var(--rule); border-radius: 4px; padding: 12px 12px; width: 100%; }
+  .f input:focus { outline: 2px solid var(--signal); outline-offset: 1px; }
+  .f .two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 520px) { .f .two { grid-template-columns: 1fr; } }
+  .hp { position: absolute; left: -9999px; height: 0; overflow: hidden; }
+  .cta[disabled] { opacity: .6; cursor: progress; }
+  button.cta { background: none; cursor: pointer; font: inherit; }
+  .err { color: #C0392B; font-size: 15px; margin: 4px 0 0; } @media (prefers-color-scheme: dark) { .err { color: #FF7A6B; } }
+  .score { display: flex; align-items: center; gap: clamp(16px, 4vw, 32px); margin: 8px 0 8px; }
+  .ring { --p: 0; width: clamp(110px, 28vw, 150px); aspect-ratio: 1; border-radius: 50%; flex: none; display: grid; place-items: center; background: conic-gradient(var(--c, var(--signal)) calc(var(--p) * 1%), var(--rule) 0); }
+  .ring b { width: 78%; aspect-ratio: 1; border-radius: 50%; background: var(--paper); display: grid; place-items: center; font-size: clamp(32px, 9vw, 46px); font-weight: 500; letter-spacing: -.04em; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .ring b small { font-size: .38em; color: var(--muted); margin-inline-start: 2px; }
+  .verdict h2 { margin: 0 0 6px; font-size: clamp(22px, 4vw, 32px); font-weight: 500; letter-spacing: -.03em; color: var(--ink); }
+  .verdict p { margin: 0; color: var(--muted); max-width: 44ch; }
+  .chk { display: grid; grid-template-columns: 14px 1fr; gap: 6px 14px; padding: 16px 0; border-top: 1px solid var(--rule); align-items: start; }
+  .chk:last-child { border-bottom: 1px solid var(--rule); }
+  .chk i { width: 10px; height: 10px; border-radius: 50%; margin-top: 8px; background: var(--signal); }
+  .chk.warn i { background: #E0A100; } .chk.fail i { background: #E5484D; }
+  .chk h3 { margin: 0; font-size: 18px; font-weight: 500; letter-spacing: -.02em; color: var(--ink); display: flex; gap: 10px; flex-wrap: wrap; align-items: baseline; }
+  .chk h3 em { font-style: normal; font-family: var(--mono); font-size: 11px; color: var(--faint); text-transform: uppercase; letter-spacing: .06em; }
+  .chk p { margin: 4px 0 0; grid-column: 2; color: var(--muted); font-size: 15px; line-height: 1.45; overflow-wrap: anywhere; }
+  .fix { counter-increment: fix; display: grid; grid-template-columns: 34px 1fr; gap: 4px 12px; padding: 16px 0; border-top: 1px solid var(--rule); }
+  .fix::before { content: counter(fix); font-family: var(--mono); color: var(--signal); font-size: 14px; padding-top: 3px; }
+  .fix h3 { margin: 0; font-size: 18px; font-weight: 500; color: var(--ink); letter-spacing: -.02em; }
+  .fix p { grid-column: 2; margin: 4px 0 0; color: var(--muted); font-size: 15px; }
+  .fixes { counter-reset: fix; }
+  .note { font-size: 14px; color: var(--muted); max-width: 56ch; }
+  .tick { display: flex !important; grid-template-columns: none !important; gap: 10px !important; align-items: flex-start; font-family: var(--display) !important; font-size: 14px !important; line-height: 1.4; }
+  .tick input { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--signal); flex: none; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 8px; }
+  .spin { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--signal); animation: pulse 1s infinite alternate; margin-inline-end: 8px; }
+  @keyframes pulse { to { opacity: .2; transform: scale(.7); } }
+  [hidden] { display: none !important; }
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MY112CQXP6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  if (!(navigator.webdriver || /bot|crawl|spider|headless|lighthouse/i.test(navigator.userAgent) || (screen.width === 800 && screen.height === 600))) {
+    gtag('js', new Date());
+    gtag('config', 'G-MY112CQXP6', { anonymize_ip: true });
+  }
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "WebApplication", "@id": "https://taktek.io/audit/#app", "name": "Taktek visibility check", "url": "https://taktek.io/audit/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "inLanguage": ["en", "ar"], "provider": { "@id": "https://taktek.io/#llc" }, "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }, "description": "Free scorecard of how visible a business website is on Google, Maps and ChatGPT, with three concrete fixes." },
+    { "@type": "BreadcrumbList", "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "taktek", "item": "https://taktek.io/" }, { "@type": "ListItem", "position": 2, "name": "Visibility check", "item": "https://taktek.io/audit/" } ] }
+  ]
+}
+</script>
+</head><body>
+
+<div class="wrap">
+  <header class="head">
+    <a class="mark" href="../">taktek<i aria-hidden="true"></i></a>
+    <button class="langbtn" id="lang" type="button" aria-label="Switch language">العربية</button>
+    <input type="checkbox" id="mode">
+    <label class="modebtn" for="mode" title="Switch appearance" aria-label="Switch appearance">
+      <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+      <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+    </label>
+  </header>
+
+<main>
+  <section class="hero">
+    <p class="eyebrow" data-t="eyebrow">Free check · 10 seconds</p>
+    <h1 data-t="h1">How visible is your business on Google, Maps and ChatGPT<em>?</em></h1>
+    <p class="lede" data-t="lede">Type your website. You get a plain-language scorecard and the three fixes that matter most. No signup.</p>
+  </section>
+
+  <section class="sec" aria-label="Check">
+    <form class="f" id="form" novalidate>
+      <label><span data-t="l_site">Your website</span>
+        <input type="text" name="url" id="url" inputmode="url" autocomplete="url" autocapitalize="off" spellcheck="false" placeholder="yourbusiness.com" required dir="ltr">
+      </label>
+      <div class="two">
+        <label><span data-t="l_name">Business name (optional)</span><input type="text" name="business" autocomplete="organization"></label>
+        <label><span data-t="l_city">City (optional)</span><input type="text" name="city" autocomplete="address-level2"></label>
+      </div>
+      <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+      <div class="actions"><button type="submit" class="cta" id="go"><b data-t="go" style="font-weight:inherit">Check my business</b> <span aria-hidden="true">&rarr;</span></button></div>
+      <p class="err" id="err" role="alert" hidden></p>
+      <p class="note" data-t="fine">We fetch your home page, robots.txt and sitemap once, like a browser would. We keep only the domain and the score.</p>
+    </form>
+  </section>
+
+  <section class="sec" id="fallback" hidden>
+    <p class="eyebrow" data-t="fb_e">Instant check is being switched on</p>
+    <p class="lede" data-t="fb_p" style="max-width:46ch">The automatic scorecard isn't live yet. Request the free audit instead and a person will send you the same check, with more detail, within 24 hours.</p>
+    <p style="margin-top:18px"><a class="cta" href="../work/#audit"><b data-t="cta_form" style="font-weight:inherit">Get the free audit</b> <span aria-hidden="true">&rarr;</span></a></p>
+  </section>
+
+  <section class="sec" id="result" aria-live="polite" hidden>
+    <p class="eyebrow" id="r_host"></p>
+    <div class="score">
+      <div class="ring" id="ring"><b><span id="r_score">0</span><small>/100</small></b></div>
+      <div class="verdict"><h2 id="r_head"></h2><p id="r_sub"></p></div>
+    </div>
+    <p class="note" id="r_wall" hidden></p>
+
+    <h2 class="eyebrow" style="margin-top:44px" data-t="fix_h">Three fixes that matter most</h2>
+    <div class="fixes" id="r_fixes"></div>
+
+    <h2 class="eyebrow" style="margin-top:44px" data-t="all_h">Everything we checked</h2>
+    <div id="r_checks"></div>
+    <p class="note" style="margin-top:18px" data-t="scope">This checks what a search engine or AI assistant can read on your website. It can't see your Google Business Profile, reviews or rankings; the full audit covers those.</p>
+
+    <div class="sec" style="padding-top:44px">
+      <p class="eyebrow" data-t="full_h">Want the full free audit?</p>
+      <p class="lede" data-t="full_p" style="max-width:46ch">We check Google Business Profile, Maps, how ChatGPT describes you, and how fast you answer on WhatsApp, then send it back within 24 hours.</p>
+      <div class="actions" style="margin-top:20px">
+        <a class="cta" href="../work/#audit"><b data-t="cta_form" style="font-weight:inherit">Get the free audit</b> <span aria-hidden="true">&rarr;</span></a>
+        <a class="cta" id="wa" target="_blank" rel="noopener" href="https://wa.me/96181511232"><b data-t="cta_wa" style="font-weight:inherit">WhatsApp us</b> <span aria-hidden="true">&rarr;</span></a>
+      </div>
+
+      <form class="f" id="lead" style="margin-top:32px" novalidate>
+        <label><span data-t="l_mail">Prefer email? Send me the full report</span>
+          <input type="email" name="email" autocomplete="email" dir="ltr" placeholder="you@yourbusiness.com">
+        </label>
+        <div class="hp" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
+        <label class="tick"><input type="checkbox" name="consent"><span data-t="consent">Yes, email me the full report for this website, and contact me once about fixing it. I understand Taktek stores my email and this website's score for up to 180 days, and I can ask for deletion any time.</span></label>
+        <div class="actions"><button type="submit" class="cta"><b data-t="send" style="font-weight:inherit">Email me the report</b> <span aria-hidden="true">&rarr;</span></button></div>
+        <p class="err" id="lead_err" role="alert" hidden></p>
+        <p class="note" id="lead_ok" hidden></p>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="entities"><address><b>Taktek, LLC</b><br>131 Continental Dr, Suite 305<br>Newark, DE 19713, United States</address><address><b>Taktek Offshore SAL</b><br>Al Watta Street, Riman Building<br>Aley 5516, Lebanon</address></div>
+    <a href="../">Home</a>
+    <a href="../portfolio/">Portfolio</a>
+    <a href="../notes/">Notes</a>
+    <a href="../work/">Work with us</a>
+    <a href="../terms/">Terms</a>
+    <a href="../privacy/">Privacy</a>
+    <a href="../support/">Support</a>
+    <a href="../team/">Team</a>
+    <a class="spacer" href="https://github.com/taktekhq">github.com/taktekhq</a>
+  </footer>
+</main>
+</div>
+
+<script src="../assets/js/gravity.js"></script>
+<script src="config.js"></script>
+<script src="audit.js"></script>
+</body>
+</html>

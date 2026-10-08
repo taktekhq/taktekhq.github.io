@@ -19,5 +19,9 @@
   <url><loc>https://taktek.io/privacy/</loc><lastmod>2026-09-25</lastmod></url>
   <url><loc>https://taktek.io/support/</loc><lastmod>2026-09-25</lastmod></url>
   <url><loc>https://taktek.io/terms/</loc><lastmod>2026-09-25</lastmod></url>
-  <url><loc>https://taktek.io/sa/</loc><lastmod>2026-10-08</lastmod><xhtml:link rel="alternate" hreflang="ar-SA" href="https://taktek.io/sa/"/><xhtml:link rel="alternate" hreflang="ar-AE" href="https://taktek.io/ae/"/><xhtml:link rel="alternate" hreflang="ar-JO" href="https://taktek.io/jo/"/></url>
+  <url><loc>https://taktek.io/sa/</loc><lastmod>2026-10-08</lastmod><xhtml:link rel="alternate" hreflang="ar-SA" href="https://taktek.io/sa/"/><xhtml:link rel="alternate" hreflang="ar-AE" href="https://taktek.io/ae/"/><xhtml:link rel="alternate" hreflang="ar-JO" href="https://taktek.io/jo/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://taktek.io/work/"/></url>
+  <url><loc>https://taktek.io/ae/</loc><lastmod>2026-10-08</lastmod><xhtml:link rel="alternate" hreflang="ar-SA" href="https://taktek.io/sa/"/><xhtml:link rel="alternate" hreflang="ar-AE" href="https://taktek.io/ae/"/><xhtml:link rel="alternate" hreflang="ar-JO" href="https://taktek.io/jo/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://taktek.io/work/"/></url>
+  <url><loc>https://taktek.io/jo/</loc><lastmod>2026-10-08</lastmod><xhtml:link rel="alternate" hreflang="ar-SA" href="https://taktek.io/sa/"/><xhtml:link rel="alternate" hreflang="ar-AE" href="https://taktek.io/ae/"/><xhtml:link rel="alternate" hreflang="ar-JO" href="https://taktek.io/jo/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://taktek.io/work/"/></url>
+  <url><loc>https://taktek.io/team/</loc><lastmod>2026-10-03</lastmod></url>
+  <url><loc>https://taktek.io/stats/</loc><lastmod>2026-10-01</lastmod></url>
 </urlset>

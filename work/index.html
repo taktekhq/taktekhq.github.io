@@ -95,6 +95,28 @@
         { "@type": "ListItem", "position": 1, "name": "taktek", "item": "https://taktek.io/" },
         { "@type": "ListItem", "position": 2, "name": "Work with us", "item": "https://taktek.io/work/" }
       ]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://taktek.io/#studio",
+      "name": "Taktek",
+      "description": "A dev shop where the developers are AI agents: websites, Google and AI-search visibility, WhatsApp and lead automation, and custom tools for small businesses.",
+      "url": "https://taktek.io/",
+      "image": "https://taktek.io/assets/og/og.png",
+      "telephone": "+961 81 511 232",
+      "email": "nizar@taktek.io",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Al Watta Street, Riman Building",
+        "addressLocality": "Aley",
+        "postalCode": "5516",
+        "addressCountry": "LB"
+      },
+      "hasMap": "https://www.google.com/maps/search/?api=1&query=Taktek%20Offshore%20SAL%2C%20Al%20Watta%20Street%2C%20Riman%20Building%2C%20Aley%2C%20Lebanon",
+      "areaServed": ["LB", "SA", "AE", "JO", "Worldwide"],
+      "priceRange": "$$",
+      "parentOrganization": {"@id": "https://taktek.io/#llc"},
+      "makesOffer": {"@type": "OfferCatalog", "name": "Fixed-price packages", "url": "https://taktek.io/work/"}
     }
   ]
 }
@@ -133,49 +155,55 @@
     <p class="eyebrow">Fixed prices, no surprises</p>
 
     <div class="index">
-      <div class="row" style="cursor:default">
+      <a class="row" href="#audit" data-package="Free audit">
         <span class="row__main">
           <span class="row__title">Free audit</span>
           <span class="row__desc">How you show up on Google, Maps and AI answers, plus how fast your WhatsApp replies. Delivered in 24 hours, no strings.</span>
         </span>
         <span class="row__title" style="font-size:20px;color:var(--signal)">Free</span>
-      </div>
+        <span class="row__arrow" aria-hidden="true">→</span>
+      </a>
 
-      <div class="row" style="cursor:default">
+      <a class="row" href="#audit" data-package="Visibility setup ($400)">
         <span class="row__main">
           <span class="row__title">Visibility setup</span>
           <span class="row__desc">Search Console, Bing Webmaster Tools, sitemaps, structured data — the plumbing that gets you indexed and found. No ranking promises. Optional $75/mo keeps it current with new pages every two months.</span>
         </span>
         <span class="row__title" style="font-size:20px">$400</span>
-      </div>
+        <span class="row__arrow" aria-hidden="true">→</span>
+      </a>
 
-      <div class="row" style="cursor:default">
+      <a class="row" href="#audit" data-package="Website in a week (from $800)">
         <span class="row__main">
           <span class="row__title">Website in a week</span>
           <span class="row__desc">A real site, designed and shipped in about a week.</span>
         </span>
         <span class="row__title" style="font-size:20px">from $800</span>
-      </div>
+        <span class="row__arrow" aria-hidden="true">→</span>
+      </a>
 
-      <div class="row" style="cursor:default">
+      <a class="row" href="#audit" data-package="WhatsApp / lead automation (from $750)">
         <span class="row__main">
           <span class="row__title">WhatsApp / lead automation</span>
-          <span class="row__desc">Replies to leads and follows up automatically, on WhatsApp or by email. <a href="../whatsapp-agent/">Try the live demo →</a></span>
+          <span class="row__desc">Replies to leads and follows up automatically, on WhatsApp or by email.</span>
         </span>
         <span class="row__title" style="font-size:20px">from $750</span>
-      </div>
+        <span class="row__arrow" aria-hidden="true">→</span>
+      </a>
 
-      <div class="row" style="cursor:default">
+      <a class="row" href="#audit" data-package="Custom tool or automation (from $1,500)">
         <span class="row__main">
           <span class="row__title">Custom tool or automation</span>
           <span class="row__desc">A one-off internal tool or automation, built to spec.</span>
         </span>
         <span class="row__title" style="font-size:20px">from $1,500, quoted</span>
-      </div>
+        <span class="row__arrow" aria-hidden="true">→</span>
+      </a>
     </div>
 
-    <p class="row__desc" style="margin-top:18px;max-width:52ch">Want a number now? <a href="../audit/">Run the free 10-second visibility check →</a></p>
-    <p class="row__desc" style="margin-top:12px;max-width:52ch">Pay after we agree the scope. We'll send a Stripe link or an invoice once we've talked — no card needed to ask for an audit.</p>
+    <p class="row__desc" style="margin-top:18px;max-width:52ch">See WhatsApp automation working: <a href="../whatsapp-agent/">try the live demo →</a></p>
+    <p class="row__desc" style="margin-top:12px;max-width:52ch">Want a number now? <a href="../audit/">Run the free 10-second visibility check →</a></p>
+    <p class="row__desc" style="margin-top:12px;max-width:52ch">Pick a package to start. You pay after we agree the scope: we send a Stripe link or an invoice once we've talked. No card needed to ask.</p>
   </section>
 
   <section class="sec" aria-label="Get a free audit" id="audit">
@@ -184,6 +212,8 @@
     <p class="lede" style="margin:0 0 24px;max-width:46ch">Tell us your business and where to find it. We'll check Google, Maps, AI answers and your WhatsApp response time, and send back what we find within 24 hours.</p>
 
     <form id="audit-form" style="max-width:52ch;display:grid;gap:14px">
+      <input type="hidden" name="package" value="Free audit">
+      <p id="pkg-note" class="row__desc" style="margin:0;display:none"></p>
       <label style="display:grid;gap:6px;font-family:var(--mono);font-size:12px;color:var(--muted)">Business name
         <input name="business" required style="font:inherit;font-size:16px;font-family:var(--display);color:var(--ink);background:var(--paper-2);border:1px solid var(--rule);border-radius:4px;padding:10px 12px">
       </label>
@@ -196,7 +226,8 @@
       <label style="display:grid;gap:6px;font-family:var(--mono);font-size:12px;color:var(--muted)">Anything else? (optional)
         <textarea name="notes" rows="3" style="font:inherit;font-size:16px;font-family:var(--display);color:var(--ink);background:var(--paper-2);border:1px solid var(--rule);border-radius:4px;padding:10px 12px;resize:vertical"></textarea>
       </label>
-      <button type="submit" class="cta" style="width:fit-content;background:none;cursor:pointer">Send for a free audit <span aria-hidden="true">&rarr;</span></button>
+      <button type="submit" class="cta" style="width:fit-content;background:none;cursor:pointer"><span id="submit-label">Send for a free audit</span> <span aria-hidden="true">&rarr;</span></button>
+      <p id="audit-ok" class="row__desc" style="display:none">Got it. We'll reply by email within 24 hours.</p>
       <p id="audit-fallback" class="row__desc" style="display:none">Your mail app should have opened with this filled in — just hit send. If it didn't, email us directly: <a href="mailto:taktekbot@taktek.io">taktekbot@taktek.io</a>.</p>
     </form>
 
@@ -204,11 +235,13 @@
   </section>
 
   <footer>
-    <div class="entities"><address><b>Taktek, LLC</b><br>131 Continental Dr, Suite 305<br>Newark, DE 19713, United States</address><address><b>Taktek Offshore SAL</b><br>Al Watta Street, Riman Building<br>Aley 5516, Lebanon</address></div>
+    <div class="entities"><address><b>Taktek, LLC</b><br>131 Continental Dr, Suite 305<br>Newark, DE 19713, United States</address><address><b>Taktek Offshore SAL</b><br><a href="https://www.google.com/maps/search/?api=1&query=Taktek%20Offshore%20SAL%2C%20Al%20Watta%20Street%2C%20Riman%20Building%2C%20Aley%2C%20Lebanon" target="_blank" rel="noopener">Al Watta Street, Riman Building<br>Aley 5516, Lebanon</a></address></div>
     <a href="../">Home</a>
     <a href="../portfolio/">Portfolio</a>
     <a href="../notes/">Notes</a>
     <a href="../work/">Work with us</a>
+      <a href="https://wa.me/96181511232" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="../work/#audit">Book a free audit</a>
     <a href="../audit/">Free check</a>
     <a href="../terms/">Terms</a>
     <a href="../privacy/">Privacy</a>
@@ -224,15 +257,42 @@
 (() => {
   const form = document.getElementById('audit-form');
   const fallback = document.getElementById('audit-fallback');
-  form.addEventListener('submit', (e) => {
+  const pkgInput = form.querySelector('input[name="package"]');
+  const pkgNote = document.getElementById('pkg-note');
+  const label = document.getElementById('submit-label');
+  const ok = document.getElementById('audit-ok');
+  const track = (name, params) => { try { if (window.gtag) gtag('event', name, params || {}); } catch (_) {} };
+  document.querySelectorAll('a.row[data-package]').forEach((a) => a.addEventListener('click', () => {
+    const pkg = a.dataset.package;
+    pkgInput.value = pkg;
+    const free = pkg === 'Free audit';
+    pkgNote.textContent = free ? '' : `Package: ${pkg}. Tell us about your business and we'll reply within 24 hours.`;
+    pkgNote.style.display = free ? 'none' : 'block';
+    label.textContent = free ? 'Send for a free audit' : 'Send my request';
+    track('package_click', { package: pkg });
+  }));
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const fd = new FormData(form);
+    const pkg = (fd.get('package') || 'Free audit').toString();
     const business = (fd.get('business') || '').toString();
     const where = (fd.get('where') || '').toString();
     const email = (fd.get('email') || '').toString();
     const notes = (fd.get('notes') || '').toString();
-    const subject = `Free audit request: ${business}`;
-    const body = `Business: ${business}\nWebsite/listing: ${where}\nReply to: ${email}\nNotes: ${notes || '(none)'}`;
+    track('work_form_submit', { package: pkg });
+    try {
+      const r = await fetch((window.AUDIT_API || 'https://taktek-audit.taktek-5f0.workers.dev') + '/api/lead', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ source: 'work', package: pkg, business, where, email, notes, consent: true })
+      });
+      if (!r.ok) throw new Error('status ' + r.status);
+      form.querySelectorAll('input,textarea,button').forEach((el) => { el.disabled = true; });
+      ok.style.display = 'block';
+      track('work_form_sent', { package: pkg });
+      return;
+    } catch (_) { /* fall back to the visitor's mail app */ }
+    const subject = `${pkg}: ${business}`;
+    const body = `Package: ${pkg}\nBusiness: ${business}\nWebsite/listing: ${where}\nReply to: ${email}\nNotes: ${notes || '(none)'}`;
     window.location.href = `mailto:taktekbot@taktek.io?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     fallback.style.display = 'block';
   });

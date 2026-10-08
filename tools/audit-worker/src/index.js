@@ -64,6 +64,19 @@ export default {
     if (url.pathname === "/api/lead" && req.method === "POST") {
       let b; try { b = await req.json(); } catch { return json(req, { error: "bad_request" }, 400); }
       if (b.website) return json(req, { ok: true }); // honeypot
+      if (b.source === "work") { // taktek.io/work package/audit request form
+        const em = String(b.email || "").trim().slice(0, 200);
+        const business = String(b.business || "").trim().slice(0, 160);
+        const where = String(b.where || "").trim().slice(0, 300);
+        if (!/^[^@\s]{1,100}@[^@\s]+\.[^@\s]{2,}$/.test(em) || !business || !where) return json(req, { error: "bad_request" }, 400);
+        const ip0 = req.headers.get("cf-connecting-ip") || "unknown";
+        if (!(await hit(env, "work:" + await sha(ip0 + ":" + Math.floor(Date.now() / 8.64e7)), 5))) return json(req, { error: "rate_limited" }, 429);
+        const rec = { kind: "work", package: String(b.package || "Free audit").slice(0, 80), business, where, email: em,
+          notes: String(b.notes || "").slice(0, 2000), country: req.cf?.country || null, at: new Date().toISOString() };
+        if (env.KV) await env.KV.put(`lead:work:${rec.at}`, JSON.stringify(rec), { expirationTtl: 365 * 86400 });
+        console.log(JSON.stringify({ evt: "work_request", package: rec.package, country: rec.country }));
+        return json(req, { ok: true });
+      }
       const email = String(b.email || "").trim().slice(0, 200);
       const u = normalizeUrl(b.url);
       if (b.consent !== true || !/^[^@\s]{1,100}@[^@\s]+\.[^@\s]{2,}$/.test(email) || !u) return json(req, { error: "bad_request" }, 400);

@@ -25,7 +25,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/studio.css?v=dots">
 <link rel="stylesheet" href="../assets/css/gravity.css">
-<link rel="stylesheet" href="ai.css?v=3">
+<link rel="stylesheet" href="ai.css?v=5">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MY112CQXP6"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -63,8 +63,8 @@
   <header class="head">
     <a class="mark" href="../">taktek<i aria-hidden="true"></i></a>
     <button class="langbtn" id="lang" type="button" lang="ar">العربية</button>
-    <input type="checkbox" id="mode">
-    <label class="modebtn" for="mode" title="Switch appearance" aria-label="Switch appearance">
+    <input type="checkbox" id="mode" aria-label="Switch appearance">
+    <label class="modebtn" for="mode" title="Switch appearance">
       <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
       <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
     </label>
@@ -72,7 +72,7 @@
 
 <main>
   <section class="hero ai-hero">
-    <p class="kicker" data-t="kicker">Free check · about 15 seconds · no signup</p>
+    <p class="kicker" data-t="kicker">Free, takes about 15 seconds, no signup.</p>
     <h1 data-t="h1">Is ChatGPT recommending your business?</h1>
     <p class="lede" data-t="lede">We ask AI assistants what your customers ask, like “best dentist in Beirut”, and show you whether they name you, who they name instead, and what to fix.</p>
   </section>
@@ -94,7 +94,7 @@
       <div class="hp" aria-hidden="true"><label>Leave empty<input type="text" name="hp" tabindex="-1" autocomplete="off"></label></div>
       <div class="actions"><button type="submit" class="btn btn--solid" id="go"><span data-t="go">Check my business</span> <span class="arr" aria-hidden="true">&rarr;</span></button></div>
       <p class="err" id="err" role="alert" hidden></p>
-      <p class="note" data-t="fine">We ask Google Gemini and Anthropic Claude, with web search on. Results name the exact models and time. We keep what you typed and the answers for 24 hours; nothing else.</p>
+      <p class="note" data-t="fine">We ask Google Gemini and Anthropic Claude, with web search on. Results name the exact models and time. We keep what you typed and the answers for 24 hours; your IP is only used, hashed, for a 2-hour rate limit.</p>
     </form>
   </section>
 
@@ -118,22 +118,19 @@
       <ol class="comps" id="r_comps"></ol>
     </div>
 
-    <div class="block">
-      <h3 class="label" data-t="fix_h">Three fixes that matter most</h3>
-      <ol class="fixes" id="r_fixes"></ol>
-    </div>
-
     <div class="offers" id="offers">
       <div class="offer offer--main">
         <h3 data-t="mon_h">Monitor it weekly</h3>
         <p class="price"><b>$19</b><span data-t="per_month">/month</span></p>
+        <p class="mon_hook" id="mon_hook" hidden></p>
         <p data-t="mon_p">Every week we ask the assistants again and email you the answers. You get an alert the week you appear, or disappear. Cancel any time.</p>
         <button type="button" class="btn btn--solid" id="mon_btn"><span data-t="mon_cta">Start monitoring</span> <span class="arr" aria-hidden="true">&rarr;</span></button>
         <form class="f mini" id="mon_form" novalidate hidden>
           <label for="mon_mail"><span data-t="mon_mail">Where should the weekly report go?</span></label>
-          <input type="email" id="mon_mail" autocomplete="email" dir="ltr" placeholder="you@yourbusiness.com" aria-describedby="mon_note">
+          <input type="email" id="mon_mail" autocomplete="email" dir="ltr" placeholder="you@yourbusiness.com" aria-describedby="mon_note mon_err">
           <p class="note" id="mon_note" data-t="mon_note">Payment links aren't switched on yet: we'll email you a secure Stripe link for $19/month within a day, and the first weekly report starts when you pay.</p>
-          <button type="submit" class="btn"><span data-t="mon_send">Send me the link</span> <span class="arr" aria-hidden="true">&rarr;</span></button>
+          <p class="err" id="mon_err" role="alert" hidden></p>
+          <button type="submit" class="btn btn--solid"><span data-t="mon_send">Send me the link</span> <span class="arr" aria-hidden="true">&rarr;</span></button>
           <p class="ok" id="mon_ok" role="status" hidden></p>
         </form>
       </div>
@@ -146,15 +143,21 @@
     </div>
 
     <div class="block">
+      <h3 class="label" data-t="fix_h">Three fixes that matter most</h3>
+      <ol class="fixes" id="r_fixes"></ol>
+    </div>
+
+    <div class="block">
       <h3 class="label" data-t="ans_h">The exact answers</h3>
       <div id="r_answers"></div>
+      <p class="note"><a href="#offers" data-t="back_offers">Get these answers every week, or have us fix it →</a></p>
     </div>
 
     <div class="block split">
       <form class="f" id="lead" novalidate>
         <h3 class="label" data-t="mail_h">Email me this report</h3>
         <label for="lead_mail" class="vh" data-t="l_mail">Email</label>
-        <input type="email" id="lead_mail" name="email" autocomplete="email" dir="ltr" placeholder="you@yourbusiness.com">
+        <input type="email" id="lead_mail" name="email" autocomplete="email" dir="ltr" placeholder="you@yourbusiness.com" aria-describedby="lead_err">
         <label class="tick"><input type="checkbox" name="consent"><span data-t="consent">Email me this report and one follow-up about fixing it. Taktek keeps my email for up to 180 days; I can ask for deletion any time.</span></label>
         <button type="submit" class="btn"><span data-t="send">Email me the report</span> <span class="arr" aria-hidden="true">&rarr;</span></button>
         <p class="err" id="lead_err" role="alert" hidden></p>
@@ -178,7 +181,7 @@
     <details><summary data-t="q3">How do I get AI assistants to recommend me?</summary><p data-t="a3">Assistants with web search repeat what the web says about you: a complete Google Business Profile with recent reviews, consistent listings in local directories, and a website that states your name, services, area and contact details as plain text with LocalBusiness structured data. The check picks the three fixes that matter most for you.</p></details>
     <details><summary data-t="q4">Is it free? What does monitoring cost?</summary><p data-t="a4">The check is free, no signup. Weekly monitoring is $19/month. If you want us to make the fixes, the visibility setup is $400 once. No ranking promises: nobody can promise what an AI will say.</p></details>
     <details><summary data-t="q5">What do you store?</summary><p data-t="a5">What you type and the answers, cached for 24 hours so a repeat check is instant. Your IP address is only used, hashed, for a rate limit, for up to 2 hours. Your email only if you ask for the report or monitoring. See <a href="../privacy/">privacy</a>.</p></details>
-    <p class="note"><span data-t="also">Want a full website scorecard?</span> <a href="../audit/" data-t="also_a">Run the free visibility check →</a></p>
+    <p class="note"><span data-t="also">Want a full website scorecard?</span> <a href="../audit/" data-t="also_a">Get the free website scorecard →</a></p>
   </section>
 
   <footer>
@@ -204,6 +207,6 @@
 
 <script src="../assets/js/gravity.js"></script>
 <script src="config.js?v=1"></script>
-<script src="ai.js?v=3"></script>
+<script src="ai.js?v=4"></script>
 </body>
 </html>

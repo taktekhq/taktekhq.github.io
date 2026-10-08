@@ -31,17 +31,17 @@
 
   const T = {
     en: {
-      skip: "Skip to the check", kicker: "Free check · about 15 seconds · no signup",
+      skip: "Skip to the check", kicker: "Free, takes about 15 seconds, no signup.",
       h1: "Is ChatGPT recommending your business?",
       lede: "We ask AI assistants what your customers ask, like “best dentist in Beirut”, and show you whether they name you, who they name instead, and what to fix.",
       check_h: "Run the check", l_name: "Business name", l_cat: "What you do", l_city: "City and country",
       ph_cat: "dentist, bakery, car rental…", ph_city: "Beirut, Lebanon",
       l_site: "Website (optional, adds a website check to the fixes)", go: "Check my business",
-      fine: "We ask {M}, with web search on. Results name the exact models and time. We keep what you typed and the answers for 24 hours; nothing else.",
+      fine: "We ask {M}, with web search on. Results name the exact models and time. We keep what you typed and the answers for 24 hours; your IP is only used, hashed, for a 2-hour rate limit.",
       busy: "Asking the assistants…", busy_q: (q) => `“${q}”`,
       e_name: "Type your business name.", e_cat: "Say what you do, e.g. dentist or bakery.", e_city: "Add your city, e.g. Beirut, Lebanon.",
       e_rate: "Too many checks from your network this hour. Try again later.", e_cfg: "The check is being switched on. Please try again in a little while.", e_up: "The assistants didn't answer in time. Please try again.", e_net: "Something went wrong on our side. Please try again.",
-      head_yes: (n, of) => `Named in ${n} of ${of} answers`, head_no: "Not recommended yet",
+      head_yes: (n, of) => `Recommended in ${n} of ${of} answers`, head_no: "Not recommended yet",
       sub_yes: (name, known) => `When customers ask AI assistants for your kind of business, ${name} comes up some of the time.` + (known ? " They also know who you are." : " But asked about you directly, they couldn't say much."),
       sub_no: (name, known) => known ? `The assistants know ${name} when asked by name, but didn't recommend you when a customer asked for your kind of business.` : `None of the assistants recommended ${name}, and asked directly, they didn't know about you. That's common, and fixable.`,
       asked: (models, when) => `Asked <b>${models}</b> on ${when}. We did not ask ChatGPT itself; it works the same way (a language model with web search), but we only report what we actually asked. Answers change from day to day.`,
@@ -56,29 +56,30 @@
       named: "Named you", not_named: "Didn't name you", knows: "Knows you", unknown: "Doesn't know you", failed: "No answer (timed out)",
       mail_h: "Email me this report", l_mail: "Email", consent: "Email me this report and one follow-up about fixing it. Taktek keeps my email for up to 180 days; I can ask for deletion any time.",
       send: "Email me the report", lead_ok: "Sent to our queue. The report arrives within 24 hours.", l_bad: "Enter your email and tick the box.",
-      fb_h: "Was this right?", fb_l: "Feedback", fb_ph: "Tell us if an answer looks wrong, or what you'd want next.", fb_send: "Send feedback", fb_ok: "Thank you. A person reads every message.",
+      fb_h: "Was this right?", fb_l: "Feedback", fb_ph: "Tell us if an answer looks wrong, or what you'd want next.", fb_send: "Send feedback", fb_ok: "Thank you. We read every message.",
       again: "Check another business", faq_h: "Questions",
       q1: "Does this ask ChatGPT?", a1: "No. It asks {M}, with web search on, the same questions a customer would ask, and the results name the exact models and the time. ChatGPT works the same way (a language model plus web search), so they're a fair proxy, but we only report what we actually asked.",
       q2: "What questions does it ask?", a2: "“What are the best &lt;category&gt; in &lt;city&gt;?”, “Who should I call for &lt;category&gt; in &lt;city&gt;?” and “What do you know about &lt;your business&gt; in &lt;city&gt;?”",
       q3: "How do I get AI assistants to recommend me?", a3: "Assistants with web search repeat what the web says about you: a complete Google Business Profile with recent reviews, consistent listings in local directories, and a website that states your name, services, area and contact details as plain text with LocalBusiness structured data. The check picks the three fixes that matter most for you.",
       q4: "Is it free? What does monitoring cost?", a4: "The check is free, no signup. Weekly monitoring is $19/month. If you want us to make the fixes, the visibility setup is $400 once. No ranking promises: nobody can promise what an AI will say.",
       q5: "What do you store?", a5: "What you type and the answers, cached for 24 hours so a repeat check is instant. Your IP address is only used, hashed, for a rate limit, for up to 2 hours. Your email only if you ask for the report or monitoring. See <a href=\"../privacy/\">privacy</a>.",
-      also: "Want a full website scorecard?", also_a: "Run the free visibility check →",
+      also: "Want a full website scorecard?", also_a: "Get the free website scorecard →",
+      back_offers: "Get these answers every week, or have us fix it →", count_note: (n) => ` These count the ${n} “best” and “who to call” answers; “what do you know about you” is shown separately below.`, hook: (c) => `Get an alert the week you overtake ${c}.`, mon_bad: "Enter an email like you@yourbusiness.com.",
       subbed: "You're subscribed. Your first weekly report arrives within 7 days; reply to any report to cancel.",
       langbtn: "العربية", fix: FIX_EN, locale: "en-GB",
     },
     ar: {
-      skip: "انتقل إلى الفحص", kicker: "فحص مجاني · حوالي ١٥ ثانية · بدون تسجيل",
+      skip: "انتقل إلى الفحص", kicker: "مجاني، يستغرق حوالي ١٥ ثانية، بدون تسجيل.",
       h1: "هل يرشّح ChatGPT نشاطك التجاري؟",
       lede: "نسأل مساعدي الذكاء الاصطناعي ما يسأله زبائنك، مثل «أفضل طبيب أسنان في بيروت»، ونريك إن كانوا يذكرونك، ومن يذكرون بدلًا منك، وما الذي يجب إصلاحه.",
       check_h: "ابدأ الفحص", l_name: "اسم النشاط", l_cat: "ماذا تعمل", l_city: "المدينة والبلد",
       ph_cat: "طبيب أسنان، فرن، تأجير سيارات…", ph_city: "بيروت، لبنان",
       l_site: "الموقع الإلكتروني (اختياري، يضيف فحص الموقع إلى الإصلاحات)", go: "افحص نشاطي",
-      fine: "نسأل {M} مع تفعيل البحث في الويب. النتائج تذكر النماذج والوقت بالضبط. نحتفظ بما كتبته وبالإجابات ٢٤ ساعة فقط.",
+      fine: "نسأل {M} مع تفعيل البحث في الويب. النتائج تذكر النماذج والوقت بالضبط. نحتفظ بما كتبته وبالإجابات ٢٤ ساعة؛ ويُستخدم عنوان IP مشفّرًا فقط لتحديد عدد الفحوصات لمدة ساعتين.",
       busy: "نسأل المساعدين…", busy_q: (q) => `«${q}»`,
       e_name: "اكتب اسم نشاطك.", e_cat: "اكتب ماذا تعمل، مثل طبيب أسنان أو فرن.", e_city: "أضف مدينتك، مثل بيروت، لبنان.",
       e_rate: "عدد كبير من الفحوصات من شبكتك هذه الساعة. حاول لاحقًا.", e_cfg: "الفحص قيد التشغيل. حاول بعد قليل.", e_up: "لم يردّ المساعدون في الوقت المحدد. حاول مرة أخرى.", e_net: "حدث خطأ من جهتنا. حاول مرة أخرى.",
-      head_yes: (n, of) => `ذُكرت في ${n} من ${of} إجابات`, head_no: "لا يرشّحونك بعد",
+      head_yes: (n, of) => `رُشّحت في ${n} من ${of} إجابات`, head_no: "لا يرشّحونك بعد",
       sub_yes: (name, known) => `عندما يسأل الزبائن عن نشاط مثل نشاطك، يظهر ${name} أحيانًا.` + (known ? " ويعرفون من أنت أيضًا." : " لكن عند السؤال عنك مباشرة لم يعرفوا الكثير."),
       sub_no: (name, known) => known ? `يعرف المساعدون ${name} عند السؤال عنه بالاسم، لكنهم لم يرشّحوه عندما سأل زبون عن نشاط مثله.` : `لم يرشّح أيّ من المساعدين ${name}، وعند السؤال مباشرة لم يعرفوا عنه شيئًا. هذا شائع، ويمكن إصلاحه.`,
       asked: (models, when) => `سألنا <b>${models}</b> في ${when}. لم نسأل ChatGPT نفسه؛ يعمل بالطريقة نفسها (نموذج لغوي مع بحث في الويب)، لكننا لا ننقل إلا ما سألناه فعلًا. الإجابات تتغير من يوم لآخر.`,
@@ -93,14 +94,15 @@
       named: "ذكرك", not_named: "لم يذكرك", knows: "يعرفك", unknown: "لا يعرفك", failed: "لا إجابة (انتهى الوقت)",
       mail_h: "أرسلوا لي هذا التقرير", l_mail: "البريد الإلكتروني", consent: "أرسلوا لي هذا التقرير ورسالة متابعة واحدة بخصوص الإصلاح. تحتفظ Taktek ببريدي حتى ١٨٠ يومًا، ويمكنني طلب الحذف في أي وقت.",
       send: "أرسلوا لي التقرير", lead_ok: "تم. يصلك التقرير خلال ٢٤ ساعة.", l_bad: "أدخل بريدك الإلكتروني وفعّل الخانة.",
-      fb_h: "هل كانت النتيجة صحيحة؟", fb_l: "ملاحظات", fb_ph: "أخبرنا إن بدت إجابة خاطئة، أو ماذا تريد بعد ذلك.", fb_send: "أرسل الملاحظة", fb_ok: "شكرًا. يقرأ شخص كل رسالة.",
+      fb_h: "هل كانت النتيجة صحيحة؟", fb_l: "ملاحظات", fb_ph: "أخبرنا إن بدت إجابة خاطئة، أو ماذا تريد بعد ذلك.", fb_send: "أرسل الملاحظة", fb_ok: "شكرًا. نقرأ كل رسالة.",
       again: "افحص نشاطًا آخر", faq_h: "أسئلة",
       q1: "هل يسأل هذا الفحص ChatGPT؟", a1: "لا. يسأل {M}، مع البحث في الويب، الأسئلة نفسها التي يطرحها الزبون، وتذكر النتائج النماذج والوقت بالضبط. يعمل ChatGPT بالطريقة نفسها (نموذج لغوي مع بحث في الويب)، لذا هما مقياس عادل، لكننا لا ننقل إلا ما سألناه فعلًا.",
       q2: "ما الأسئلة التي يطرحها؟", a2: "«ما أفضل &lt;المجال&gt; في &lt;المدينة&gt;؟» و«بمن أتصل لـ &lt;المجال&gt; في &lt;المدينة&gt;؟» و«ماذا تعرف عن &lt;نشاطك&gt; في &lt;المدينة&gt;؟»",
       q3: "كيف أجعل مساعدي الذكاء الاصطناعي يرشّحونني؟", a3: "المساعدون الذين يبحثون في الويب يكرّرون ما يقوله الويب عنك: ملف Google Business مكتمل بتقييمات حديثة، إدراج متّسق في الأدلة المحلية، وموقع يذكر اسمك وخدماتك ومنطقتك ووسائل التواصل كنص عادي مع بيانات LocalBusiness المنظّمة. يختار الفحص أهم ثلاثة إصلاحات لك.",
       q4: "هل هو مجاني؟ وكم تكلّف المراقبة؟", a4: "الفحص مجاني بلا تسجيل. المراقبة الأسبوعية ‎$19 شهريًا. وإن أردت أن ننفّذ الإصلاحات، فإعداد الظهور ‎$400 مرة واحدة. لا وعود بالترتيب: لا أحد يستطيع أن يعد بما سيقوله الذكاء الاصطناعي.",
       q5: "ماذا تحفظون؟", a5: "ما تكتبه والإجابات، ٢٤ ساعة ليكون الفحص المتكرر فوريًا. عنوان IP يُستخدم مشفّرًا فقط لتحديد عدد الفحوصات، لمدة أقصاها ساعتان. وبريدك فقط إن طلبت التقرير أو المراقبة. راجع <a href=\"../privacy/\">الخصوصية</a>.",
-      also: "تريد تقييمًا كاملًا لموقعك؟", also_a: "جرّب فحص الظهور المجاني ←",
+      also: "تريد تقييمًا كاملًا لموقعك؟", also_a: "احصل على تقييم موقعك المجاني ←",
+      back_offers: "احصل على هذه الإجابات كل أسبوع، أو دعنا نصلحها ←", count_note: (n) => ` يُحتسب هنا ${n} إجابات عن «الأفضل» و«بمن أتصل»؛ أما «ماذا يعرفون عنك» فتظهر منفصلة أدناه.`, hook: (c) => `تنبيه في الأسبوع الذي تتقدّم فيه على ${c}.`, mon_bad: "أدخل بريدًا مثل you@yourbusiness.com.",
       subbed: "تم الاشتراك. يصلك أول تقرير أسبوعي خلال ٧ أيام؛ ردّ على أي تقرير للإلغاء.",
       langbtn: "English", fix: FIX_AR, locale: "ar-u-nu-arab",
     },
@@ -189,7 +191,8 @@
     for (let i = 0; i < s.asked; i++) { const dot = document.createElement("i"); if (i < s.recommended) dot.className = "on"; meter.appendChild(dot); }
     meter.style.gridTemplateColumns = `repeat(${Math.min(2, s.asked) || 1}, 1fr)`;
     $("r_head").textContent = s.recommended ? d.head_yes(num(s.recommended), num(s.asked)) : d.head_no;
-    $("r_sub").textContent = s.recommended ? d.sub_yes(name, s.known) : d.sub_no(name, s.known);
+    $("r_sub").textContent = (s.recommended ? d.sub_yes(name, s.known) : d.sub_no(name, s.known)) + d.count_note(num(s.asked));
+    const top = r.competitors[0]; $("mon_hook").hidden = !top; if (top) $("mon_hook").textContent = d.hook(top.name);
     const when = new Intl.DateTimeFormat(d.locale, { dateStyle: "medium", timeStyle: "short", timeZone: "UTC" }).format(new Date(r.checkedAt)) + " UTC";
     const models = r.models.map((m) => `<bdi dir="ltr">${esc(m.label)}</bdi> (<bdi dir="ltr">${esc(m.model)}</bdi>، ${m.web ? d.web : d.noweb})`.replace("، ", lang === "ar" ? "، " : ", ")).join(lang === "ar" ? " و" : " and ");
     $("r_asked").innerHTML = d.asked(models, esc(when)) + (r.cached ? d.cached : "");
@@ -239,7 +242,8 @@
   $("mon_form").addEventListener("submit", async (e) => {
     e.preventDefault();
     const em = $("mon_mail").value.trim();
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(em)) { $("mon_mail").setAttribute("aria-invalid", "true"); $("mon_mail").focus(); return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(em)) { $("mon_mail").setAttribute("aria-invalid", "true"); $("mon_err").textContent = t("mon_bad"); $("mon_err").hidden = false; $("mon_mail").focus(); return; }
+    $("mon_mail").removeAttribute("aria-invalid"); $("mon_err").hidden = true;
     const btn = e.submitter || $("mon_form").querySelector("button"); btn.disabled = true;
     try {
       await post({ source: "ai_monitor", ...base() });
@@ -254,7 +258,8 @@
   $("lead").addEventListener("submit", async (e) => {
     e.preventDefault();
     const f = e.target, em = f.email.value.trim(), err = $("lead_err");
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(em) || !f.consent.checked) { err.textContent = t("l_bad"); err.hidden = false; return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(em) || !f.consent.checked) { err.textContent = t("l_bad"); err.hidden = false; const bad = !/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(em) ? f.email : f.consent; bad.setAttribute("aria-invalid", "true"); bad.focus(); return; }
+    f.email.removeAttribute("aria-invalid"); f.consent.removeAttribute("aria-invalid");
     err.hidden = true; const btn = f.querySelector("button"); btn.disabled = true;
     try {
       const r = await post({ source: "ai", ...base(), email: em, consent: true, recommended: last?.summary.recommended || 0 });

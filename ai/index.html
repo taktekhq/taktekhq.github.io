@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Is ChatGPT recommending your business? Free AI visibility check · Taktek</title>
-<meta name="description" content="Free check: we ask AI assistants (Google Gemini and Anthropic Claude) the questions your customers ask, and show whether they name your business, the exact answers, the competitors they pick, and 3 fixes.">
+<meta name="description" content="Free check: we ask an AI assistant (Google Gemini) the questions your customers ask, and show whether it names your business, the exact answers, the competitors it picks, and 3 fixes.">
 <meta property="og:title" content="Is ChatGPT recommending your business?">
 <meta property="og:description" content="Free check: we ask AI assistants what your customers ask and show if they name you, who they name instead, and 3 fixes.">
 <meta property="og:url" content="https://taktek.io/ai/">
@@ -43,14 +43,14 @@
   "@context": "https://schema.org",
   "@graph": [
     { "@type": "WebApplication", "@id": "https://taktek.io/ai/#app", "name": "AI visibility check: is ChatGPT recommending your business?", "url": "https://taktek.io/ai/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "inLanguage": ["en", "ar"], "provider": { "@id": "https://taktek.io/#llc" },
-      "description": "Asks AI assistants (Google Gemini and Anthropic Claude) the questions customers ask about a category and city, and shows whether a business is named, the exact answers, the competitors named, and three fixes.",
+      "description": "Asks an AI assistant (Google Gemini) the questions customers ask about a category and city, and shows whether a business is named, the exact answers, the competitors named, and three fixes.",
       "offers": [
         { "@type": "Offer", "name": "AI visibility check", "price": "0", "priceCurrency": "USD" },
         { "@type": "Offer", "name": "Weekly AI visibility monitor", "price": "19", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "19", "priceCurrency": "USD", "billingDuration": "P1M" } },
         { "@type": "Offer", "name": "Visibility setup", "price": "400", "priceCurrency": "USD", "url": "https://taktek.io/work/" }
       ] },
     { "@type": "FAQPage", "@id": "https://taktek.io/ai/#faq", "mainEntity": [
-      { "@type": "Question", "name": "Does this check ask ChatGPT?", "acceptedAnswer": { "@type": "Answer", "text": "No. It asks Google Gemini and Anthropic Claude, with web search on, the same questions a customer would ask, and the results page names the exact models and the time. ChatGPT works the same way (a language model plus web search), so they are a fair proxy, but we only report what we actually asked." } },
+      { "@type": "Question", "name": "Does this check ask ChatGPT?", "acceptedAnswer": { "@type": "Answer", "text": "No. It asks Google Gemini, with web search on, the same questions a customer would ask, and the results page names the exact models and the time. ChatGPT works the same way (a language model plus web search), so they are a fair proxy, but we only report what we actually asked." } },
       { "@type": "Question", "name": "What questions does it ask?", "acceptedAnswer": { "@type": "Answer", "text": "Three: \"What are the best <category> in <city>?\", \"Who should I call for <category> in <city>?\" and \"What do you know about <business> in <city>?\"" } },
       { "@type": "Question", "name": "How do I get AI assistants to recommend my business?", "acceptedAnswer": { "@type": "Answer", "text": "Assistants with web search repeat what the web says about you: a complete Google Business Profile with recent reviews, consistent listings in local directories, and a website that states your name, services, area and contact details as plain text with LocalBusiness structured data. The check gives you the three fixes that matter most for your business." } },
       { "@type": "Question", "name": "Is it free? What does monitoring cost?", "acceptedAnswer": { "@type": "Answer", "text": "The check is free with no signup. Weekly monitoring is $19/month: we re-run the questions every week and email you when you appear or disappear. If you want us to make the fixes, the visibility setup is $400 once. No ranking promises." } },
@@ -97,7 +97,7 @@
       <div class="hp" aria-hidden="true"><label>Leave empty<input type="text" name="hp" tabindex="-1" autocomplete="off"></label></div>
       <div class="actions"><button type="submit" class="btn btn--solid" id="go"><span data-t="go">Check my business</span> <span class="arr" aria-hidden="true">&rarr;</span></button></div>
       <p class="err" id="err" role="alert" hidden></p>
-      <p class="fine" data-t="fine">We ask Google Gemini and Anthropic Claude, with web search on. Results name the exact models and time. We keep what you typed and the answers for 24 hours; your IP is only used, hashed, for a 2-hour rate limit.</p>
+      <p class="fine" data-t="fine">We ask Google Gemini, with web search on. Results name the exact models and time. We keep what you typed and the answers for 24 hours; your IP is only used, hashed, for a 2-hour rate limit.</p>
     </form>
   </section>
 
@@ -179,7 +179,7 @@
 
   <section class="ai-sec faq" aria-labelledby="faq_h">
     <h2 id="faq_h" data-t="faq_h">Questions</h2>
-    <details><summary data-t="q1">Does this ask ChatGPT?</summary><p data-t="a1">No. It asks Google Gemini and Anthropic Claude, with web search on, the same questions a customer would ask, and the results name the exact models and the time. ChatGPT works the same way (a language model plus web search), so they're a fair proxy, but we only report what we actually asked.</p></details>
+    <details><summary data-t="q1">Does this ask ChatGPT?</summary><p data-t="a1">No. It asks Google Gemini, with web search on, the same questions a customer would ask, and the results name the exact models and the time. ChatGPT works the same way (a language model plus web search), so they're a fair proxy, but we only report what we actually asked.</p></details>
     <details><summary data-t="q2">What questions does it ask?</summary><p data-t="a2">“What are the best &lt;category&gt; in &lt;city&gt;?”, “Who should I call for &lt;category&gt; in &lt;city&gt;?” and “What do you know about &lt;your business&gt; in &lt;city&gt;?”</p></details>
     <details><summary data-t="q3">How do I get AI assistants to recommend me?</summary><p data-t="a3">Assistants with web search repeat what the web says about you: a complete Google Business Profile with recent reviews, consistent listings in local directories, and a website that states your name, services, area and contact details as plain text with LocalBusiness structured data. The check picks the three fixes that matter most for you.</p></details>
     <details><summary data-t="q4">Is it free? What does monitoring cost?</summary><p data-t="a4">The check is free, no signup. Weekly monitoring is $19/month. If you want us to make the fixes, the visibility setup is $400 once. No ranking promises: nobody can promise what an AI will say.</p></details>
@@ -215,6 +215,6 @@
 
 <script src="../assets/js/gravity.js"></script>
 <script src="config.js?v=51038b83"></script>
-<script src="ai.js?v=1c4cc859"></script>
+<script src="ai.js?v=fa192c6a"></script>
 </body>
 </html>

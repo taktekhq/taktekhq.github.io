@@ -118,7 +118,7 @@
     document.documentElement.lang = lang;
     if (lang === "ar" && !document.getElementById("arfont")) { const l = document.createElement("link"); l.id = "arfont"; l.rel = "stylesheet"; l.href = "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500&display=swap"; document.head.appendChild(l); }
     document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
-    const M = liveModels && liveModels.length ? liveModels.map((m) => m.label).join(lang === "ar" ? " و" : " and ") : (lang === "ar" ? "Google Gemini وAnthropic Claude" : "Google Gemini and Anthropic Claude");
+    const M = liveModels && liveModels.length ? liveModels.map((m) => m.label).join(lang === "ar" ? " و" : " and ") : "Google Gemini";
     document.querySelectorAll("[data-t]").forEach((el) => { const v = d[el.dataset.t]; if (typeof v === "string") el.innerHTML = v.replace("{M}", M); });
     document.querySelectorAll("[data-ph]").forEach((el) => { el.placeholder = d[el.dataset.ph]; });
     const lb = $("lang"); lb.textContent = d.langbtn; lb.lang = lang === "ar" ? "en" : "ar";

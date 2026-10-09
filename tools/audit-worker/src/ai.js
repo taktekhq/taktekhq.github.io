@@ -27,7 +27,7 @@ const SYSTEM = "Answer the way you would answer a normal customer. Be concise (u
 
 export function modelsFor(env) {
   const m = [];
-  if (env.GEMINI_API_KEY) m.push({ id: "gemini", model: env.GEMINI_MODEL || "gemini-2.5-flash", label: "Google Gemini", web: env.GEMINI_GROUNDING !== "0" });
+  if (env.GEMINI_API_KEY) m.push({ id: "gemini", model: env.GEMINI_MODEL || "gemini-3.5-flash", label: "Google Gemini", web: env.GEMINI_GROUNDING !== "0" });
   if (env.ANTHROPIC_API_KEY) m.push({ id: "claude", model: env.CLAUDE_MODEL || "claude-haiku-5-5", label: "Anthropic Claude", web: env.CLAUDE_WEB !== "0" });
   return m;
 }
@@ -39,7 +39,8 @@ async function withTimeout(ms, fn) {
 }
 
 async function askGemini(env, m, prompt, signal, fetchImpl) {
-  const body = { systemInstruction: { parts: [{ text: SYSTEM }] }, contents: [{ role: "user", parts: [{ text: prompt }] }], generationConfig: { maxOutputTokens: 400, temperature: 0.4 } };
+  const body = { systemInstruction: { parts: [{ text: SYSTEM }] }, contents: [{ role: "user", parts: [{ text: prompt }] }], generationConfig: { maxOutputTokens: 400, temperature: 0.4, thinkingConfig: { thinkingBudget: 0 } } };
+  // Thinking off: with it on, the thoughts used up the 400-token budget and the answer came back empty (Oct 2026).
   if (m.web) body.tools = [{ google_search: {} }];
   const r = await fetchImpl(`https://generativelanguage.googleapis.com/v1beta/models/${m.model}:generateContent`, {
     method: "POST", signal, headers: { "content-type": "application/json", "x-goog-api-key": env.GEMINI_API_KEY }, body: JSON.stringify(body),

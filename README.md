@@ -33,3 +33,12 @@ second line such as a conversion, and `row__price--free` for a free row.
 Never restyle a `.row__title` with an inline font size, and never add a
 page-level price rule: that is how prices drifted out of line on the work,
 WhatsApp agent and country pages, one page at a time.
+
+## The header
+
+`.head` holds the wordmark and then the controls, all as direct children:
+a link, the language switch (`.langbtn`), the `#mode` checkbox and its
+`.modebtn`. Never wrap the controls in a `<span>` or `<div>`, and never
+restyle `.langbtn` or `.head` on a page: `studio.css` lays them out in one row
+at the far end, in both directions, and keeps the wordmark reading "taktek."
+on Arabic pages.

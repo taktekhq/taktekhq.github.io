@@ -11,8 +11,7 @@
 .skip { position: absolute; inset-inline-start: var(--s3); top: -60px; z-index: 9; padding: var(--s2) var(--s3); background: var(--ink); color: var(--paper); border-radius: 4px; }
 .skip:focus { top: var(--s3); }
 .vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.head { align-items: center; }
-.langbtn { font-family: var(--display); font-size: 14px; color: var(--muted); background: none; border: 1px solid var(--rule); border-radius: 999px; padding: 0 var(--s3); min-height: 44px; cursor: pointer; margin-inline-start: auto; margin-inline-end: var(--s2); }
+.langbtn { font-family: var(--display); font-size: 14px; color: var(--muted); background: none; border: 1px solid var(--rule); border-radius: 999px; padding: 0 var(--s3); min-height: 44px; cursor: pointer; }
 @media (hover: hover) { .langbtn:hover { color: var(--ink); border-color: var(--ink); } }
 :focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
 

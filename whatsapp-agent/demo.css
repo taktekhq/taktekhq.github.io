@@ -1,9 +1,6 @@
 html[lang=en] .ar, html[lang=ar] .en { display: none !important; }
 [dir=rtl] body { font-family: "Segoe UI", Tahoma, "Noto Sans Arabic", var(--display); }
 [dir=rtl] .cta > span[aria-hidden] { display: inline-block; transform: scaleX(-1); }
-.langbtn { font-family: var(--mono); font-size: 12px; color: var(--muted); background: none; border: 1px solid var(--rule); border-radius: 999px; padding: 6px 12px; cursor: pointer; margin-inline-start: auto; margin-inline-end: 10px; }
-.langbtn:hover { color: var(--ink); border-color: var(--ink); }
-.head { align-items: center; }
 .tabs { display: flex; gap: 8px; margin-bottom: 18px; }
 .tab { font: inherit; font-family: var(--mono); font-size: 13px; color: var(--muted); background: none; border: 1px solid var(--rule); border-radius: 999px; padding: 8px 16px; cursor: pointer; }
 .tab.on { color: var(--ink); border-color: var(--signal); box-shadow: inset 0 0 0 1px var(--signal); }

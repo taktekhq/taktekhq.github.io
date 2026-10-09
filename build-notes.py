@@ -459,7 +459,7 @@ HEAD = """<!doctype html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../assets/css/studio.css?v=price">
+<link rel="stylesheet" href="../../assets/css/studio.css?v=head">
 <link rel="stylesheet" href="../../assets/css/gravity.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id={ga}"></script>
 <script>
@@ -599,7 +599,7 @@ NOTES_INDEX = """<!doctype html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/studio.css?v=price">
+<link rel="stylesheet" href="../assets/css/studio.css?v=head">
 <link rel="stylesheet" href="../assets/css/gravity.css">
 <script type="application/ld+json">
 {ld}

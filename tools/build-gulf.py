@@ -56,9 +56,9 @@ def page(k):
           pa=f"من {fmt(p[2])} {c['cur_ar']}", pe=f"from {c['cur_en']} {fmt(p[2])}", usd="$800", price=p[2], uc="USD800"),
     ]
     rows = ""
-    rows += f'''<div class="row" style="cursor:default"><span class="row__main"><span class="row__title"><span class="ar">فحص مجاني لحضورك على الإنترنت</span><span class="en">Free online-presence audit</span></span><span class="row__desc"><span class="ar">نفحص ظهورك على جوجل والخرائط وإجابات الذكاء الاصطناعي، وسرعة ردّك على واتساب، ونرسل لك النتيجة خلال 24 ساعة. بلا التزام.</span><span class="en">We check how you show up on Google, Maps and AI answers, and how fast your WhatsApp replies, and send the result within 24 hours. No strings.</span></span></span><span class="row__title price" style="color:var(--signal)"><span class="ar">مجانًا</span><span class="en">Free</span></span></div>\n'''
+    rows += f'''<div class="row" style="cursor:default"><span class="row__main"><span class="row__title"><span class="ar">فحص مجاني لحضورك على الإنترنت</span><span class="en">Free online-presence audit</span></span><span class="row__desc"><span class="ar">نفحص ظهورك على جوجل والخرائط وإجابات الذكاء الاصطناعي، وسرعة ردّك على واتساب، ونرسل لك النتيجة خلال 24 ساعة. بلا التزام.</span><span class="en">We check how you show up on Google, Maps and AI answers, and how fast your WhatsApp replies, and send the result within 24 hours. No strings.</span></span></span><span class="row__price" style="color:var(--signal)"><span class="ar">مجانًا</span><span class="en">Free</span></span></div>\n'''
     for x in pk:
-        rows += f'''<div class="row" id="{x['id']}" style="cursor:default"><span class="row__main"><span class="row__title"><span class="ar">{x['ar_t']}</span><span class="en">{x['en_t']}</span></span><span class="row__desc"><span class="ar">{x['ar_d']}</span><span class="en">{x['en_d']}</span></span></span><span class="row__title price"><span class="ar">{x['pa']}</span><span class="en">{x['pe']}</span><small dir="ltr">≈ {x['usd']}</small></span></div>\n'''
+        rows += f'''<div class="row" id="{x['id']}" style="cursor:default"><span class="row__main"><span class="row__title"><span class="ar">{x['ar_t']}</span><span class="en">{x['en_t']}</span></span><span class="row__desc"><span class="ar">{x['ar_d']}</span><span class="en">{x['en_d']}</span></span></span><span class="row__price"><span class="ar">{x['pa']}</span><span class="en">{x['pe']}</span><small dir="ltr">≈ {x['usd']}</small></span></div>\n'''
     notes = ""
     for (ta, da), (te, de) in zip(c["notes_ar"], c["notes_en"]):
         notes += f'<div class="note"><h3><span class="ar">{ta}</span><span class="en">{te}</span></h3><p class="row__desc"><span class="ar">{da}</span><span class="en">{de}</span></p></div>\n'
@@ -98,22 +98,18 @@ def page(k):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&family=Noto+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/studio.css?v=dots">
+<link rel="stylesheet" href="../assets/css/studio.css?v=price">
 <link rel="stylesheet" href="../assets/css/gravity.css">
 <style>
-  html[lang=ar] body, html[lang=ar] .row__title, html[lang=ar] .row__desc, html[lang=ar] .lede, html[lang=ar] h1, html[lang=ar] h2, html[lang=ar] h3, html[lang=ar] .eyebrow, html[lang=ar] .cta {{ font-family: "Noto Sans Arabic", "Space Grotesk", system-ui, sans-serif; letter-spacing: 0; }}
+  html[lang=ar] body, html[lang=ar] .row__title, html[lang=ar] .row__price, html[lang=ar] .row__desc, html[lang=ar] .lede, html[lang=ar] h1, html[lang=ar] h2, html[lang=ar] h3, html[lang=ar] .eyebrow, html[lang=ar] .cta {{ font-family: "Noto Sans Arabic", "Space Grotesk", system-ui, sans-serif; letter-spacing: 0; }}
   html[lang=ar] .en, html[lang=en] .ar {{ display: none !important; }}
   html[lang=ar] h1 {{ line-height: 1.25; }}
-  #packages .row__main {{ flex: 1; }}
-  #packages .price {{ margin-inline-start: auto; white-space: nowrap; text-align: end; font-size: 18px; display: flex; flex-direction: column; align-items: flex-end; }}
-  #packages .price small {{ font-family: var(--mono); font-size: 11px; color: var(--muted); font-weight: 400; }}
   html[lang=ar] .cta span[aria-hidden] {{ display: inline-block; transform: scaleX(-1); }}
   .note {{ margin: 0 0 18px; max-width: 58ch; }}
   .note h3 {{ margin: 0 0 6px; font-size: 17px; font-weight: 500; color: var(--ink); }}
   .langbtn {{ font: inherit; font-size: 13px; background: none; border: 1px solid var(--rule); border-radius: 4px; color: var(--ink); padding: 6px 12px; cursor: pointer; margin-inline-start: 12px; }}
   .head {{ display: flex; align-items: center; justify-content: space-between; }}
   .cta-row {{ display: flex; flex-wrap: wrap; gap: 14px; margin-top: 22px; }}
-  @media (max-width: 560px) {{ #packages .row {{ flex-wrap: wrap; }} #packages .price {{ margin-inline-start: 0; align-items: flex-start; }} }}
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MY112CQXP6"></script>
 <script>

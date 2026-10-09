@@ -393,6 +393,36 @@ footer a:hover { color: var(--signal); }
 /* an address with a line under it: smaller, so a long domain never breaks mid-word on a phone */
 .row__main .row__url { font-size: clamp(18px, 3.6vw, 36px); word-break: normal; overflow-wrap: anywhere; }
 
+/* --- A price at the end of a row -------------------------------------------
+   Every price on the site goes in .row__price, never in a restyled
+   .row__title. The text column takes the free space and the price gets a
+   fixed-width box pinned to the row's end, so prices line up down the list
+   whatever the description says. Before this, each page sized its own price
+   and they drifted with the length of the text beside them.
+   A second line (a conversion, "per month") goes in a <small>.
+   ------------------------------------------------------------------------ */
+
+.row:has(.row__price) .row__main { flex: 1; }
+.row__price {
+  flex: none;
+  min-width: 9em;
+  margin-inline-start: auto;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 2px;
+  text-align: end;
+  white-space: nowrap;
+  font-size: 20px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.15;
+  color: var(--ink);
+  transition: color 0.25s var(--ease);
+}
+.row:hover .row__price { color: var(--signal); }
+.row__price--free { color: var(--signal); }
+.row__price small { font-family: var(--mono); font-size: 11px; font-weight: 400; letter-spacing: 0; color: var(--muted); }
+@media (max-width: 560px) {
+  .row:has(.row__price) { flex-wrap: wrap; }
+  .row:has(.row__price) .row__main { flex-basis: 100%; }
+  .row__price { min-width: 0; margin-inline-start: 0; align-items: flex-start; text-align: start; }
+}
+
 .sec { padding-block: clamp(48px, 8vw, 96px) 0; }
 .sec .eyebrow { margin-bottom: clamp(14px, 2vw, 20px); }
 

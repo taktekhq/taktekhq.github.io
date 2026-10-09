@@ -24,3 +24,12 @@ Page-specific styles live in the `<style>` block in `index.html`. A few
 colours are pinned there rather than tokenised, because the product cards
 set their own tints and the theme scopes were never measured against those
 grounds; the comments in the design system export explain each one.
+
+## Prices in a list
+
+Any row that ends in a price uses `<span class="row__price">` from
+`assets/css/studio.css`, after the `.row__main` block. Add a `<small>` for a
+second line such as a conversion, and `row__price--free` for a free row.
+Never restyle a `.row__title` with an inline font size, and never add a
+page-level price rule: that is how prices drifted out of line on the work,
+WhatsApp agent and country pages, one page at a time.

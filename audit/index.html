@@ -72,6 +72,44 @@
 {
   "@context": "https://schema.org",
   "@graph": [
+{
+  "@type": "FAQPage",
+  "inLanguage": "en",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does the free check look at?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It reads your public homepage and runs 12 checks: HTTPS, mobile layout, speed, title and description, structured data, whether Google can index it, sitemap, a Google Maps link, a WhatsApp button, online booking, and whether AI crawlers such as ChatGPT can read it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it really free, and do you keep my details?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, free and with no signup. We only keep your email if you tick the box to receive the full report by email."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does a high score mean I will rank first on Google?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The score shows what is missing or broken on your homepage. It does not promise a ranking, and we make no ranking promises."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens after the check?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You get the three fixes that matter most. If you want help with them, our fixed prices start at $400 and you pay after we agree the scope. See taktek.io/work."
+      }
+    }
+  ]
+},
     { "@type": "WebApplication", "@id": "https://taktek.io/audit/#app", "name": "Taktek visibility check", "url": "https://taktek.io/audit/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "inLanguage": ["en", "ar"], "provider": { "@id": "https://taktek.io/#llc" }, "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }, "description": "Free scorecard of how visible a business website is on Google, Maps and ChatGPT, with three concrete fixes." },
     { "@type": "BreadcrumbList", "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "taktek", "item": "https://taktek.io/" }, { "@type": "ListItem", "position": 2, "name": "Visibility check", "item": "https://taktek.io/audit/" } ] }
   ]
@@ -153,6 +191,16 @@
         <p class="err" id="lead_err" role="alert" hidden></p>
         <p class="note" id="lead_ok" hidden></p>
       </form>
+    </div>
+  </section>
+
+  <section class="sec" aria-label="FAQ">
+    <p class="eyebrow" data-t="faq_h">Questions</p>
+    <div class="index">
+<div class="row" style="cursor:default"><span class="row__main"><span class="row__title" data-t="faq1_q">What does the free check look at?</span><span class="row__desc" data-t="faq1_a">It reads your public homepage and runs 12 checks: HTTPS, mobile layout, speed, title and description, structured data, whether Google can index it, sitemap, a Google Maps link, a WhatsApp button, online booking, and whether AI crawlers such as ChatGPT can read it.</span></span></div>
+<div class="row" style="cursor:default"><span class="row__main"><span class="row__title" data-t="faq2_q">Is it really free, and do you keep my details?</span><span class="row__desc" data-t="faq2_a">Yes, free and with no signup. We only keep your email if you tick the box to receive the full report by email.</span></span></div>
+<div class="row" style="cursor:default"><span class="row__main"><span class="row__title" data-t="faq3_q">Does a high score mean I will rank first on Google?</span><span class="row__desc" data-t="faq3_a">No. The score shows what is missing or broken on your homepage. It does not promise a ranking, and we make no ranking promises.</span></span></div>
+<div class="row" style="cursor:default"><span class="row__main"><span class="row__title" data-t="faq4_q">What happens after the check?</span><span class="row__desc" data-t="faq4_a">You get the three fixes that matter most. If you want help with them, our fixed prices start at $400 and you pay after we agree the scope. See taktek.io/work.</span></span></div>
     </div>
   </section>
 
